@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<!--
+* MothersMilk
+* Copyright (C) 2013 Regents of the University of Colorado.
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public License
+* as published by the Free Software Foundation; either version 2
+* of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+<html lang="en" ng-app="cbb" >
+
+<head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" charset="utf-16"/>
+    <LINK REL="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <title>MothersMilk</title>
+
+    <!--  <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-21939703-1']);
+            _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+      <script type="text/javascript"
+        src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+      </script>        -->
+
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/jquery-ui.min.js"></script>
+    <script src="lib/jquery.form.min.js"></script>
+    <script src="lib/highcharts.js"></script>
+    <script src="lib/exporting.js"></script>
+
+    <!-- order matters here, so be careful if you edit -->
+    <!-- bootstrap plugins - load after jquery -->
+    <script src="lib/bootstrap.min.js"></script>
+    <!-- Angular.js scripts -->
+
+
+    <!-- <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet" />  -->
+
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/ng-grid.css">
+    <link type="text/css" rel="stylesheet" href="css/mothersmilk.css">
+
+    <script>
+        $(function() {
+
+
+
+//
+        });
+
+    </script>
+
+
+</head>
+
+<body>
+
+
+
+<div class="container" ng-controller="stateController">
+<!-- header bar -->
+    <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header ">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapsed-header">
+                Menu
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!--
+            <a class="navbar-brand" href="http://brightbeginningsusa.org/" target="_system">
+                <label class="logo">&#160CBB1.0</label>
+            </a>
+            -->
+
+
+            <a class="navbar-brand" href="#" onclick="var ref = window.open('http://brightbeginningsusa.org/', '_system', 'location=yes');">
+                <label class="logo">&#160MothersMilk</label>
+            </a>
+
+
+
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="collapsed-header">
+
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="vmargin15" >
+                    <div class="panel-group" id="nav-accordion" >
+                        <div class="panel panel-default">
+                            <!-- start menu -->
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#nav-accordion" href="#nav-start">
+                                        Start
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="nav-start" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" >
+                                        <a href="#/{{ viewLanguage }}tutorial">Tutorial</a>
+                                    </div>
+                                    <!--
+                                    <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" >
+                                        <a href="#/{{ viewLanguage }}facebook">Facebook</a>
+                                    </div>
+                                    -->
+                                    <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" ng-show="viewLanguage != 'spanish/'" >
+                                        <a href="#" onclick="window.open('https://www.facebook.com/coloradoBrightBeginnings', '_blank', 'location=yes')">Facebook</a>
+                                    </div>
+
+                                    <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" ng-show="viewLanguage == 'spanish/'">
+                                        <a href="#" onclick="window.open('https://www.facebook.com/pages/Colorado-Bright-Beginnings-Espa%C3%B1ol/181161045408909', '_blank', 'location=yes')">Facebook</a>
+                                    </div>
+
+                                    <div class="{{isActive('/typeIError') && 'active'}} {{getStateTypeIError()}}" >
+                                        <a href="#/{{ viewLanguage }}text">Text<sup style="background-color:darkred;color:white;font-size: 0.9em;width: 1.1em;" ng-show="getTotalUnread() > 0">{{getTotalUnread()}}</sup></a>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+
+                <li class="vmargin15" >
+                    <div class="panel-group" id="nav-accordion" >
+                        <div class="panel panel-default">
+                            <!-- general info -->
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#nav-accordion" href="#nav-options">
+                                        Contact Us
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="nav-options" class="panel-collapse collapse">
+                                <div class="panel-body">
+
+                                    <div class="{{isActive('/test') && 'active'}} {{getStateStatisticalTest()}}" >
+                                        <a href="#/{{ viewLanguage }}aboutUs">About Us</a>
+                                    </div>
+                                    <div class="{{isActive('/test') && 'active'}} {{getStateStatisticalTest()}}" >
+                                    <a href="#/{{ viewLanguage }}feedback">Feedback</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="vmargin15" >
+                    <div class="panel-group" id="nav-accordion" >
+                        <div class="panel panel-default">
+                            <!-- contact us -->
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <!-- TODO: disable when results unavailable -->
+                                    <a data-toggle="collapse" data-parent="#nav-accordion" href="#nav-results">
+                                        More
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="nav-results" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="{{isActive('/results/matrices') && 'active'}}" >
+                                        <a href="#" ng-click="changeLanguage()">Language: {{currentLanguage}}</a>
+                                    </div>
+                                    <div class="{{isActive('/results/matrices') && 'active'}}" >
+                                        <a data-ng-click="reset()"
+                                            >Logout</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+
+    <!-- Mode selection screen -->
+    <div class="well shaded-box " ng-show="getMode() == undefined">
+        <h3>Welcome to MothersMilk</h3>
+        <p>
+            Please either login or sign up to continue.
+        </p>
+
+        <div class="row vmargin15 hpadding0 box  rounded-box" style="border: 0;">
+            <div align="center" class="col-md-3 col-sm-3 col-xs-6">
+                <a href="#/login" class="btn btn-mode"
+                   data-ng-click="setMode(cbbConstants.modeGuided)" >
+                    Login
+                </a>
+            </div>
+        </div>
+
+        <div class="row vmargin15 hpadding0 box  rounded-box" style="border: 0;">
+
+            <div align="center" class="col-md-3 col-sm-3 col-xs-6">
+                <a href="#/signUp" class="btn btn-mode"
+                   data-ng-click="setMode(cbbConstants.modeMatrix)" >
+                    Sign Up
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- main Web application panel -->
+    <div class="white-box shaded-box rounded-box" ng-show="getMode() != undefined">
+
+    <!-- toolbox menu -->
+    <div class="row hpadding30 hmargin15">
+        <div class="pull-right">
+            <!--div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="toolbar" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-cog"></span>
+                    Tools
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu"  role="menu" aria-labelledby="toolbar">
+                    <li role="presentation">
+                        <form name="saveForm" method='post' action="/file/saveas" target="_blank">
+                            <div>
+                                <input type="hidden" name="filename" value="study.json"/>
+                                <input type="hidden" name="data" value='{{studyDesignJSON}}' />
+                            </div>
+                            <button role="menuitem" type="submit" data-ng-click="updateStudyDesignJSON()">Save Design</button>
+                        </form>
+                    </li>
+                    <!-- <li role="presentation">
+                        <div role="menuitem"  ng-show="getView()==glimmpseConstants.viewTypeResults">
+                            <a href="">Save Report</a>
+                        </div>
+                    </li>    -->
+                    <!--li role="presentation">
+                        <form name="saveResultsToCSVForm" method='post' action="/file/saveas" target="_blank">
+                            <div>
+                                <input type="hidden" name="filename" value="results.csv"/>
+                                <input type="hidden" name="data" value='{{resultsCSV}}' />
+                            </div>
+                            <button type="submit" role="menuitem" data-ng-click="updateResultsCSV()">Save Results as CSV</button>
+                        </form>
+                    </li>
+                    <li  role="presentation" class="divider"></li>
+                    <li role="presentation">
+                        <a href="#" role="menuitem"  data-ng-click="reset()">Cancel</a>
+                    </li>
+                </ul>
+            </div-->
+        </div>
+    </div>
+
+    <!-- main application page for mobile (small and extra small screens) -->
+    <div class="visible-sm visible-xs">
+        <div ng-view ng-class="slide" class="padding10"></div>
+    </div>
+
+    <!-- main application content-->
+    <div class="row hmargin5 padding0 visible-md visible-lg">
+
+
+
+        <!-- main content area with toolbar -->
+            <div class="col-md-9 visible-md visible-lg">
+                <div class="box rounded-box">
+                    <div class="padding10" ng-view=""></div>
+            </div>
+        </div>
+    </div>
+
+        <!-- The processing dialog -->
+        <div class="modal fade" id="processingDialog" tabindex="-1"
+             role="dialog" aria-labelledby="processingDialogLabel" aria-hidden="{{showProcessing && false}}">
+            <div class="modal-dialog rounded-box white-box">
+                <div class="modal-body">
+                    <div class="processing">Processing</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="incompleteDialog" tabindex="-1"
+             role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog rounded-box white-box">
+                <div class="model-content">
+                    <div class="modal-header">
+                        <h3>The following items are incomplete</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div ng-repeat="view in incompleteViews">
+                            {{view}}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">OK</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- footer -->
+    <div class="row">
+        <div class="col-md-12 text-center vmargin15">
+            <div>Copyright 2013 University of Colorado Denver. MothersMilk is released under the
+                <a href="http://www.gnu.org/licenses/gpl-2.0.html">GNU Public License version 2.0</a>.</div>
+            <div>
+                MothersMilk version 1.0 is funded by FUNDING INFO.
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="lib/angular.min.js"></script>
+<script src="lib/angular-touch.js"></script>
+<script src="lib/ng-grid-2.0.7.min.js"></script>
+<script src="lib/ui-bootstrap-tpls-0.6.0.min.js"></script>
+<script src="lib/highcharts-ng.js"></script>
+
+<!-- app specific scripts -->
+<script src="js/app.js"></script>
+<script src="js/services/matrixUtilities.js"></script>
+<script src="js/services/studyDesignService.js"></script>
+<script src="js/services/powerService.js"></script>
+<script src="js/services/participantService.js"></script>
+<script src="js/directives.js"></script>
+<script src="js/controllers/controllers.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+<script type="text/javascript" charset="utf-8" src="jquery_1.5.2.min.js"></script>
+<script type="text/javascript" src="PushNotification.js"></script>
+
+<script type="text/javascript">
+        var pushNotification;
+	    var android_device_regid;
+        var ios_device_regid;
+            
+            function onDeviceReady() {
+                $("#app-status-ul").append('<li>deviceready event received</li>');
+                
+                                document.addEventListener("backbutton", function(e)
+                                {
+                        $("#app-status-ul").append('<li>backbutton event received</li>');
+                                          
+                                      if( $("#home").length > 0)
+                                        {
+                                                // call this to get a new token each time. don't call it to reuse existing token.
+                                                //pushNotification.unregister(successHandler, errorHandler);
+                                                e.preventDefault();
+                                                navigator.app.exitApp();
+                                        }
+                                        else
+                                        {
+                                                navigator.app.backHistory();
+                                        }
+                                }, false);
+                        
+                                try 
+                                { 
+                        pushNotification = window.plugins.pushNotification;
+                        if (device.platform == 'android' || device.platform == 'Android') {
+						//alert('its an android');
+                            $("#app-status-ul").append('<li>registering android</li>');
+                            pushNotification.register(successHandler, errorHandler, {"senderID":"1066874012683","ecb":"onNotificationGCM"});
+			                //alert('done registering');
+
+     // required!
+                        } else {
+                            alert('its an ios device');
+                            $("#app-status-ul").append('<li>registering iOS</li>');
+                            pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});        // required!
+                        }
+                }
+                        catch(err)
+                        {
+                            txt="There was an error on this page.\n\n";
+                            txt+="Error description: " + err.message + "\n\n";
+                            alert(txt);
+                        }
+            }
+            
+            // handle APNS notifications for iOS
+            function onNotificationAPN(e) {
+                if (e.alert) {
+                     $("#app-status-ul").append('<li>push-notification: ' + e.alert + '</li>');
+                     navigator.notification.alert(e.alert);
+                     //alert('inside apnnoti: You have a new text message' + e.alert);
+                }
+                    
+                if (e.sound) {
+                    var snd = new Media(e.sound);
+                    snd.play();
+                    alert('You have a new text message');
+                }
+                
+                if (e.badge) {
+                    pushNotification.setApplicationIconBadgeNumber(successHandler, e.badge);
+                }
+            }
+            
+            // handle GCM notifications for Android
+            function onNotificationGCM(e) {
+                $("#app-status-ul").append('<li>EVENT -> RECEIVED:' + e.event + '</li>');
+                
+                switch( e.event )
+                {
+                    case 'registered':
+                                        if ( e.regid.length > 0 )
+                                        {
+                                                $("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
+                                                // Your GCM push server needs to know the regID before it can push to this device
+                                                // here is where you might want to send it the regID for later use.
+                                                console.log("regID = " + e.regid);
+					                	        android_device_regid = e.regid;
+                                        }
+                    break;
+                    
+                    case 'message':
+                            // if this flag is set, this notification happened while we were in the foreground.
+                            // you might want to play a sound to get the user's attention, throw up a dialog, etc.
+                            if (e.foreground)
+                            {
+                                                        $("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
+                                                        alert('You have a new text message');
+                                                        // if the notification contains a soundname, play it.
+                                                        var my_media = new Media("/android_asset/www/"+e.soundname);
+                                                        my_media.play();
+                           }
+                           else
+                           {        // otherwise we were launched because the user touched a notification in the notification tray.
+                                   if (e.coldstart) {
+                                             $("#app-status-ul").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
+					     var my_media = new Media("/android_asset/www/"+e.soundname);
+		                             my_media.play();
+				  }	
+                                  else {
+                                             $("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
+					     var my_media = new Media("/android_asset/www/"+e.soundname);
+		                             my_media.play();
+				 }
+                           }
+                                                        
+                           $("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
+                           $("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
+                    break;
+                    
+                    case 'error':
+                           $("#app-status-ul").append('<li>ERROR -> MSG:' + e.msg + '</li>');
+                    break;
+                    
+                    default:
+                           $("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
+                    break;
+                }
+            }
+            
+            function tokenHandler (result) {
+                alert('inside token handler');
+                $("#app-status-ul").append('<li>token: '+ result +'</li>');
+		        alert('device id is:' + result);
+                ios_device_regid = result;
+                // Your iOS push server needs to know the token before it can push to this device
+                // here is where you might want to send it the token for later use.
+            }
+                        
+            function successHandler (result) {
+                $("#app-status-ul").append('<li>success:'+ result +'</li>');
+            }
+            
+            function errorHandler (error) {
+                $("#app-status-ul").append('<li>error:'+ error +'</li>');
+            }
+            
+                        document.addEventListener('deviceready', onDeviceReady, true);
+
+         </script>
+
+</body>
+</html>
