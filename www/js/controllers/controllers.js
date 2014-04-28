@@ -1,5 +1,5 @@
 /*
- * CBB (Colorado Bright Beginnings)
+ * MothersMilk
  * Copyright (C) 2013 Regents of the University of Colorado.
  *
  * This program is free software; you can redistribute it and/or
@@ -61,6 +61,8 @@ cbbApp.controller('stateController',
             $scope.currentLanguage = "English";
 
             $scope.currentTextBufferCount = 0;
+
+            $scope.status = 'Waiting on baby';
 
             //$scope.loginStatus = "false";
 
@@ -206,6 +208,21 @@ cbbApp.controller('stateController',
                 $scope.studyDesign.reset();
                 $scope.powerService.clearCache();
                 init();
+            }
+        }
+
+        /**
+         * clear the study design
+         */
+        $scope.resetStatus = function() {
+            if (confirm('Are you sure you had a baby?' +  ' ' +
+            'Changing your status to post partum will change the text messages'
+            + ' ' + 'that you receive every day.')) {
+                $scope.status = 'Yay! Baby is here!';
+
+                //$scope.studyDesign.reset();
+                //$scope.powerService.clearCache();
+                //init();
             }
         }
 

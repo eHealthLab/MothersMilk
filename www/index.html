@@ -23,7 +23,7 @@
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" charset="utf-16"/>
     <LINK REL="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-    <title>MothersMilk</title>
+    <title>Mothers’ Milk Messaging</title>
 
     <!--  <script type="text/javascript">
             var _gaq = _gaq || [];
@@ -96,7 +96,7 @@
 
 
             <a class="navbar-brand" href="#" onclick="var ref = window.open('http://brightbeginningsusa.org/', '_system', 'location=yes');">
-                <label class="logo">&#160MothersMilk</label>
+                <label class="logo">&#160Mothers’ Milk Messaging</label>
             </a>
 
 
@@ -108,6 +108,22 @@
 
 
             <ul class="nav navbar-nav navbar-right">
+
+                <li class="vmargin15" >
+                    <div class="panel-group" id="nav-accordion" >
+                        <div class="panel panel-default">
+                            <!-- status menu -->
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                <a href="#" ng-click="resetStatus()">
+                                     {{status}}
+                                </a>
+                                </h4>
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
 
                 <li class="vmargin15" >
                     <div class="panel-group" id="nav-accordion" >
@@ -209,7 +225,7 @@
 
     <!-- Mode selection screen -->
     <div class="well shaded-box " ng-show="getMode() == undefined">
-        <h3>Welcome to MothersMilk</h3>
+        <h3>Welcome to Mothers’ Milk Messaging</h3>
         <p>
             Please either login or sign up to continue.
         </p>
@@ -398,7 +414,7 @@
                         if (device.platform == 'android' || device.platform == 'Android') {
 						//alert('its an android');
                             $("#app-status-ul").append('<li>registering android</li>');
-                            pushNotification.register(successHandler, errorHandler, {"senderID":"1066874012683","ecb":"onNotificationGCM"});
+                            pushNotification.register(successHandler, errorHandler, {"senderID":"322549379605","ecb":"onNotificationGCM"});
 			                //alert('done registering');
 
      // required!

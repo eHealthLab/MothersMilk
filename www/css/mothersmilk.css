@@ -42,13 +42,13 @@ body {
     margin: 0px;
     /*background: url('../img/bluegradientLong.png') repeat-x;      */
 
-    background: rgb(188,143,143); /* Old browsers */
-    background: -moz-linear-gradient(top, rgb(188,143,143) 0%, rgba(255,255,255,1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgb(188,143,143)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, rgb(188,143,143) 0%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, rgb(188,143,143) 0%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, rgb(188,143,143) 0%,rgba(255,255,255,1) 100%); /* IE10+ */
-    background: linear-gradient(to bottom, rgb(188,143,143) 0%,rgba(255,255,255,1) 100%); /* W3C */
+    background: rgb(143,188,166); /* Old browsers */
+    background: -moz-linear-gradient(top, rgb(143,188,166) 0%, rgba(255,255,255,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgb(143,188,188)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgb(143,188,166) 0%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgb(143,188,166) 0%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgb(143,188,166) 0%,rgba(255,255,255,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgb(143,188,166) 0%,rgba(255,255,255,1) 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#265b86', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
 
 }
@@ -206,7 +206,7 @@ button:focus {
     padding-left: 40px;
     font-size: 2em;
     line-height: 1.5em;
-    background-image: url('../img/bb-logo.png');
+    background-image: url('../img/MMLogo.png');
     background-repeat: no-repeat;
     background-size: 40px 40px;
     background-position: 0px 4px;
@@ -271,8 +271,8 @@ button:focus {
 
 .btn-mode {
     color: #ffffff;
-    background-color: #44b1bf;
-    border-color: #58B781;
+    background-color: #bc8f8f;  /* change button colors login/signup */
+    border-color: #8fbcbc;  /* change button colors login/signup on highlight */
     text-shadow: 0px 1px 3px #24603E;
     line-height: 2em;
     font-size: 18px;
