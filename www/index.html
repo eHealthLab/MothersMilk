@@ -25,21 +25,6 @@
 
     <title>Mothers’ Milk Messaging</title>
 
-    <!--  <script type="text/javascript">
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-21939703-1']);
-            _gaq.push(['_trackPageview']);
-
-        (function() {
-          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-      </script>
-      <script type="text/javascript"
-        src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-      </script>        -->
-
     <script src="lib/jquery.min.js"></script>
     <script src="lib/jquery-ui.min.js"></script>
     <script src="lib/jquery.form.min.js"></script>
@@ -99,7 +84,10 @@
                 <label class="logo">&#160Mothers’ Milk Messaging</label>
             </a>
 
-
+            <a href="#" ng-click="resetStatus()">
+                <span class="glyphicon glyphicon-trash"></span>
+                {{status}}
+            </a>
 
         </div>
 
@@ -147,11 +135,11 @@
                                     </div>
                                     -->
                                     <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" ng-show="viewLanguage != 'spanish/'" >
-                                        <a href="#" onclick="window.open('https://www.facebook.com/coloradoBrightBeginnings', '_blank', 'location=yes')">Facebook</a>
+                                        <a href="#" onclick="window.open('https://www.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">Facebook</a>
                                     </div>
 
                                     <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" ng-show="viewLanguage == 'spanish/'">
-                                        <a href="#" onclick="window.open('https://www.facebook.com/pages/Colorado-Bright-Beginnings-Espa%C3%B1ol/181161045408909', '_blank', 'location=yes')">Facebook</a>
+                                        <a href="#" onclick="window.open('https://www.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">Facebook</a>
                                     </div>
 
                                     <div class="{{isActive('/typeIError') && 'active'}} {{getStateTypeIError()}}" >
