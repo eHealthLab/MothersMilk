@@ -3239,7 +3239,7 @@ cbbApp.controller('stateController',
                 $scope.$apply(function() {
                     $scope.getMessages();
                 });
-            }, 10000);
+            }, 100);
         };
 
         $scope.getMessages = function(){
