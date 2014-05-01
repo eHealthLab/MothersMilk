@@ -403,10 +403,10 @@
                                 { 
                         pushNotification = window.plugins.pushNotification;
                         if (device.platform == 'android' || device.platform == 'Android') {
-						//alert('its an android');
+						    alert('its an android');
                             $("#app-status-ul").append('<li>registering android</li>');
                             pushNotification.register(successHandler, errorHandler, {"senderID":"322549379605","ecb":"onNotificationGCM"});
-			                //alert('done registering');
+			                alert('done registering');
 
      // required!
                         } else {
@@ -451,10 +451,12 @@
                     case 'registered':
                                         if ( e.regid.length > 0 )
                                         {
+                                                alert('inside notification function');
                                                 $("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
                                                 // Your GCM push server needs to know the regID before it can push to this device
                                                 // here is where you might want to send it the regID for later use.
                                                 console.log("regID = " + e.regid);
+                                                alert(e.regid);
 					                	        android_device_regid = e.regid;
                                         }
                     break;
@@ -474,13 +476,13 @@
                            {        // otherwise we were launched because the user touched a notification in the notification tray.
                                    if (e.coldstart) {
                                              $("#app-status-ul").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
-					     var my_media = new Media("/android_asset/www/"+e.soundname);
-		                             my_media.play();
+					                         var my_media = new Media("/android_asset/www/"+e.soundname);
+		                                     my_media.play();
 				  }	
                                   else {
                                              $("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
-					     var my_media = new Media("/android_asset/www/"+e.soundname);
-		                             my_media.play();
+					                         var my_media = new Media("/android_asset/www/"+e.soundname);
+		                                     my_media.play();
 				 }
                            }
                                                         

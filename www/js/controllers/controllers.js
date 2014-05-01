@@ -3097,7 +3097,7 @@ cbbApp.controller('stateController',
                             //window.alert("");
                             participantService.setLoginStatus($scope.appsData[0].ID);
                             //window.alert('device detected is:' + $scope.deviceType);
-							//window.alert('reg id is:' + $scope.regID);
+							window.alert('reg id is:' + $scope.regID);
                             $location.path("/home");
                             //window.alert(participantService.getLoginStatus());
                             //window.alert(participantService.getLoginStatus());
@@ -3642,7 +3642,7 @@ cbbApp.controller('stateController',
                 if(participantService.getLoginStatus() != "false") {
 
                     $http({method: 'POST',
-                        url: 'http://mothermilk.ucdenver.edu:3000/feedback/' +
+                        url: 'http://cbb.ucdenver.edu:3000/feedback/' +
                             $scope.feedbackText
                     }).
                     success(function(data, status, headers, config) {
