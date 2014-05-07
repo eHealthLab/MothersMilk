@@ -152,14 +152,14 @@
                     tema: {{ textMessage.subject }}
 
                 <div style=" font-weight:normal;">
-                    <p style="color: #4F8A10;background-color: #DFF2BF;" ng-show="textMessage.ID == textMessageFlag">CBB: {{ textMessage.message }}</p>
+                    <p style="color: #4F8A10;background-color: #DFF2BF;" ng-show="textMessage.ID == textMessageFlag">MMM: {{ textMessage.message }}</p>
                     <p ng-show="textMessage.ID == textMessageFlag && textMessage.inflag && textMessage.inb">Tu respuesta: {{ textMessage.inb }}</p>
-                    <p style="color: #4F8A10;background-color: #DFF2BF;" ng-show="textMessage.ID == textMessageFlag && textMessage.inb">CBB: {{ messageArray[textMessage.nextmessage].message }}</p>
+                    <p style="color: #4F8A10;background-color: #DFF2BF;" ng-show="textMessage.ID == textMessageFlag && textMessage.inb">MMM: {{ messageArray[textMessage.nextmessage].message }}</p>
                     <div ng-show="textMessage.ID == textMessageFlag && textMessage.inflag && !textMessage.inb">
 
 
                         <div class="replyButton" ng-show="textMessage.ID == textMessageFlag && textMessage.inflag && !textMessage.inb">
-                            <p style="top: 14px; position: absolute;">Gracias por utilizar CBB1.0 usted. Por favor escriba su mensaje abajo y pulsa el botón "Enviar".</p>
+                            <p style="top: 14px; position: absolute;">Gracias por utilizar MMM usted. Por favor escriba su mensaje abajo y pulsa el botón "Enviar".</p>
                             <input type="text"  placeholder=" Limit is 250 character."
                                    maxlength="250"
                                    class="textBoxStyle" wrap="true"

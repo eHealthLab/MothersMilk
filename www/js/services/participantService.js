@@ -33,6 +33,22 @@ cbbApp.factory('participantService', function($http, $q, cbbConstants) {
 
     participantServiceInstance.globalLoginStatus = "false";
 
+    participantServiceInstance.ppStatus = "false";
+
+    participantServiceInstance.registerDate = "";
+
+    participantServiceInstance.getRegisterDate = function() {
+        return participantServiceInstance.registerDate;
+    }
+
+    participantServiceInstance.getppStatus = function() {
+        return participantServiceInstance.ppStatus;
+    }
+
+    participantServiceInstance.setppStatus = function(statusPP) {
+        participantServiceInstance.ppStatus = statusPP;
+    }
+
     participantServiceInstance.getUnreadTextStatus = function()  {
         return participantServiceInstance.numberOfUnread;
     }

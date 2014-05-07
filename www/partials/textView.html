@@ -22,7 +22,7 @@
 <!--<div ng-show="glimmpseConstants.debug == true">{{studyDesign.alphaList}}</div>-->
 
 
-<div ng-init="getMessages()">
+<div ng-init="updateMessages()">
 
     <style>
         table, td, th
@@ -137,9 +137,9 @@
                    Subject: {{ textMessage.subject }}
 
                 <div style=" font-weight:normal;">
-                    <p style="color: #4F8A10;background-color: #DFF2BF;" ng-show="textMessage.ID == textMessageFlag">CBB: {{ textMessage.message }}</p>
+                    <p style="color: #4F8A10;background-color: #DFF2BF;" ng-show="textMessage.ID == textMessageFlag">MMM: {{ textMessage.message }}</p>
                     <p ng-show="textMessage.ID == textMessageFlag && textMessage.inflag && textMessage.inb">Your Reply: {{ textMessage.inb }}</p>
-                    <p style="color: #4F8A10;background-color: #DFF2BF;" ng-show="textMessage.ID == textMessageFlag && textMessage.inb">CBB: {{ messageArray[textMessage.nextmessage].message }}</p>
+                    <p style="color: #4F8A10;background-color: #DFF2BF;" ng-show="textMessage.ID == textMessageFlag && textMessage.inb">MMM: {{ messageArray[textMessage.nextmessage].message }}</p>
                     <div ng-show="textMessage.ID == textMessageFlag && textMessage.inflag && !textMessage.inb">
 
 
@@ -149,7 +149,7 @@
                                    maxlength="250"
                                    class="textBoxStyle" wrap="true"
                                    ng-model="newMessage1.message" ng-show="textMessage.ID == textMessageFlag && textMessage.inflag && !textMessage.inb"
-                                    value="Thank you for using CBB1.0.  Please type your message below and hit the 'Submit' button.">
+                                    value="Thank you for using MMMM.  Please type your message below and hit the 'Submit' button.">
                             <button class="calculate-button"
                                     ng-click="submitMessage(textMessage.ID)" ng-hide="">Submit</button>
 

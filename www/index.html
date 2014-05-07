@@ -101,9 +101,18 @@
             <ul class="nav navbar-nav navbar-right">
 
                 <li class="vmargin15" >
+                    <!--
+                    <label class="none">
+                        <span class="glyphicon glyphicon-open"></span> Upload
+                        <input type="file" id="navBarUpload" name="file"
+                               onchange="angular.element(this).scope().uploadFile(this)"
+                               style="display:none;" />
+                    </label>
+                    -->
+
                     <div class="panel-group" id="nav-accordion" >
                         <div class="panel panel-default">
-                            <!-- status menu -->
+
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                 <a href="#" ng-click="resetStatus()">
@@ -114,6 +123,7 @@
 
                         </div>
                     </div>
+
                 </li>
 
                 <li class="vmargin15" >
