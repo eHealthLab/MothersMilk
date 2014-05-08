@@ -92,7 +92,7 @@ cbbApp.controller('stateController',
 
         $scope.setStatusCode = function() {
             $scope.statusCode = participantService.ppStatus;
-            window.alert('code set to:' + $scope.statusCode);
+            //window.alert('code set to:' + $scope.statusCode);
             $scope.updatePPStatus();
             //return $scope.statusCode;
         }
@@ -255,7 +255,7 @@ cbbApp.controller('stateController',
             else {
             //window.alert('inside status' + $scope.status);
             if ($scope.statusCode == 0)  {
-                window.alert('status 0');
+
                 var confirmText ='';
                 if ($scope.currentLanguage == "English")   {
                     confirmText = confirm('Are you sure you want to continue?  ' +
@@ -269,7 +269,7 @@ cbbApp.controller('stateController',
                 }
                 if (confirmText) {
                     if ($scope.statusCode == 0) {
-                        window.alert('about to update status');
+
                         $scope.updatePPStatusDB();
                     }
                     $scope.statusCode = 1;
@@ -3167,16 +3167,16 @@ cbbApp.controller('stateController',
             else if(!$scope.newParticipant.password) $scope.loginErrorPassword = "Enter your password.";
             else {
                 var email = $scope.newParticipant.email.toUpperCase();
-                alert('inside logintry');
+                //alert('inside logintry');
                 $http.get('http://localhost:3000/loginSignup/' + email + '/' + $scope.newParticipant.password).
                     success(function(data, status, headers, config) {
                         $scope.appsData = data;
                         if($scope.appsData != "false") {
 
-                            window.alert("Scope.appsData=" + $scope.appsData[0].status);
+                            //window.alert("Scope.appsData=" + $scope.appsData[0].status);
                             participantService.setLoginStatus($scope.appsData[0].ID);
                             //window.alert('device detected is:' + $scope.deviceType);
-							window.alert('reg id is:' + $scope.regID);
+							//window.alert('reg id is:' + $scope.regID);
                             participantService.registerDate = $scope.appsData[0].registerdate;
                             $location.path("/home");
                             if ($scope.appsData[0].status == 0) {
@@ -3251,7 +3251,7 @@ cbbApp.controller('stateController',
                         $scope.newParticipant.phoneNumber
                 }).
                     success(function(data, status, headers, config) {
-                        window.alert("Success");
+                        //window.alert("Success");
                         $scope.appsData = data;
                         if(data.status == "true") {
                             window.alert("You have successfully signed up. Please login to continue");
@@ -3312,7 +3312,7 @@ cbbApp.controller('stateController',
                 $scope.regID =  $window.android_device_regid;
                 $scope.deviceType = 'android';
             }
-            else {
+            else if ($window.ios_device_regid){
                 $scope.regID =  $window.ios_device_regid;
                 $scope.deviceType = 'ios';
             }
@@ -3363,13 +3363,13 @@ cbbApp.controller('stateController',
                                 });
                             }
                             else if ($scope.deviceType == 'ios'){
-                                alert('send notification for ios');
+//                                /alert('send notification for ios');
                                 $http({method: 'POST',
                                     url: 'http://localhost:3000/sendAPN/' +
                                         $scope.regID
                                 }).
                                     success(function(data, status, headers, config) {
-                                        window.alert("Success");
+                                        //window.alert("Success");
                                         $scope.appsData = data;
                                     }).
                                     error(function(data, status, headers, config) {
@@ -3402,7 +3402,7 @@ cbbApp.controller('stateController',
                     //window.alert("hi" + $scope.newMessage1.message);
                     //window.alert("Message Added");
                     //$scope.messageArray[textMessage.ID-1].outb = true;
-                    for(i=0; i<$scope.messageArray.length; i++) {
+                    for(var i=0; i<$scope.messageArray.length; i++) {
                         if($scope.messageArray[i].ID == textMessage.ID) {
                             $scope.messageArray[i].outb = true;
                             break;
@@ -3621,7 +3621,7 @@ cbbApp.controller('stateController',
                                         $scope.regID
                                 }).
                                     success(function(data, status, headers, config) {
-                                        window.alert("Success");
+                                        //window.alert("Success");
                                         $scope.appsData = data;
                                     }).
                                     error(function(data, status, headers, config) {
@@ -3726,7 +3726,7 @@ cbbApp.controller('stateController',
                         // or server returns response with an error status.
                     });
                 } else {
-                    window.alert("Please login to send a feedback.");
+                    window.alert("Please login first.");
                 }
             }
         };
