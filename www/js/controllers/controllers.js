@@ -60,6 +60,8 @@ cbbApp.controller('stateController',
 
             $scope.currentLanguage = "English";
 
+            $scope.availableLanguage = "Español";
+
             $scope.currentTextBufferCount = 0;
 
             $scope.status = 'Waiting on baby';
@@ -104,6 +106,7 @@ cbbApp.controller('stateController',
                 participantService.setLanguageStatus("false");
                 $scope.viewLanguage = "spanish/";
                 $scope.currentLanguage = "Español";
+                $scope.availableLanguage = "English";
                 if ($scope.status == "Waiting on baby") {
                     $scope.status = 'Esperando al bebé';
                     $scope.statusCode = 0;
@@ -118,6 +121,7 @@ cbbApp.controller('stateController',
                 participantService.setLanguageStatus("true");
                 $scope.viewLanguage = "";
                 $scope.currentLanguage = "English";
+                $scope.availableLanguage =  "Español";
                 if ($scope.status == "Esperando al bebé") {
                     $scope.status = 'Waiting on baby';
                     $scope.statusCode = 0;
