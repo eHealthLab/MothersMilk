@@ -23,7 +23,7 @@
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" charset="utf-8"/>
     <LINK REL="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-    <title>Mothers’ Milk Messaging</title>
+    <title>Mothers’ Milk</title>
 
     <script src="lib/jquery.min.js"></script>
     <script src="lib/jquery-ui.min.js"></script>
@@ -81,7 +81,7 @@
 
 
             <a class="navbar-brand" href="#" onclick="var ref = window.open('http://brightbeginningsusa.org/', '_system', 'location=yes');">
-                <label class="logo">&#160Mothers’ Milk Messaging</label>
+                <label class="logo">&#160Mothers’ Milk</label>
             </a>
 
             <!--
@@ -133,30 +133,28 @@
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#nav-accordion" href="#nav-start">
-                                        Start
+                                        Mothers Milk Messaging
                                     </a>
                                 </h4>
                             </div>
                             <div id="nav-start" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" >
-                                        <a href="#/{{ viewLanguage }}tutorial">Tutorial</a>
-                                    </div>
+
                                     <!--
                                     <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" >
                                         <a href="#/{{ viewLanguage }}facebook">Facebook</a>
                                     </div>
                                     -->
                                     <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" ng-show="viewLanguage != 'spanish/'" >
-                                        <a href="#" onclick="window.open('https://www.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">Facebook</a>
+                                        <a href="#" onclick="window.open('https://www.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">M<sup>3</sup> Facebook Page</a>
                                     </div>
 
                                     <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" ng-show="viewLanguage == 'spanish/'">
-                                        <a href="#" onclick="window.open('https://www.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">Facebook</a>
+                                        <a href="#" onclick="window.open('https://www.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">M3 Facebook Page</a>
                                     </div>
 
                                     <div class="{{isActive('/typeIError') && 'active'}} {{getStateTypeIError()}}" >
-                                        <a href="#/{{ viewLanguage }}text">Text<sup style="background-color:darkred;color:white;font-size: 0.9em;width: 1.1em;" ng-show="getTotalUnread() > 0">{{getTotalUnread()}}</sup></a>
+                                        <a href="#/{{ viewLanguage }}text">My M<sup>3</sup> Texts<sup style="background-color:darkred;color:white;font-size: 0.9em;width: 1.1em;" ng-show="getTotalUnread() > 0">{{getTotalUnread()}}</sup></a>
                                     </div>
 
 
@@ -181,7 +179,9 @@
                             </div>
                             <div id="nav-options" class="panel-collapse collapse">
                                 <div class="panel-body">
-
+                                    <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" >
+                                        <a href="#/{{ viewLanguage }}tutorial">Learn More</a>
+                                    </div>
                                     <div class="{{isActive('/test') && 'active'}} {{getStateStatisticalTest()}}" >
                                         <a href="#/{{ viewLanguage }}aboutUs">About Us</a>
                                     </div>
@@ -306,8 +306,13 @@
     <!-- main application content-->
     <div class="row hmargin5 padding0 visible-md visible-lg">
 
-
-
+        <!--
+        <div>
+            <a href="#" ng-click="resetStatus()">
+                {{status}}
+            </a>
+        </div>
+        -->
         <!-- main content area with toolbar -->
             <div class="col-md-9 visible-md visible-lg">
                 <div class="box rounded-box">
