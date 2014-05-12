@@ -3342,7 +3342,7 @@ cbbApp.controller('stateController',
                     $scope.$apply(function() {
                         $scope.getMessages();
                     });
-                }, 10000);
+                }, 20000);
             }
 
         };
@@ -3593,17 +3593,20 @@ cbbApp.controller('stateController',
         $scope.updateMessages = function () {
             if(participantService.getLoginStatus() == "false"){
                 window.alert("Ingrese para ver los mensajes.");
+
                 $scope.loginStatus =  "false";
                 $scope.messageProcessing = false;
                 $location.path("/login");
             }
             else {
-                $scope.messageProcessing = "true";
+                $scope.messageProcessing = true;
+                $scope.messageRetrieved = false;
+
                 setInterval(function() {
                     $scope.$apply(function() {
                         $scope.getMessages();
                     });
-                }, 10000);
+                }, 20000);
             }
 
         };
@@ -3617,10 +3620,12 @@ cbbApp.controller('stateController',
             $scope.unreadMessageCount = 0;
 
             if(participantService.getLoginStatus() == "false"){
+                /*
                 window.alert("Ingrese para ver los mensajes.");
                 $scope.loginStatus =  "false";
                 $scope.messageProcessing = false;
                 $location.path("/login");
+                */
             }
             else {
                 $scope.loginStatus =  "true";
