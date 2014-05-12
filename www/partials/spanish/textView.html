@@ -22,7 +22,7 @@
 <!--<div ng-show="glimmpseConstants.debug == true">{{studyDesign.alphaList}}</div>-->
 
 
-<div ng-init="getMessages()">
+<div ng-init="updateMessages()">
 
     <style>
         table, td, th
@@ -135,6 +135,12 @@
     <div>
 
         <!-- Codes by HTML.am -->
+
+        <div class="processing rounded-box"
+             ng-show="messageRetrieved == false
+                && loginStatus == true">
+            <label>Por favor, espere mientras consultamos los mensajes de texto</label>
+        </div>
 
         <h3>
             Mensajes de texto

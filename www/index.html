@@ -109,18 +109,48 @@
                                style="display:none;" />
                     </label>
                     -->
+                    <!--
+                    <input type="image" src="img/pregnantmom.JPG"
+                           name="saveForm" class="btTxt submit"
+                           id="saveForm" ng-click="resetStatus()"
+                           width="40" height="40"
+                            />
+                    -->
+                    <!--
+                    <div id="img_container">
+                        <img src="img/pregnantmom.JPG" width="70" height="50"/>
+                        <button class="button"> click here </button>
+                    </div>
+                    -->
+                    <a class="btn btn-mode" ng-click="resetStatus()">
+                            <img src="img/pregnantmom.JPG" width="60" height="40"
+                                    border="15"
+                                    ng-show="status == 'Waiting on baby'
+                                    || status == 'Esperando al bebé'">
+
+                            <img src="img/baby.JPG" width="60" height="40"
+                                    border="15"
+                                    ng-show="status == 'Yay! Baby is here!'
+                                    || status == '¡Ya llegó el bebé!'">
+                        {{status}}
+                    </a>
+                    <!--
+                    <button type="submit" onclick="resetStatus()">
+                            {{status}}
+                    </button>
+                    -->
 
                     <div class="panel-group" id="nav-accordion" >
                         <div class="panel panel-default">
 
-                            <div class="panel-heading">
+                            <!-- <div class="panel-heading">
                                 <h4 class="panel-title">
-                                <a href="#" ng-click="resetStatus()">
-                                     {{status}}
-                                </a>
+                            -->
+
+                            <!--
                                 </h4>
                             </div>
-
+                            -->
                         </div>
                     </div>
 
@@ -154,7 +184,16 @@
                                     </div>
 
                                     <div class="{{isActive('/typeIError') && 'active'}} {{getStateTypeIError()}}" >
-                                        <a href="#/{{ viewLanguage }}text">My M<sup>3</sup> Texts<sup style="background-color:darkred;color:white;font-size: 0.9em;width: 1.1em;" ng-show="getTotalUnread() > 0">{{getTotalUnread()}}</sup></a>
+                                        <a href="#/{{ viewLanguage }}text">
+
+                                            My M<sup>3</sup>
+                                                Texts
+                                                <sup style="background-color:darkred;color:white;font-size: 0.9em;width: 1.1em;" ng-show="getTotalUnread() > 0">
+                                                     {{getTotalUnread()}}
+                                                </sup>
+
+                                        </a>
+
                                     </div>
 
 
@@ -337,12 +376,14 @@
             <div class="modal-dialog rounded-box white-box">
                 <div class="model-content">
                     <div class="modal-header">
-                        <h3>The following items are incomplete</h3>
+                        <h3>Please Wait</h3>
                     </div>
                     <div class="modal-body">
-                        <div ng-repeat="view in incompleteViews">
-                            {{view}}
+                        <div class="processing rounded-box"
+                                ng-show="messageRetrieved == false">
+                            <label>Processing</label>
                         </div>
+
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">OK</button>

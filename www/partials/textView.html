@@ -17,12 +17,8 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
 
-<!--<h3>Display text messages</h3>-->
 
-<!--<div ng-show="glimmpseConstants.debug == true">{{studyDesign.alphaList}}</div>-->
-
-
-<div ng-init="getMessages()">
+<div ng-init="updateMessages()">
 
     <style>
         table, td, th
@@ -119,6 +115,12 @@
     <div>
 
         <!-- Codes by HTML.am -->
+
+        <div class="processing rounded-box"
+             ng-show="messageProcessing == true && messageRetrieved == false">
+
+            <label>Please wait while we retrieve your text messages</label>
+        </div>
 
         <h3>
             Text Messages
