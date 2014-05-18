@@ -3338,11 +3338,14 @@ cbbApp.controller('stateController',
             else {
                 $scope.messageProcessing = true;
                 $scope.messageRetrieved = false;
+                $scope.$apply(function() {
+                    $scope.getMessages();
+                });
                 setInterval(function() {
                     $scope.$apply(function() {
                         $scope.getMessages();
                     });
-                }, 20000);
+                }, 50000);
             }
 
         };
@@ -3601,12 +3604,12 @@ cbbApp.controller('stateController',
             else {
                 $scope.messageProcessing = true;
                 $scope.messageRetrieved = false;
-
+                $scope.getMessages();
                 setInterval(function() {
                     $scope.$apply(function() {
                         $scope.getMessages();
                     });
-                }, 20000);
+                }, 50000);
             }
 
         };
