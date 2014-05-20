@@ -3141,12 +3141,12 @@ cbbApp.controller('stateController',
         init();
         function init() {
             $scope.participantSvc = participantService;
-            //$scope.regID;
+
             if ($window.android_device_regid) {
                 $scope.regID =  $window.android_device_regid;
                 $scope.deviceType = 'android';
             }
-            else {
+            else if ($window.android_device_regid) {
                 $scope.regID =  $window.ios_device_regid;
                 $scope.deviceType = 'ios';
             }
@@ -3159,9 +3159,7 @@ cbbApp.controller('stateController',
                 passwordConfirm: undefined,
                 phoneNumber: undefined
             };
-            //$scope.viewLanguage = "";
 
-            //$scope.participantList = $scope.participantSvc.getAll();
         }
 
         $scope.loginTry = function(){
@@ -3174,16 +3172,12 @@ cbbApp.controller('stateController',
             else if(!$scope.newParticipant.password) $scope.loginErrorPassword = "Enter your password.";
             else {
                 var email = $scope.newParticipant.email.toUpperCase();
-                //alert('inside logintry');
+
                 $http.get('http://mothersmilk.ucdenver.edu:3000/loginSignup/' + email + '/' + $scope.newParticipant.password).
                     success(function(data, status, headers, config) {
                         $scope.appsData = data;
                         if($scope.appsData != "false") {
-
-                            //window.alert("Scope.appsData=" + $scope.appsData[0].status);
                             participantService.setLoginStatus($scope.appsData[0].ID);
-                            //window.alert('device detected is:' + $scope.deviceType);
-							//window.alert('reg id is:' + $scope.regID);
                             participantService.registerDate = $scope.appsData[0].registerdate;
                             $location.path("/home");
                             if ($scope.appsData[0].status == 0) {
@@ -3194,30 +3188,22 @@ cbbApp.controller('stateController',
                                 participantService.setppStatus(1);
                                 $scope.setStatusCode();
                             }
-                            //window.alert(participantService.getLoginStatus());
-                            //window.alert(participantService.getLoginStatus());
+
                         }
                         else
                             $scope.loginErrorNotification = "Check the login information and try again."
                     }).
                     error(function(data, status, headers, config) {
-						//window.alert($scope.appsData = data);
                         window.alert("Unable to contact server. Please try again later.");
-                        // called asynchronously if an error occurs
-                        // or server returns response with an error status.
+
                     });
-                /*$scope.getParticipants = function() {
-                 $scope.participantSvc.getParticipants().then(function(data) {
-                 $scope.participantsList = angular.fromJson(data);
-                 })
-                 }*/
+
             }
         };
 
 
 
         $scope.signupTry = function(){
-            //window.alert("Failure");
 
             $scope.signUpErrorFirstName = undefined;
             $scope.signUpErrorLastName = undefined;
@@ -3258,7 +3244,6 @@ cbbApp.controller('stateController',
                         $scope.newParticipant.phoneNumber
                 }).
                     success(function(data, status, headers, config) {
-                        //window.alert("Success");
                         $scope.appsData = data;
                         if(data.status == "true") {
                             window.alert("You have successfully signed up. Please login to continue");
@@ -3270,30 +3255,11 @@ cbbApp.controller('stateController',
                     }).
                     error(function(data, status, headers, config) {
                         window.alert("Unable to contact server. Please try again later.");
-                        // called asynchronously if an error occurs
-                        // or server returns response with an error status.
+
                     });
-                /*$scope.getParticipants = function() {
-                 $scope.participantSvc.getParticipants().then(function(data) {
-                 $scope.participantsList = angular.fromJson(data);
-                 })
-                 }*/
+
             }
         };
-
-        /*$scope.changeLanguage = function () {
-            if($scope.viewLanguage == "") {
-                participantService.setLanguageStatus("false");
-                $scope.viewLanguage == "spanish/";
-            } else {
-                participantService.setLanguageStatus("true");
-                $scope.viewLanguage == "";
-            }
-        };*/
-
-
-
-
         /**
          * Authenticate existing participant on login screen
          */
@@ -3333,14 +3299,14 @@ cbbApp.controller('stateController',
                 window.alert("Please login to view messages.");
                 $scope.loginStatus =  "false";
                 $scope.messageProcessing = false;
+                $scope.messageRetrieved = false;
                 $location.path("/login");
             }
             else {
                 $scope.messageProcessing = true;
                 $scope.messageRetrieved = false;
-                $scope.$apply(function() {
-                    $scope.getMessages();
-                });
+                $scope.getMessages();
+
                 setInterval(function() {
                     $scope.$apply(function() {
                         $scope.getMessages();
@@ -3368,8 +3334,10 @@ cbbApp.controller('stateController',
                 $scope.textMessageFlag = 0;
                 $http.get('http://mothersmilk.ucdenver.edu:3000/messages/' + participantService.getLoginStatus()).
                     success(function(data, status, headers, config) {
-                        //window.alert("Success");
+
                         $scope.messageArray = data;
+
+                        $scope.messageProcessing = false;
                         $scope.messageRetrieved = true;
                         for(var i=0; i<$scope.messageArray.length; i++) {
                             if($scope.messageArray[i].outb != true) { $scope.totalUnread += 1; }
@@ -3379,32 +3347,26 @@ cbbApp.controller('stateController',
                             if ($scope.deviceType == 'android') {
                                 $http({method: 'POST',
                                     url: 'http://mothersmilk.ucdenver.edu:3000/sendGCM/' +
-                                        $scope.regID
+                                        $scope.regID + '/' +  participantService.numberOfUnread
                                 }).
                                 success(function(data, status, headers, config) {
-                                    //window.alert("Success");
                                     $scope.appsData = data;
                                 }).
                                 error(function(data, status, headers, config) {
-                                    //window.alert("Sorry request to GCM not successful.");
-                                    // called asynchronously if an error occurs
-                                    // or server returns response with an error status.
+                                   ;
                                 });
                             }
                             else if ($scope.deviceType == 'ios'){
-//                                /alert('send notification for ios');
                                 $http({method: 'POST',
                                     url: 'http://mothersmilk.ucdenver.edu:3000/sendAPN/' +
-                                        $scope.regID
+                                        $scope.regID + '/' +  participantService.numberOfUnread
                                 }).
                                     success(function(data, status, headers, config) {
-                                        //window.alert("Success");
+
                                         $scope.appsData = data;
                                     }).
                                     error(function(data, status, headers, config) {
-                                        window.alert("Sorry request to APN not successful.");
-                                        // called asynchronously if an error occurs
-                                        // or server returns response with an error status.
+                                       ;
                                     });
                             }
                         }
@@ -3413,14 +3375,7 @@ cbbApp.controller('stateController',
                     }).
                     error(function(data, status, headers, config) {
                         window.alert("Unable to contact server. Please try again later.");
-                        // called asynchronously if an error occurs
-                        // or server returns response with an error status.
                     });
-                /*$scope.getParticipants = function() {
-                 $scope.participantSvc.getParticipants().then(function(data) {
-                 $scope.participantsList = angular.fromJson(data);
-                 })
-                 }*/
             }
         };
 
@@ -3428,9 +3383,6 @@ cbbApp.controller('stateController',
             $scope.textMessageFlag = textMessage.ID;
             $http.post('http://mothersmilk.ucdenver.edu:3000/messages/' + participantService.getLoginStatus() + '/' + textMessage.ID).
                 success(function(data, status, headers, config) {
-                    //window.alert("hi" + $scope.newMessage1.message);
-                    //window.alert("Message Added");
-                    //$scope.messageArray[textMessage.ID-1].outb = true;
                     for(var i=0; i<$scope.messageArray.length; i++) {
                         if($scope.messageArray[i].ID == textMessage.ID) {
                             $scope.messageArray[i].outb = true;
@@ -3438,18 +3390,15 @@ cbbApp.controller('stateController',
                         }
                         participantService.numberOfUnread =   $scope.totalUnread;
                     }
-                    //window.alert($scope.messageArray[textMessage.ID].outb + " " + textMessage.ID);
                 }).
                 error(function(data, status, headers, config) {
-                    //window.alert("Failure " + status);
+                    ;
                 });
-            //$scope.messageRead = !$scope.messageRead;
         };
 
         $scope.submitMessage = function(messageID){
             $http.post('http://mothersmilk.ucdenver.edu:3000/messages/' + $scope.newMessage1.message + '/' + participantService.getLoginStatus() + '/' + messageID).
                 success(function(data, status, headers, config) {
-                    //window.alert("hi" + $scope.newMessage1.message);
                     window.alert("Message has been sent.");
                     $scope.messageArray = data;
                 }).
@@ -3473,9 +3422,6 @@ cbbApp.controller('stateController',
                 password: undefined,
                 passwordConfirm: undefined
             };
-            //$scope.viewLanguage = "";
-
-            //$scope.participantList = $scope.participantSvc.getAll();
         }
 
         $scope.loginTry = function(){
@@ -3492,9 +3438,7 @@ cbbApp.controller('stateController',
                     success(function(data, status, headers, config) {
                         $scope.appsData = data;
                         if($scope.appsData != "false") {
-                            //window.alert("Success");
                             participantService.setLoginStatus($scope.appsData[0].ID);
-                            //window.alert(participantService.getLoginStatus());
                             $location.path("/home");
                             if ($scope.appsData[0].status == 0) {
                                 participantService.setppStatus(0);
@@ -3510,8 +3454,6 @@ cbbApp.controller('stateController',
                     }).
                     error(function(data, status, headers, config) {
                         window.alert("No se ha podido contactar con el servidor. Por favor, inténtelo de nuevo más tarde.");
-                        // called asynchronously if an error occurs
-                        // or server returns response with an error status.
                     });
 
             }
@@ -3520,7 +3462,6 @@ cbbApp.controller('stateController',
 
 
         $scope.signupTry = function(){
-            //window.alert("Failure");
 
             $scope.signUpErrorFirstName = undefined;
             $scope.signUpErrorLastName = undefined;
@@ -3534,7 +3475,6 @@ cbbApp.controller('stateController',
             else if(!$scope.newParticipant.password) $scope.signUpErrorPassword = "Introduzca una contraseña.";
             else if($scope.newParticipant.password != $scope.newParticipant.passwordConfirm) $scope.signUpErrorNotification = "Las contraseñas no coinciden. Corrija y vuelva a intentarlo.";
             else {
-                //window.alert("Entered");
                 var email = $scope.newParticipant.email.toUpperCase();
 
                 $http({method: 'POST',
@@ -3545,7 +3485,6 @@ cbbApp.controller('stateController',
                         $scope.newParticipant.password
                 }).
                     success(function(data, status, headers, config) {
-                        //window.alert("Success");
                         $scope.appsData = data;
                         if(data.status == "true"){
                             window.alert("Has registrado correctamente. Inicia sesión para continuar");
@@ -3557,8 +3496,6 @@ cbbApp.controller('stateController',
                     }).
                     error(function(data, status, headers, config) {
                         window.alert("No se ha podido contactar con el servidor. Por favor, inténtelo de nuevo más tarde.");
-                        // called asynchronously if an error occurs
-                        // or server returns response with an error status.
                     });
 
             }
@@ -3590,21 +3527,24 @@ cbbApp.controller('stateController',
                 $scope.deviceType = 'ios';
             }
             $scope.unreadPrevBuffer = 0;
-            //$scope.getMessages();
         }
 
         $scope.updateMessages = function () {
             if(participantService.getLoginStatus() == "false"){
                 window.alert("Ingrese para ver los mensajes.");
-
-                $scope.loginStatus =  "false";
-                $scope.messageProcessing = false;
+                $scope.$apply(function() {
+                    $scope.loginStatus =  "false";
+                    $scope.messageProcessing = false;
+                    $scope.messageRetrieved = false;
+                });
                 $location.path("/login");
             }
             else {
-                $scope.messageProcessing = true;
-                $scope.messageRetrieved = false;
-                $scope.getMessages();
+
+                    $scope.messageProcessing = true;
+                    $scope.messageRetrieved = false;
+                    $scope.getMessages();
+
                 setInterval(function() {
                     $scope.$apply(function() {
                         $scope.getMessages();
@@ -3618,10 +3558,11 @@ cbbApp.controller('stateController',
             //window.alert("Failure");
             //window.alert($scope.newParticipant.password);
             //window.alert('inside getmessages');
-            $scope.messageRetrieved = false;
-
-            $scope.unreadMessageCount = 0;
-
+            $scope.$apply(function() {
+                $scope.messageRetrieved = false;
+                $scope.messageProcessing = true;
+                $scope.unreadMessageCount = 0;
+            });
             if(participantService.getLoginStatus() == "false"){
                 /*
                 window.alert("Ingrese para ver los mensajes.");
@@ -3638,17 +3579,15 @@ cbbApp.controller('stateController',
                     success(function(data, status, headers, config) {
                         //window.alert("Success");
                         $scope.messageArray = data;
-                        $scope.messageRetrieved = true;
+                        $scope.$apply(function() {
+                            $scope.messageRetrieved = true;
+                            $scope.messageProcessing = false;
+                        });
                         for(var i=0; i<$scope.messageArray.length; i++) {
                             if($scope.messageArray[i].outb != true) {
                                 $scope.unreadMessageCount += 1;
                             }
                         }
-                        /*
-                        for(var s in $scope.messageArray) {
-                            if(!s.outb) $scope.unreadMessageCount += 1;
-                        }
-                        */
                         participantService.numberOfUnread =   $scope.unreadMessageCount;
                         if (participantService.numberOfUnread > $scope.unreadPrevBuffer) {
                             if ($scope.deviceType == 'android') {
@@ -3661,13 +3600,13 @@ cbbApp.controller('stateController',
                                         $scope.appsData = data;
                                     }).
                                     error(function(data, status, headers, config) {
-                                        //window.alert("Sorry request to GCM not successful.");
+                                        ; //window.alert("Sorry request to GCM not successful.");
                                         // called asynchronously if an error occurs
                                         // or server returns response with an error status.
                                     });
                             }
                             else if ($scope.deviceType == 'ios') {
-                                alert('send notification for ios');
+                                //alert('send notification for ios');
                                 $http({method: 'POST',
                                     url: 'http://mothersmilk.ucdenver.edu:3000/sendAPN/' +
                                         $scope.regID + '/' + participantService.numberOfUnread
@@ -3677,7 +3616,7 @@ cbbApp.controller('stateController',
                                         $scope.appsData = data;
                                     }).
                                     error(function(data, status, headers, config) {
-                                        window.alert("Sorry request to APN not successful.");
+                                        ;//window.alert("Sorry request to APN not successful.");
                                         // called asynchronously if an error occurs
                                         // or server returns response with an error status.
                                     });
@@ -3723,7 +3662,7 @@ cbbApp.controller('stateController',
                     //window.alert($scope.messageArray[textMessage.ID].outb + " " + textMessage.ID);
                 }).
                 error(function(data, status, headers, config) {
-                    //window.alert("Failure " + status);
+                   ; //window.alert("Failure " + status);
                 });
             //$scope.messageRead = !$scope.messageRead;
         };

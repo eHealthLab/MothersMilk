@@ -74,22 +74,14 @@
             </button>
 
             <!--
-            <a class="navbar-brand" href="http://brightbeginningsusa.org/" target="_system">
-                <label class="logo">&#160CBB1.0</label>
-            </a>
-            -->
-
-
             <a class="navbar-brand" href="#" onclick="var ref = window.open('http://brightbeginningsusa.org/', '_system', 'location=yes');">
                 <label class="logo">&#160Mothers’ Milk</label>
             </a>
-
-            <!--
-            <a href="#" ng-click="resetStatus()">
-                <span class="glyphicon glyphicon-trash"></span>
-                {{status}}
-            </a>
             -->
+
+            <a class="navbar-brand" href="#">
+                <label class="logo">&#160Mothers' Milk Messaging</label>
+            </a>
 
 
         </div>
@@ -174,20 +166,24 @@
                                     <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" >
                                         <a href="#/{{ viewLanguage }}facebook">Facebook</a>
                                     </div>
-                                    -->
+
                                     <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" ng-show="viewLanguage != 'spanish/'" >
                                         <a href="#" onclick="window.open('https://www.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">M<sup>3</sup> Facebook Page</a>
                                     </div>
+                                    -->
+
+                                    <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" ng-show="viewLanguage != 'spanish/'" >
+                                        <a href="#" onclick="window.open('https://www.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">Mothers Milk Facebook Page</a>
+                                    </div>
 
                                     <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" ng-show="viewLanguage == 'spanish/'">
-                                        <a href="#" onclick="window.open('https://www.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">M3 Facebook Page</a>
+                                        <a href="#" onclick="window.open('https://www.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">Mothers Milk Facebook Page</a>
                                     </div>
 
                                     <div class="{{isActive('/typeIError') && 'active'}} {{getStateTypeIError()}}" >
                                         <a href="#/{{ viewLanguage }}text">
 
-                                            My M<sup>3</sup>
-                                                Texts
+                                            My Mothers Milk Texts
                                                 <sup style="background-color:darkred;color:white;font-size: 0.9em;width: 1.1em;" ng-show="getTotalUnread() > 0">
                                                      {{getTotalUnread()}}
                                                 </sup>
