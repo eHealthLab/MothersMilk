@@ -19,18 +19,36 @@
 
 <div class=well>
 
+    <!--
     <h3>Login</h3>
+    -->
 
     <p>
-        Please enter the following information to login.
+        If you have already signed up, please enter the following information to login.
     </p>
-    <div class="input-group">
+
+    <div align="center">
         <table >
             <style type="text/css">
                 .errorClassSignUp{
                     color: red;
                 }
             </style>
+            <!--
+            <tr>
+                <td>
+                </td>
+                <td>
+                    <a>
+                        <img src="img/54-lock.png" width="20" height="20"
+                             border="15">
+                    </a>
+                </td>
+
+
+
+            </tr>
+            -->
             <tr>
                 <td>
                     Email
@@ -69,6 +87,24 @@
         </div>
 
     </div>
+
+    <p align="center">
+        <b>OR</b>
+    </p>
+
+    <p>
+        If you have not signed up, please sign up first.
+    </p>
+
+    <div align="center" class="col-md-12">
+
+        <a href="#/signUp" class="calculate-button"
+           data-ng-click="setMode(cbbConstants.modeMatrix)">
+            Sign Up
+        </a>
+    </div>
+
+
 
 
 

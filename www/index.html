@@ -73,12 +73,6 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <!--
-            <a class="navbar-brand" href="#" onclick="var ref = window.open('http://brightbeginningsusa.org/', '_system', 'location=yes');">
-                <label class="logo">&#160Mothers’ Milk</label>
-            </a>
-            -->
-
             <a class="navbar-brand" href="#">
                 <label class="logo">&#160Mothers' Milk Messaging</label>
             </a>
@@ -93,27 +87,7 @@
             <ul class="nav navbar-nav navbar-right">
 
                 <li class="vmargin15" >
-                    <!--
-                    <label class="none">
-                        <span class="glyphicon glyphicon-open"></span> Upload
-                        <input type="file" id="navBarUpload" name="file"
-                               onchange="angular.element(this).scope().uploadFile(this)"
-                               style="display:none;" />
-                    </label>
-                    -->
-                    <!--
-                    <input type="image" src="img/pregnantmom.JPG"
-                           name="saveForm" class="btTxt submit"
-                           id="saveForm" ng-click="resetStatus()"
-                           width="40" height="40"
-                            />
-                    -->
-                    <!--
-                    <div id="img_container">
-                        <img src="img/pregnantmom.JPG" width="70" height="50"/>
-                        <button class="button"> click here </button>
-                    </div>
-                    -->
+
                     <a class="btn btn-mode" ng-click="resetStatus()">
                             <img src="img/pregnantmom.JPG" width="60" height="40"
                                     border="15"
@@ -126,23 +100,10 @@
                                     || status == '¡Ya llegó el bebé!'">
                         {{status}}
                     </a>
-                    <!--
-                    <button type="submit" onclick="resetStatus()">
-                            {{status}}
-                    </button>
-                    -->
+
 
                     <div class="panel-group" id="nav-accordion" >
                         <div class="panel panel-default">
-
-                            <!-- <div class="panel-heading">
-                                <h4 class="panel-title">
-                            -->
-
-                            <!--
-                                </h4>
-                            </div>
-                            -->
                         </div>
                     </div>
 
@@ -161,16 +122,6 @@
                             </div>
                             <div id="nav-start" class="panel-collapse collapse">
                                 <div class="panel-body">
-
-                                    <!--
-                                    <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" >
-                                        <a href="#/{{ viewLanguage }}facebook">Facebook</a>
-                                    </div>
-
-                                    <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" ng-show="viewLanguage != 'spanish/'" >
-                                        <a href="#" onclick="window.open('https://www.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">M<sup>3</sup> Facebook Page</a>
-                                    </div>
-                                    -->
 
                                     <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" ng-show="viewLanguage != 'spanish/'" >
                                         <a href="#" onclick="window.open('https://www.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">Mothers Milk Facebook Page</a>
@@ -253,7 +204,8 @@
                                     </div>
                                     <div class="{{isActive('/results/matrices') && 'active'}}"
                                             ng-show="loginStatus == 'false'">
-                                        <a href="#/signUp">Login</a>
+                                        <a href="#/login">Login</a>
+
                                     </div>
                                 </div>
                             </div>

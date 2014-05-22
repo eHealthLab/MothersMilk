@@ -17,12 +17,12 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
 <div class=well>
-    <h3>Sign up</h3>
+
     <p>
         Please enter the following information to sign up for the app.
     </p>
 
-    <div class="input-group">
+    <div align="center">
 
         <table>
 
@@ -124,6 +124,22 @@
                ng-click="signupTry()">Sign Up</a>
         </div>
 
+    </div>
+
+    <p align="center">
+        <b>OR</b>
+    </p>
+
+    <p>
+        If you have signed up already, please login.
+    </p>
+
+    <div align="center" class="col-md-12">
+
+        <a href="#/login" class="calculate-button"
+           data-ng-click="setMode(cbbConstants.modeMatrix)">
+            Login
+        </a>
     </div>
 
 
