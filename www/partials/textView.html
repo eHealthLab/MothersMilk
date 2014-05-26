@@ -24,7 +24,7 @@
         table, td, th
         {
             border:1px solid green;
-            width: 52%;
+            width: 90%;
             height: 38px; margin-bottom: 18px;
 
         }
@@ -81,13 +81,16 @@
         }
 
         .listStyle{
-            //font-weight:bold;
-            color: #00529B;
-            background: rgb(255, 255, 255);
-
-            border: 1.5px solid;
-            width:253px;
+            /* font-weight:bold;*/
+            /* color: #00529B;*/
+            background:#dcddc0 url('img/cell-grey.jpg');
+            /* background: #F5FAFA; /* rgb(255, 255, 255);*/
+            border: 2.2px solid;
+            width:98%;
             padding: 10px;
+
+
+
         }
 
 
@@ -95,17 +98,16 @@
             width: 200px;
             height: 134px;
             left: 51px;
-
-
             top: 72px;
         }
 
         .messageRead {
             font-weight: bold;
+            color: red;
         }
         p{
             border-radius: .5em;
-            color: #00529B; background-color: #BDE5F8;
+            /* color: #00529B; background-color: #BDE5F8;*/
 
 
         }
@@ -123,8 +125,9 @@
         }
 
         .text-left {
-            background-color: #d2d2d2;
-            background-image: -webkit-linear-gradient(top, #9da0a6, #d2d2d2 17px, #e5e5e5 92%);
+            /* background-color: #d2d2d2;*/
+            background-color: #67c4a7;
+            background-image: -webkit-linear-gradient(top, #9da0a6, #67c4a7 17px, #e5e5e5 92%);
             border-radius: 15px;
             box-shadow: 2px 1px 2px rgba(0, 0, 0, 0.6);
             font: 15px Helvetica, Arial, sans-serif;
@@ -274,7 +277,7 @@
              -webkit-border-bottom-left-radius:0px;
              border-bottom-left-radius:0px;
          }.CSSTableGenerator tr:hover td{
-
+            cursor: pointer;
           }
         .CSSTableGenerator tr:nth-child(odd){ background-color:#e5e5e5; }
         .CSSTableGenerator tr:nth-child(even)    { background-color:#ffffff; }.CSSTableGenerator td{
@@ -324,6 +327,64 @@
             border-width:0px 0px 1px 1px;
         }
 
+        #slider-text {
+            background: #ddd;
+        }
+
+        .custom-slider-label, .custom-slider {
+            color: #999;
+            text-shadow: #fff;
+        }
+
+        .custom-slider-label {
+            text-align: right;
+            display: inline-block;
+            height: 30px;
+            padding-top: 4px;
+            line-height: 2.4;
+        }
+
+        .custom-slider {
+            border-radius: 0;
+            border-width: 0;
+            background: #ddd;
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0.2) inset;
+            width: 20px !important;
+        }
+
+        .custom-slider-element {
+            background: #eee;
+        }
+
+        .custom-slider-button {
+            background: url("http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/low_contrast_linen.png") repeat scroll 0 0 #fff;
+        }
+
+
+
+        table.imagetable {
+            font-family: verdana,arial,sans-serif;
+            font-size:11px;
+            color:#333333;
+            border-width: 1px;
+            border-color: #999999;
+            border-collapse: collapse;
+        }
+        table.imagetable th {
+            background:#b5cfd2 url('cell-blue.jpg');
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #999999;
+        }
+        table.imagetable td {
+            background:#dcddc0 url('img/cell-grey.jpg');
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #999999;
+        }
+
 
 
     </style>
@@ -343,33 +404,43 @@
         </h3>
 
 
-        <div class="CSSTableGenerator">
-        <table>
+        <!-- Table goes in the document BODY -->
 
-        <tr >
-            <div    class="listStyle ng-class: { messageRead: !textMessage.outb };"
-                    ng-repeat="textMessage in messageArray | orderBy:'releasedate'"
+        <!-- <div class="CSSTableGenerator"> -->
+        <table class="CSSTableGenerator">
+
+            <tr class="messageSubject">
+
+             <div class="listStyle ng-class: { messageRead: !textMessage.outb };"
+
+                  ng-repeat="textMessage in messageArray | orderBy:'releasedate'"
                   ng-click="textMessageSetFlag(textMessage)"
                   ng-show="textMessage.directmessage">
+                    <!-- class="listview-example" ng-repeat="textMessage in messageArray | orderBy:'releasedate'" -->
+
                 Subject: {{ textMessage.subject }}
-
-
-
+                <!-- class="listStyle ng-class: { messageRead: !textMessage.outb };" -->
+                <!-- class="listview-example" -->
+                <!--
                 <div style=" font-weight:normal;">
+                -->
                     <!--/
                     <p style="color: #4F8A10;background-color: #DFF2BF;" ng-show="textMessage.ID == textMessageFlag">MMM: {{ textMessage.message }}</p>
                     -->
                     <div class="text-left" ng-show="textMessage.ID == textMessageFlag">
-                        <p class="white-shadow" ng-show="textMessage.ID == textMessageFlag">{{ textMessage.message }}</p>
+                        <p class="white-shadow" ng-show="textMessage.ID == textMessageFlag"><b> MMM: </b>{{ textMessage.message }}</p>
                     </div>
 
                     <div class="text-right" ng-show="textMessage.ID == textMessageFlag && textMessage.inflag && textMessage.inb">
-                        <p class="white-shadow" ng-show="textMessage.ID == textMessageFlag && textMessage.inflag && textMessage.inb">Your Reply: {{ textMessage.inb }}</p>
+                        <p class="white-shadow" ng-show="textMessage.ID == textMessageFlag && textMessage.inflag && textMessage.inb"><b>You:</b> {{ textMessage.inb }}</p>
                     </div>
 
-                    <div class="text-left" ng-show="textMessage.ID == textMessageFlag && textMessage.inb">
-                        <p class="white-shadow" style=" color: #4F8A10;background-color: #DFF2BF;" ng-show="textMessage.ID == textMessageFlag && textMessage.inb">{{ messageArray[textMessage.nextmessage].message }}</p>
+                    <!--
+                    <div class="text-left" ng-show="textMessage.ID == textMessageFlag">
+                        <p class="white-shadow" style="color: #4F8A10;background-color: #DFF2BF;" ng-show="textMessage.ID == textMessageFlag">{{ messageArray[textMessage.nextmessage].message }}</p>
                     </div>
+                    -->
+
 
                     <div ng-show="textMessage.ID == textMessageFlag && textMessage.inflag && !textMessage.inb">
 
@@ -389,15 +460,15 @@
                     <br ng-show="textMessage.ID == textMessageFlag" />
                 </div>
 
-            </div>
+             <!--    </div> -->
+
 
         </tr>
 
     </table>
-        </div>
+       <!-- </div> -->
 
 </div>
-
 
 </div>
 

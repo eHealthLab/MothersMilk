@@ -194,18 +194,24 @@
                             </div>
                             <div id="nav-results" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    <div class="{{isActive('/results/matrices') && 'active'}}" >
+                                    <div class="{{isActive('/results/matrices') && 'active'}}"
+                                            ng-show="{{loginStatus}} != false">
                                         <a href="#" ng-click="changeLanguage()">Change language to {{availableLanguage}}</a>
                                     </div>
+
                                     <div class="{{isActive('/results/matrices') && 'active'}}"
-                                            ng-show="loginStatus=='true'">
-                                        <a data-ng-click="reset()"
-                                            >Logout</a>
+                                         ng-show="{{loginStatus}} == false">
+                                        <a href="#/{{ viewLanguage }}login" ng-click="changeLanguage()">Change language to {{availableLanguage}}</a>
                                     </div>
                                     <div class="{{isActive('/results/matrices') && 'active'}}"
-                                            ng-show="loginStatus == 'false'">
+                                            ng-show="{{loginStatus}} > 0">
+                                        <a data-ng-click="reset()"
+                                            >Logout:{{loginStatus}}</a>
+                                    </div>
+                                    <div class="{{isActive('/results/matrices') && 'active'}}"
+                                            ng-show="{{loginStatus}} == false">
                                         <a href="#/{{ viewLanguage }}login"
-                                                href="#/login">Login</a>
+                                                href="#/login">Login:{{loginStatus}}</a>
 
                                     </div>
                                 </div>
@@ -221,12 +227,12 @@
     <div class="well shaded-box " ng-show="getMode() == undefined">
         <h3>Welcome to Mothers’ Milk Messaging</h3>
         <p>
-            Please either login or sign up to continue.
+            Please either login or sign up to continue. status: {{ loginStatus }}
         </p>
 
         <div class="row vmargin15 hpadding0 box  rounded-box" style="border: 0;">
             <div align="center" class="col-md-3 col-sm-3 col-xs-6">
-                <a href="#/login" class="btn btn-mode"
+                <a href="#/{{ viewLanguage }}login" class="btn btn-mode"
                    data-ng-click="setMode(cbbConstants.modeGuided)" >
                     Login
                 </a>
@@ -236,7 +242,7 @@
         <div class="row vmargin15 hpadding0 box  rounded-box" style="border: 0;">
 
             <div align="center" class="col-md-3 col-sm-3 col-xs-6">
-                <a href="#/signUp" class="btn btn-mode"
+                <a href="#/{{ viewLanguage }}signUp" class="btn btn-mode"
                    data-ng-click="setMode(cbbConstants.modeMatrix)" >
                     Sign Up
                 </a>

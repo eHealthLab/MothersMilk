@@ -25,8 +25,6 @@
     <div align="center">
 
         <table>
-
-
             <style type="text/css">
                 .errorClassSignUp{
                     color: red;
@@ -34,9 +32,6 @@
             </style>
 
             <tr>
-                <td>
-                    First name
-                </td>
                 <td>
                     <input type="text"
                            placeholder="Enter first name"
@@ -47,11 +42,8 @@
                     {{ signUpErrorFirstName }}
                 </td>
             </tr>
-            <tr>
-                <td>
-                    Last name
-                </td>
 
+            <tr>
                 <td>
                     <input type="text"
                            placeholder="Enter last name"
@@ -62,10 +54,8 @@
                     {{ signUpErrorLastName }}
                 </td>
             </tr>
+
             <tr>
-                <td>
-                   Email address
-                </td>
                 <td>
                     <input type="email"
                            placeholder="Enter email"
@@ -76,10 +66,8 @@
                     {{ signUpErrorEmail }}
                 </td>
             </tr>
+
             <tr>
-                <td>
-                    Password
-                </td>
                 <td>
                     <input type="password"
                            placeholder="Enter password"
@@ -90,10 +78,8 @@
                     {{ signUpErrorPassword }}
                 </td>
             </tr>
+
             <tr>
-                <td>
-                    Retype password
-                </td>
                 <td>
                     <input type="password"
                            placeholder="Confirm password"
@@ -101,13 +87,11 @@
                     </input>
                 </td>
             </tr>
+
             <tr>
                 <td>
-                    Phone Number(10 Digits)
-                </td>
-                <td>
                     <input type="text"
-                           placeholder="Enter Phone Number"
+                           placeholder="Phone Number"
                            ng-model="newParticipant.phoneNumber">
                     </input>
                 </td>

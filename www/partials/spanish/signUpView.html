@@ -17,16 +17,14 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
 <div class=well>
-    <h3>Sign up</h3>
+
     <p>
         Por favor, introduzca la siguiente información para registrarse en la aplicación.
     </p>
 
-    <div class="input-group">
+    <div align="center">
 
         <table>
-
-
             <style type="text/css">
                 .errorClassSignUp{
                     color: red;
@@ -35,11 +33,8 @@
 
             <tr>
                 <td>
-                    primer nombre
-                </td>
-                <td>
                     <input type="text"
-                           placeholder="Enter first name"
+                           placeholder="Introduzca el nombre"
                            ng-model="newParticipant.firstName">
                     </input>
                 </td>
@@ -47,14 +42,11 @@
                     {{ signUpErrorFirstName }}
                 </td>
             </tr>
+
             <tr>
                 <td>
-                    apellido
-                </td>
-
-                <td>
                     <input type="text"
-                           placeholder="Enter last name"
+                           placeholder="Escriba última nombre"
                            ng-model="newParticipant.lastName">
                     </input>
                 </td>
@@ -62,13 +54,11 @@
                     {{ signUpErrorLastName }}
                 </td>
             </tr>
+
             <tr>
                 <td>
-                   Email address
-                </td>
-                <td>
                     <input type="email"
-                           placeholder="Enter email"
+                           placeholder="Introduce una dirección"
                            ng-model="newParticipant.email">
                     </input>
                 </td>
@@ -76,13 +66,11 @@
                     {{ signUpErrorEmail }}
                 </td>
             </tr>
+
             <tr>
                 <td>
-                    Password
-                </td>
-                <td>
                     <input type="password"
-                           placeholder="Enter password"
+                           placeholder="Introduce el password"
                            ng-model="newParticipant.password">
                     </input>
                 </td>
@@ -90,26 +78,53 @@
                     {{ signUpErrorPassword }}
                 </td>
             </tr>
+
             <tr>
                 <td>
-                    Retype password
-                </td>
-                <td>
                     <input type="password"
-                           placeholder="Confirm password"
+                           placeholder="Confirmar contraseña"
                            ng-model="newParticipant.passwordConfirm">
                     </input>
                 </td>
             </tr>
+
+            <tr>
+                <td>
+                    <input type="text"
+                           placeholder="Número de teléfono"
+                           ng-model="newParticipant.phoneNumber">
+                    </input>
+                </td>
+                <td class="errorClassSignUp">
+                    {{ signUpErrorPhoneNumber }}
+                </td>
+            </tr>
+
         </table>
 
         <h6><p  class="errorClassSignUp">{{ signUpErrorNotification }}</p></h6>
 
     </div>
 
-    <div>
-        <a class="calculate-button"
-           ng-click="signupTry()">Sign Up</a>
+    <div align="center" class="col-md-12">
+        <a class="calculate-button" href=""
+           ng-click="signupTry()">Regístrese</a>
+    </div>
+
+    <p align="center">
+        <b>OR</b>
+    </p>
+
+    <p>
+        Si usted ha firmado ya, tienes que identificarte.
+    </p>
+
+    <div align="center" class="col-md-12">
+
+        <a href="#/spanish/login" class="calculate-button"
+           data-ng-click="setMode(cbbConstants.modeMatrix)">
+            Login
+        </a>
     </div>
 
 </div>

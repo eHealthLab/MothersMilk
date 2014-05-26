@@ -18,12 +18,11 @@
 -->
 
 <div class=well>
-    <h3>Login</h3>
 
     <p>
         Por favor, introduzca la siguiente información para iniciar sesión.
     </p>
-    <div class="input-group">
+    <div align="center">
         <table >
             <style type="text/css">
                 .errorClassSignUp{
@@ -31,12 +30,10 @@
                 }
             </style>
             <tr>
-                <td>
-                    Email
-                </td>
+
                 <td>
                     <input type="email"
-                           placeholder="Enter email"
+                           placeholder="Introducir email"
                            ng-model="newParticipant.email">
                     </input>
                 </td>
@@ -46,11 +43,8 @@
             </tr>
             <tr>
                 <td>
-                    Password
-                </td>
-                <td>
                     <input type="password"
-                           placeholder="Enter password"
+                           placeholder="Introducir la contraseña"
                            ng-model="newParticipant.password">
                     </input>
                 </td>
@@ -59,13 +53,31 @@
                 </td>
             </tr>
         </table>
+
         <h6><p style="color: red">{{ loginErrorNotification }}</p></h6>
+
+        <div align="center" class="col-md-12">
+
+            <a class="calculate-button"
+               ng-click="loginTry()">Login</a>
+        </div>
 
     </div>
 
-    <div>
-        <a class="calculate-button"
-           ng-click="loginTry()">Login{{ viewLanguage }}</a>
+    <p align="center">
+        <b>OR</b>
+    </p>
+
+    <p>
+        Si no se ha registrado, por favor regístrese primero.
+    </p>
+
+    <div align="center" class="col-md-12">
+
+        <a href="#/spanish/signUp" class="calculate-button"
+           data-ng-click="setMode(cbbConstants.modeMatrix)">
+            Regístrese
+        </a>
     </div>
 
 </div>
