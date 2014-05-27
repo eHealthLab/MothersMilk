@@ -31,7 +31,7 @@ cbbApp.factory('participantService', function($http, $q, cbbConstants) {
 
     participantServiceInstance.numberOfUnread = 0;
 
-    participantServiceInstance.globalLoginStatus = 'false';
+    participantServiceInstance./ = 'false';
 
     participantServiceInstance.ppStatus = "false";
 
@@ -65,7 +65,7 @@ cbbApp.factory('participantService', function($http, $q, cbbConstants) {
         //window.alert(participantServiceInstance.globalLoginStatus);
         loginStatus = loginStatusID;
         participantServiceInstance.globalLoginStatus = loginStatusID;
-        window.alert(participantServiceInstance.globalLoginStatus);
+        //window.alert(participantServiceInstance.globalLoginStatus);
     }
 
     participantServiceInstance.setLanguageStatus = function(languageStatusID) {
