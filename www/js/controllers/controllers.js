@@ -70,7 +70,7 @@ cbbApp.controller('stateController',
 
             $scope.messageRetrieved = false;
 
-            $scope.loginStatus = "false";
+            $scope.loginStatus = 'false';
 
             $scope.messageProcessing = false;
 
@@ -80,6 +80,10 @@ cbbApp.controller('stateController',
         $scope.loginStatus = participantService.globalLoginStatus;
 
         $scope.totalUnread = participantService.numberOfUnread;
+
+        $scope.getLoginStatus = function() {
+            return $scope.loginStatus;
+        };
 
         $scope.getTotalUnread = function () {
             $scope.totalUnread = participantService.numberOfUnread;
@@ -247,7 +251,7 @@ cbbApp.controller('stateController',
             if (confirm('Are you sure you want to logout?')) {
                 $scope.studyDesign.reset();
                 $scope.$apply(function() {
-                    $scope.loginStatus = "false";
+                    $scope.loginStatus = 'false';
                 });
 
                 $scope.powerService.clearCache();
@@ -3181,26 +3185,14 @@ cbbApp.controller('stateController',
                     success(function(data, status, headers, config) {
                         $scope.appsData = data;
                         if($scope.appsData != "false") {
-                            window.alert('original:' + participantService.globalLoginStatus);
+                            //window.alert('original:' + participantService.globalLoginStatus);
                             participantService.setLoginStatus($scope.appsData[0].ID);
                             participantService.registerDate = $scope.appsData[0].registerdate;
-                            $location.path("/home");
-                            //participantService.globalLoginStatus = "true";
-                            window.alert('changed to:' + participantService.globalLoginStatus);
-                            $scope.$apply(function() {
+                            //window.alert('changed to:' + participantService.globalLoginStatus);
+                            $scope.loginStatus = participantService.globalLoginStatus;
+                            //window.alert('changed scope to:' + $scope.loginStatus);
 
-
-                                try {
-                                    $scope.loginStatus = participantService.getLoginStatus();
-                                } catch(err) {
-                                    window.alert("The login status has not been updated.");
-                                }
-
-                                window.alert('inside apply with ' + participantService.globalLoginStatus);
-
-                            });
-
-                            window.alert('changed to:' + $scope.loginStatus);
+                            //window.alert('changed to:' + $scope.loginStatus);
                             if ($scope.appsData[0].status == 0) {
                                 participantService.setppStatus(0);
                                 $scope.setStatusCode();
@@ -3209,7 +3201,7 @@ cbbApp.controller('stateController',
                                 participantService.setppStatus(1);
                                 $scope.setStatusCode();
                             }
-
+                            $location.path("/home");
                         }
                         else
                             $scope.loginErrorNotification = "Check the login information and try again."
@@ -3318,7 +3310,7 @@ cbbApp.controller('stateController',
 
             if(participantService.getLoginStatus() == "false"){
                 window.alert("Please login to view messages.");
-                $scope.loginStatus =  "false";
+                $scope.loginStatus =  'false';
                 $scope.messageProcessing = false;
                 $scope.messageRetrieved = false;
                 $location.path("/login");
@@ -3351,7 +3343,7 @@ cbbApp.controller('stateController',
                 */
             }
             else {
-                $scope.loginStatus =  "true";
+                $scope.loginStatus =  'true';
                 $scope.textMessageFlag = 0;
                 $http.get('http://mothersmilk.ucdenver.edu:3000/messages/' + participantService.getLoginStatus()).
                     success(function(data, status, headers, config) {
@@ -3421,7 +3413,8 @@ cbbApp.controller('stateController',
         $scope.submitMessage = function(messageID){
             $http.post('http://mothersmilk.ucdenver.edu:3000/messages/' + $scope.newMessage1.message + '/' + participantService.getLoginStatus() + '/' + messageID).
                 success(function(data, status, headers, config) {
-                    window.alert("Message has been sent.");
+                    window.alert("Your response has been sent.");
+                    $location.path("/home");
                     $scope.messageArray = data;
                 }).
                 error(function(data, status, headers, config) {
@@ -3558,7 +3551,7 @@ cbbApp.controller('stateController',
             if(participantService.getLoginStatus() == "false"){
                 window.alert("Ingrese para ver los mensajes.");
                 $scope.$apply(function() {
-                    $scope.loginStatus =  "false";
+                    $scope.loginStatus =  'false';
                     $scope.messageProcessing = false;
                     $scope.messageRetrieved = false;
                 });
@@ -3597,7 +3590,7 @@ cbbApp.controller('stateController',
                 */
             }
             else {
-                $scope.loginStatus =  "true";
+                $scope.loginStatus =  'true';
                 //$scope.messageProcessing = true;
                 $scope.textMessageFlag = 0;
                 $http.get('http://mothersmilk.ucdenver.edu:3000/messages/spanish/' + participantService.getLoginStatus()).

@@ -69,6 +69,14 @@
             background-color: #BDE5F8;
         }
 
+        .messageSubject:hover{
+            width: 234px;
+            margin-bottom: 20px;
+            margin-top: 34px;
+            list-style: none outside none;
+            background-color: #e5f8bd;
+        }
+
 
         .content{
             text-align: center;
@@ -88,14 +96,19 @@
             border: 2.2px solid;
             width:98%;
             padding: 10px;
+        }
 
+        .listStyle:hover{
+            background:#e5f8bd;
+            width:98%;
+            padding: 10px;
 
 
         }
 
 
         .textBoxStyle{
-            width: 200px;
+            width: 70%;
             height: 134px;
             left: 51px;
             top: 72px;
@@ -103,7 +116,7 @@
 
         .messageRead {
             font-weight: bold;
-            color: red;
+            /* color: red;    */
         }
         p{
             border-radius: .5em;
@@ -137,6 +150,7 @@
             border-width: 1px;
             border-color: #9DA0A6 #9DA0A6 #9DA0A6 transparent;
             border-style: solid;
+            width: 90%;
         }
 
         .text-right {
@@ -151,6 +165,7 @@
             border-width: 1px;
             border-color: #309b19 transparent #309b19 #309b19;
             border-style: solid;
+
         }
 
         .text-left:before {
@@ -385,67 +400,52 @@
             border-color: #999999;
         }
 
+            /* @override http://memebro.com/css/global.css */
+
+
+
+
 
 
     </style>
 
     <div>
 
-        <!-- Codes by HTML.am -->
-        <!--
-        <div class="processing rounded-box"
-             ng-show="messageProcessing == true && messageRetrieved == false">
 
-            <label>Please wait while we retrieve your text messages</label>
-        </div>
-        -->
         <h3>
             Text Messages
         </h3>
+        <p>
+            Please click on a subject line to display the corresponding
+            Mothers' Milk message.
+        </p>
 
-
-        <!-- Table goes in the document BODY -->
-
-        <!-- <div class="CSSTableGenerator"> -->
         <table class="CSSTableGenerator">
-
             <tr class="messageSubject">
-
              <div class="listStyle ng-class: { messageRead: !textMessage.outb };"
-
                   ng-repeat="textMessage in messageArray | orderBy:'releasedate'"
                   ng-click="textMessageSetFlag(textMessage)"
                   ng-show="textMessage.directmessage">
                     <!-- class="listview-example" ng-repeat="textMessage in messageArray | orderBy:'releasedate'" -->
 
                 Subject: {{ textMessage.subject }}
-                <!-- class="listStyle ng-class: { messageRead: !textMessage.outb };" -->
-                <!-- class="listview-example" -->
-                <!--
-                <div style=" font-weight:normal;">
-                -->
-                    <!--/
-                    <p style="color: #4F8A10;background-color: #DFF2BF;" ng-show="textMessage.ID == textMessageFlag">MMM: {{ textMessage.message }}</p>
-                    -->
-                    <div class="text-left" ng-show="textMessage.ID == textMessageFlag">
-                        <p class="white-shadow" ng-show="textMessage.ID == textMessageFlag"><b> MMM: </b>{{ textMessage.message }}</p>
-                    </div>
+                 <sup style="color:#FF0080;font-size: 1.0em;" ng-show= "!textMessage.outb">
+                     New!
+                 </sup>
 
-                    <div class="text-right" ng-show="textMessage.ID == textMessageFlag && textMessage.inflag && textMessage.inb">
-                        <p class="white-shadow" ng-show="textMessage.ID == textMessageFlag && textMessage.inflag && textMessage.inb"><b>You:</b> {{ textMessage.inb }}</p>
-                    </div>
+                <div class="text-left"
+                     ng-show="textMessage.ID == textMessageFlag">
 
-                    <!--
-                    <div class="text-left" ng-show="textMessage.ID == textMessageFlag">
-                        <p class="white-shadow" style="color: #4F8A10;background-color: #DFF2BF;" ng-show="textMessage.ID == textMessageFlag">{{ messageArray[textMessage.nextmessage].message }}</p>
-                    </div>
-                    -->
+                    <p class="white-shadow" ng-show="textMessage.ID == textMessageFlag"><b> MMM: </b>{{ textMessage.message }}</p>
+                </div>
 
+                <div class="text-right" ng-show="textMessage.ID == textMessageFlag && textMessage.inflag && textMessage.inb">
+                    <p class="white-shadow" ng-show="textMessage.ID == textMessageFlag && textMessage.inflag && textMessage.inb"><b>You:</b> {{ textMessage.inb }}</p>
+                </div>
 
-                    <div ng-show="textMessage.ID == textMessageFlag && textMessage.inflag && !textMessage.inb">
-
-
-                        <div class="replyButton" ng-show="textMessage.ID == textMessageFlag && textMessage.inflag && !textMessage.inb">
+                <div ng-show="textMessage.ID == textMessageFlag && textMessage.inflag && !textMessage.inb">
+                        <div class="replyButton"
+                             ng-show="textMessage.ID == textMessageFlag && textMessage.inflag && !textMessage.inb">
                             <p></p>
                             <input type="text"  placeholder=" Limit is 250 character."
                                    maxlength="250"
@@ -453,7 +453,7 @@
                                    ng-model="newMessage1.message" ng-show="textMessage.ID == textMessageFlag && textMessage.inflag && !textMessage.inb"
                                     value="Thank you for using MMMM.  Please type your message below and hit the 'Submit' button.">
                             <button class="calculate-button"
-                                    ng-click="submitMessage(textMessage.ID)" ng-hide="">Submit</button>
+                                    ng-click="submitMessage(textMessage.ID)" ng-hide="">Send</button>
 
                         </div>
                     </div>

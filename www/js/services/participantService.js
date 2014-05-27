@@ -31,7 +31,7 @@ cbbApp.factory('participantService', function($http, $q, cbbConstants) {
 
     participantServiceInstance.numberOfUnread = 0;
 
-    participantServiceInstance.globalLoginStatus = "false";
+    participantServiceInstance.globalLoginStatus = 'false';
 
     participantServiceInstance.ppStatus = "false";
 

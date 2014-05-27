@@ -135,8 +135,8 @@
                                         <a href="#/{{ viewLanguage }}text">
 
                                             My Mothers Milk Texts
-                                                <sup style="background-color:darkred;color:white;font-size: 0.9em;width: 1.1em;" ng-show="getTotalUnread() > 0">
-                                                     {{getTotalUnread()}}
+                                                <sup style="color:darkred;font-size: 1.0em;width: 1.1em;" ng-show="getTotalUnread() > 0">
+                                                     New!
                                                 </sup>
 
                                         </a>
@@ -204,14 +204,14 @@
                                         <a href="#/{{ viewLanguage }}login" ng-click="changeLanguage()">Change language to {{availableLanguage}}</a>
                                     </div>
                                     <div class="{{isActive('/results/matrices') && 'active'}}"
-                                            ng-show="{{loginStatus}} > 0">
+                                            ng-show="getLoginStatus() != 'false'">
                                         <a data-ng-click="reset()"
-                                            >Logout:{{loginStatus}}</a>
+                                            >Logout:{{getLoginStatus()}}</a>
                                     </div>
                                     <div class="{{isActive('/results/matrices') && 'active'}}"
-                                            ng-show="{{loginStatus}} == false">
+                                            ng-show="getLoginStatus() == 'false'">
                                         <a href="#/{{ viewLanguage }}login"
-                                                href="#/login">Login:{{loginStatus}}</a>
+                                                href="#/login">Login:{{getLoginStatus()}}</a>
 
                                     </div>
                                 </div>
