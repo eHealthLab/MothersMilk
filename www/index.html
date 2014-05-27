@@ -194,26 +194,28 @@
                             </div>
                             <div id="nav-results" class="panel-collapse collapse">
                                 <div class="panel-body">
+                                    <!--
                                     <div class="{{isActive('/results/matrices') && 'active'}}"
-                                            ng-show="{{loginStatus}} != false">
+                                            ng-show="getLoginStatus() > 0">
                                         <a href="#" ng-click="changeLanguage()">Change language to {{availableLanguage}}</a>
                                     </div>
-
+                                    -->
                                     <div class="{{isActive('/results/matrices') && 'active'}}"
-                                         ng-show="{{loginStatus}} == false">
-                                        <a href="#/{{ viewLanguage }}login" ng-click="changeLanguage()">Change language to {{availableLanguage}}</a>
+                                         ng-show="getLoginStatus() == 'false'">
+                                        <a href="#" ng-click="changeLanguage()">Change language to {{availableLanguage}}</a>
                                     </div>
                                     <div class="{{isActive('/results/matrices') && 'active'}}"
-                                            ng-show="getLoginStatus() != 'false'">
+                                            >
                                         <a data-ng-click="reset()"
                                             >Logout:{{getLoginStatus()}}</a>
                                     </div>
+                                    <!--
                                     <div class="{{isActive('/results/matrices') && 'active'}}"
                                             ng-show="getLoginStatus() == 'false'">
                                         <a href="#/{{ viewLanguage }}login"
                                                 href="#/login">Login:{{getLoginStatus()}}</a>
-
                                     </div>
+                                    -->
                                 </div>
                             </div>
                         </div>
@@ -227,7 +229,7 @@
     <div class="well shaded-box " ng-show="getMode() == undefined">
         <h3>Welcome to Mothers’ Milk Messaging</h3>
         <p>
-            Please either login or sign up to continue. status: {{ loginStatus }}
+            Please either login or sign up to continue.
         </p>
 
         <div class="row vmargin15 hpadding0 box  rounded-box" style="border: 0;">
