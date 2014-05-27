@@ -268,34 +268,34 @@ cbbApp.controller('stateController',
                 $location.path("/login");
             }
             else {
-            //window.alert('inside status' + $scope.status);
-            if ($scope.statusCode == 0)  {
+                //window.alert('inside status' + $scope.status);
+                if ($scope.statusCode == 0)  {
 
-                var confirmText ='';
-                if ($scope.currentLanguage == "English")   {
-                    confirmText = confirm('Are you sure you want to continue?  ' +
-                        'You should only change your status once your baby has arrived.  ' +
-                        'Doing so will affect the types of text messages that you receive going forward.');
-                }
-                else {
-                    confirmText = confirm('¿Estás segura que quieres continuar? Solamente deberías cambiar ' +
-                        'tu estatus ya que nació tu bebé por que afecta al tipo de ' +
-                        'mensajes que recibirás.');
-                }
-                if (confirmText) {
-                    if ($scope.statusCode == 0) {
-
-                        $scope.updatePPStatusDB();
-                    }
-                    $scope.statusCode = 1;
-                    if ($scope.currentLanguage == "English") {
-                        $scope.status = 'Yay! Baby is here!';
+                    var confirmText ='';
+                    if ($scope.currentLanguage == "English")   {
+                        confirmText = confirm('Are you sure you want to continue?  ' +
+                            'You should only change your status once your baby has arrived.  ' +
+                            'Doing so will affect the types of text messages that you receive going forward.');
                     }
                     else {
-                        $scope.status = '¡Ya llegó el bebé!';
+                        confirmText = confirm('¿Estás segura que quieres continuar? Solamente deberías cambiar ' +
+                            'tu estatus ya que nació tu bebé por que afecta al tipo de ' +
+                            'mensajes que recibirás.');
+                    }
+                    if (confirmText) {
+                        if ($scope.statusCode == 0) {
+
+                            $scope.updatePPStatusDB();
+                        }
+                        $scope.statusCode = 1;
+                        if ($scope.currentLanguage == "English") {
+                            $scope.status = 'Yay! Baby is here!';
+                        }
+                        else {
+                            $scope.status = '¡Ya llegó el bebé!';
+                        }
                     }
                 }
-            }
             }
         }
 
@@ -303,18 +303,18 @@ cbbApp.controller('stateController',
             $http({method: 'POST',
                 url: 'http://mothersmilk.ucdenver.edu:3000/changeStatus/' + participantService.getLoginStatus()
             }).
-            success(function(data, status, headers, config) {
+                success(function(data, status, headers, config) {
                     //window.alert("Success");
                     $scope.appsData = data;
                     $location.path("/home");
-            }).
-            error(function(data, status, headers, config) {
+                }).
+                error(function(data, status, headers, config) {
                     window.alert("Sorry request to the server failed. " +
                         "Please try again later.");
                     $location.path("/home");
                     // called asynchronously if an error occurs
                     // or server returns response with an error status.
-            });
+                });
 
         }
 
@@ -391,18 +391,18 @@ cbbApp.controller('stateController',
                     var result = $scope.powerService.cachedResults[i];
                     resultsCSV +=
                         result.nominalPower.value + "," +
-                            result.actualPower + "," +
-                            result.totalSampleSize + "," +
-                            result.alpha.alphaValue + "," +
-                            result.betaScale.value + "," +
-                            result.sigmaScale.value + "," +
-                            result.test.type + "," +
-                            result.powerMethod.powerMethodEnum + "," +
-                            (result.quantile != null ? result.quantile.value : "") + "," +
-                            (result.confidenceInterval != null ? result.confidenceInterval.lowerLimit : "") + "," +
-                            (result.confidenceInterval != null ? result.confidenceInterval.upperLimit : "") + "," +
-                            (result.errorCode != null ? result.errorCode : "") + "," +
-                            (result.errorMessage != null ? result.errorMessage : "") + "\n"
+                        result.actualPower + "," +
+                        result.totalSampleSize + "," +
+                        result.alpha.alphaValue + "," +
+                        result.betaScale.value + "," +
+                        result.sigmaScale.value + "," +
+                        result.test.type + "," +
+                        result.powerMethod.powerMethodEnum + "," +
+                        (result.quantile != null ? result.quantile.value : "") + "," +
+                        (result.confidenceInterval != null ? result.confidenceInterval.lowerLimit : "") + "," +
+                        (result.confidenceInterval != null ? result.confidenceInterval.upperLimit : "") + "," +
+                        (result.errorCode != null ? result.errorCode : "") + "," +
+                        (result.errorMessage != null ? result.errorMessage : "") + "\n"
                     ;
 
                 }
@@ -470,48 +470,48 @@ cbbApp.controller('stateController',
             if ($scope.getMode() == $scope.cbbConstants.modeGuided) {
                 return (
                     $scope.testDone($scope.getStateSolvingFor()) &&
-                        $scope.testDone($scope.getStateNominalPower()) &&
-                        $scope.testDone($scope.getStateTypeIError()) &&
-                        $scope.testDone($scope.getStatePredictors()) &&
-                        $scope.testDone($scope.getStateCovariate()) &&
-                        $scope.testDone($scope.getStateClustering()) &&
-                        $scope.testDone($scope.getStateRelativeGroupSize()) &&
-                        $scope.testDone($scope.getStateSmallestGroupSize()) &&
-                        $scope.testDone($scope.getStateResponseVariables()) &&
-                        $scope.testDone($scope.getStateRepeatedMeasures()) &&
-                        $scope.testDone($scope.getStateHypothesis()) &&
-                        $scope.testDone($scope.getStateMeans()) &&
-                        $scope.testDone($scope.getStateScaleFactorsForMeans()) &&
-                        $scope.testDone($scope.getStateWithinVariability()) &&
-                        $scope.testDone($scope.getStateCovariateVariability()) &&
-                        $scope.testDone($scope.getStateScaleFactorsForVariability()) &&
-                        $scope.testDone($scope.getStateStatisticalTest()) &&
-                        $scope.testDone($scope.getStatePowerMethod()) &&
-                        $scope.testDone($scope.getStateConfidenceIntervals()) &&
-                        $scope.testDone($scope.getStatePowerCurve())
+                    $scope.testDone($scope.getStateNominalPower()) &&
+                    $scope.testDone($scope.getStateTypeIError()) &&
+                    $scope.testDone($scope.getStatePredictors()) &&
+                    $scope.testDone($scope.getStateCovariate()) &&
+                    $scope.testDone($scope.getStateClustering()) &&
+                    $scope.testDone($scope.getStateRelativeGroupSize()) &&
+                    $scope.testDone($scope.getStateSmallestGroupSize()) &&
+                    $scope.testDone($scope.getStateResponseVariables()) &&
+                    $scope.testDone($scope.getStateRepeatedMeasures()) &&
+                    $scope.testDone($scope.getStateHypothesis()) &&
+                    $scope.testDone($scope.getStateMeans()) &&
+                    $scope.testDone($scope.getStateScaleFactorsForMeans()) &&
+                    $scope.testDone($scope.getStateWithinVariability()) &&
+                    $scope.testDone($scope.getStateCovariateVariability()) &&
+                    $scope.testDone($scope.getStateScaleFactorsForVariability()) &&
+                    $scope.testDone($scope.getStateStatisticalTest()) &&
+                    $scope.testDone($scope.getStatePowerMethod()) &&
+                    $scope.testDone($scope.getStateConfidenceIntervals()) &&
+                    $scope.testDone($scope.getStatePowerCurve())
                     );
             } else if ($scope.getMode() == $scope.cbbConstants.modeMatrix) {
                 return (
                     $scope.testDone($scope.getStateSolvingFor()) &&
-                        $scope.testDone($scope.getStateNominalPower()) &&
-                        $scope.testDone($scope.getStateTypeIError()) &&
-                        $scope.testDone($scope.getStateDesignEssence()) &&
-                        $scope.testDone($scope.getStateCovariate()) &&
-                        $scope.testDone($scope.getStateRelativeGroupSize()) &&
-                        $scope.testDone($scope.getStateSmallestGroupSize()) &&
-                        $scope.testDone($scope.getStateBeta()) &&
-                        $scope.testDone($scope.getStateScaleFactorsForMeans()) &&
-                        $scope.testDone($scope.getStateBetweenParticipantContrast()) &&
-                        $scope.testDone($scope.getStateWithinParticipantContrast()) &&
-                        $scope.testDone($scope.getStateThetaNull()) &&
-                        $scope.testDone($scope.getStateSigmaE()) &&
-                        $scope.testDone($scope.getStateSigmaG()) &&
-                        $scope.testDone($scope.getStateSigmaYG()) &&
-                        $scope.testDone($scope.getStateSigmaY()) &&
-                        $scope.testDone($scope.getStateScaleFactorsForVariability()) &&
-                        $scope.testDone($scope.getStatePowerMethod()) &&
-                        $scope.testDone($scope.getStateConfidenceIntervals()) &&
-                        $scope.testDone($scope.getStatePowerCurve())
+                    $scope.testDone($scope.getStateNominalPower()) &&
+                    $scope.testDone($scope.getStateTypeIError()) &&
+                    $scope.testDone($scope.getStateDesignEssence()) &&
+                    $scope.testDone($scope.getStateCovariate()) &&
+                    $scope.testDone($scope.getStateRelativeGroupSize()) &&
+                    $scope.testDone($scope.getStateSmallestGroupSize()) &&
+                    $scope.testDone($scope.getStateBeta()) &&
+                    $scope.testDone($scope.getStateScaleFactorsForMeans()) &&
+                    $scope.testDone($scope.getStateBetweenParticipantContrast()) &&
+                    $scope.testDone($scope.getStateWithinParticipantContrast()) &&
+                    $scope.testDone($scope.getStateThetaNull()) &&
+                    $scope.testDone($scope.getStateSigmaE()) &&
+                    $scope.testDone($scope.getStateSigmaG()) &&
+                    $scope.testDone($scope.getStateSigmaYG()) &&
+                    $scope.testDone($scope.getStateSigmaY()) &&
+                    $scope.testDone($scope.getStateScaleFactorsForVariability()) &&
+                    $scope.testDone($scope.getStatePowerMethod()) &&
+                    $scope.testDone($scope.getStateConfidenceIntervals()) &&
+                    $scope.testDone($scope.getStatePowerCurve())
 
                     );
             }
@@ -2113,13 +2113,13 @@ cbbApp.controller('stateController',
             $scope.studyDesign = studyDesignService;
             $scope.betaFixedSigmaEstimated = (
                 studyDesignService.confidenceIntervalDescriptions != null &&
-                    studyDesignService.confidenceIntervalDescriptions.betaFixed &&
-                    !studyDesignService.confidenceIntervalDescriptions.sigmaFixed
+                studyDesignService.confidenceIntervalDescriptions.betaFixed &&
+                !studyDesignService.confidenceIntervalDescriptions.sigmaFixed
                 );
             $scope.betaEstimatedSigmaEstimated = (
                 studyDesignService.confidenceIntervalDescriptions != null &&
-                    !studyDesignService.confidenceIntervalDescriptions.betaFixed &&
-                    !studyDesignService.confidenceIntervalDescriptions.sigmaFixed
+                !studyDesignService.confidenceIntervalDescriptions.betaFixed &&
+                !studyDesignService.confidenceIntervalDescriptions.sigmaFixed
                 );
         }
 
@@ -2932,9 +2932,9 @@ cbbApp.controller('stateController',
         $scope.isMatch = function(seriesDescription, result, hasCovariate) {
             var match = (
                 seriesDescription.statisticalTestTypeEnum == result.test.type &&
-                    seriesDescription.typeIError == result.alpha.alphaValue &&
-                    (!hasCovariate || seriesDescription.powerMethod == result.powerMethod.powerMethodEnum) &&
-                    (!hasCovariate || seriesDescription.quantile == result.quantile.value)
+                seriesDescription.typeIError == result.alpha.alphaValue &&
+                (!hasCovariate || seriesDescription.powerMethod == result.powerMethod.powerMethodEnum) &&
+                (!hasCovariate || seriesDescription.quantile == result.quantile.value)
                 );
 
             if (studyDesignService.powerCurveDescriptions.horizontalAxisLabelEnum ==
@@ -3236,18 +3236,18 @@ cbbApp.controller('stateController',
                 var email = $scope.newParticipant.email.toUpperCase();
                 //window.alert("After case");
                 /*$http.get('http://cbb.ucdenver.edu:3000/loginSignup/' + emailID).
-                    success(function(data, status, headers, config) {
-                        if(data == "true")
-                            participantService.setLoginEmail("false");
-                        else
-                            participantService.setLoginEmail("true");
-                    }).
-                    error(function(data, status, headers, config) {
-                        window.alert("Failure" + status);
-                        // called asynchronously if an error occurs
-                        // or server returns response with an error status.
-                    });
-                participantService.setLoginEmail(email);*/
+                 success(function(data, status, headers, config) {
+                 if(data == "true")
+                 participantService.setLoginEmail("false");
+                 else
+                 participantService.setLoginEmail("true");
+                 }).
+                 error(function(data, status, headers, config) {
+                 window.alert("Failure" + status);
+                 // called asynchronously if an error occurs
+                 // or server returns response with an error status.
+                 });
+                 participantService.setLoginEmail(email);*/
                 $http({method: 'POST',
                     url: 'http://mothersmilk.ucdenver.edu:3000/loginSignup/' +
                         $scope.newParticipant.firstName + '/' +
@@ -3278,8 +3278,8 @@ cbbApp.controller('stateController',
          */
     })
 
-/*
-    Controller for text messages
+    /*
+     Controller for text messages
      */
 
     .controller('contactInfoController', function($scope, $location, $http, $window, participantService) {
@@ -3335,12 +3335,12 @@ cbbApp.controller('stateController',
 
             if(participantService.getLoginStatus() == "false"){
                 /*
-                window.alert("Please login to view messages.");
-                $scope.loginStatus =  "false";
-                $scope.messageProcessing = false;
-                $scope.messageRetrieved = false;
-                $location.path("/login");
-                */
+                 window.alert("Please login to view messages.");
+                 $scope.loginStatus =  "false";
+                 $scope.messageProcessing = false;
+                 $scope.messageRetrieved = false;
+                 $location.path("/login");
+                 */
             }
             else {
                 $scope.loginStatus =  'true';
@@ -3357,32 +3357,32 @@ cbbApp.controller('stateController',
                         }
                         participantService.numberOfUnread =   $scope.totalUnread;
                         if (participantService.numberOfUnread > $scope.unreadPrevBuffer) { // $scope.currentTextBufferCount) {
-                           if ($scope.deviceType == 'android') {
+                            if ($scope.deviceType == 'android') {
                                 $http({method: 'POST',
                                     url: 'http://mothersmilk.ucdenver.edu:3000/sendGCM/' +
                                         $scope.regID + '/' +  participantService.numberOfUnread
                                 }).
-                                success(function(data, status, headers, config) {
-                                    $scope.appsData = data;
-                                }).
-                                error(function(data, status, headers, config) {
-                                   ;
-                                });
+                                    success(function(data, status, headers, config) {
+                                        $scope.appsData = data;
+                                    }).
+                                    error(function(data, status, headers, config) {
+                                        ;
+                                    });
                             }
-                           else if ($scope.deviceType == 'ios'){
+                            else if ($scope.deviceType == 'ios'){
                                 $http({method: 'POST',
                                     url: 'http://mothersmilk.ucdenver.edu:3000/sendAPN/'
-                                        //+
-                                        //$scope.regID + '/' +  participantService.numberOfUnread
+                                    //+
+                                    //$scope.regID + '/' +  participantService.numberOfUnread
                                 }).
                                     success(function(data, status, headers, config) {
 
                                         $scope.appsData = data;
                                     }).
                                     error(function(data, status, headers, config) {
-                                       ;
+                                        ;
                                     });
-                           }
+                            }
                         }
                         $scope.unreadPrevBuffer = participantService.numberOfUnread;
                         $scope.currentTextBufferCount = participantService.numberOfUnread;
@@ -3506,8 +3506,8 @@ cbbApp.controller('stateController',
                         $scope.appsData = data;
                         if(data.status == "true"){
                             window.alert("Has registrado correctamente. Inicia sesión para continuar");
-							$location.path("/login");
-						}
+                            $location.path("/login");
+                        }
                         else {
                             window.alert("Existe ID de correo electrónico. Utilice una ID de correo electrónico diferente.");
                         }
@@ -3559,9 +3559,9 @@ cbbApp.controller('stateController',
             }
             else {
 
-                    $scope.messageProcessing = true;
-                    $scope.messageRetrieved = false;
-                    $scope.getMessages();
+                $scope.messageProcessing = true;
+                $scope.messageRetrieved = false;
+                $scope.getMessages();
 
                 setInterval(function() {
                     $scope.$apply(function() {
@@ -3583,11 +3583,11 @@ cbbApp.controller('stateController',
             });
             if(participantService.getLoginStatus() == "false"){
                 /*
-                window.alert("Ingrese para ver los mensajes.");
-                $scope.loginStatus =  "false";
-                $scope.messageProcessing = false;
-                $location.path("/login");
-                */
+                 window.alert("Ingrese para ver los mensajes.");
+                 $scope.loginStatus =  "false";
+                 $scope.messageProcessing = false;
+                 $location.path("/login");
+                 */
             }
             else {
                 $scope.loginStatus =  'true';
@@ -3672,15 +3672,15 @@ cbbApp.controller('stateController',
                         participantService.numberOfUnread =   $scope.unreadMessageCount;
                     }
                     /*
-                    for(var s in $scope.messageArray) {
-                        if(!s.outb) $scope.unreadMessageCount += 1;
-                    }
-                    */
+                     for(var s in $scope.messageArray) {
+                     if(!s.outb) $scope.unreadMessageCount += 1;
+                     }
+                     */
                     //participantService.numberOfUnread =   $scope.unreadMessageCount;
                     //window.alert($scope.messageArray[textMessage.ID].outb + " " + textMessage.ID);
                 }).
                 error(function(data, status, headers, config) {
-                   ; //window.alert("Failure " + status);
+                    ; //window.alert("Failure " + status);
                 });
             //$scope.messageRead = !$scope.messageRead;
         };
@@ -3723,17 +3723,17 @@ cbbApp.controller('stateController',
                         url: 'http://mothersmilk.ucdenver.edu:3000/feedback/' +
                             $scope.feedbackText
                     }).
-                    success(function(data, status, headers, config) {
+                        success(function(data, status, headers, config) {
                             $scope.appsData = data;
                             if(data == "Success")
                                 window.alert("Your feedback has been submitted.");
                             $location.path("/home");
-                    }).
-                    error(function(data, status, headers, config) {
-                        window.alert("Unable to contact server. Please try again later.");
-                        // called asynchronously if an error occurs
-                        // or server returns response with an error status.
-                    });
+                        }).
+                        error(function(data, status, headers, config) {
+                            window.alert("Unable to contact server. Please try again later.");
+                            // called asynchronously if an error occurs
+                            // or server returns response with an error status.
+                        });
                 } else {
                     window.alert("Please login first.");
                     $location.path("/#login");
