@@ -248,14 +248,28 @@ cbbApp.controller('stateController',
          * clear the study design
          */
         $scope.reset = function() {
-            if (confirm('Are you sure you want to logout?')) {
-                $scope.studyDesign.reset();
-                $scope.$apply(function() {
-                    $scope.loginStatus = 'false';
-                });
+            if ($scope.currentLanguage == "English") {
 
-                $scope.powerService.clearCache();
-                init();
+                if (confirm('Are you sure you want to logout?')) {
+                    $scope.studyDesign.reset();
+                    $scope.$apply(function () {
+                        $scope.loginStatus = 'false';
+                    });
+
+                    $scope.powerService.clearCache();
+                    init();
+                }
+            }
+            else {
+                if (confirm('Estas segura que quieres cerrar la sesión?')) {
+                    $scope.studyDesign.reset();
+                    $scope.$apply(function () {
+                        $scope.loginStatus = 'false';
+                    });
+
+                    $scope.powerService.clearCache();
+                    init();
+                }
             }
         }
 
