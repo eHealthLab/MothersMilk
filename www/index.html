@@ -123,18 +123,35 @@
                         <div id="nav-start" class="panel-collapse collapse">
                             <div class="panel-body">
 
-                                <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" ng-show="viewLanguage != 'spanish/'" >
-                                    <a href="#" onclick="window.open('https://www.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">Mothers Milk Facebook Page</a>
+                                <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}"
+                                     ng-show="viewLanguage != 'spanish/'" >
+                                    <a href="#" onclick="window.open('https://m.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">Mothers Milk Facebook Page</a>
                                 </div>
 
                                 <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" ng-show="viewLanguage == 'spanish/'">
-                                    <a href="#" onclick="window.open('https://www.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">Mothers Milk Facebook Page</a>
+                                    <a href="#" onclick="window.open('https://m.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">
+                                        La Página de Facebook La Leche de Mamá
+                                    </a>
                                 </div>
 
-                                <div class="{{isActive('/typeIError') && 'active'}} {{getStateTypeIError()}}" >
+                                <div class="{{isActive('/typeIError') && 'active'}} {{getStateTypeIError()}}"
+                                     ng-show="viewLanguage != 'spanish/'" >
                                     <a href="#/{{ viewLanguage }}text">
 
                                         My Mothers Milk Texts
+                                        <sup style="color:darkred;font-size: 1.0em;width: 1.1em;" ng-show="getTotalUnread() > 0">
+                                            New!
+                                        </sup>
+
+                                    </a>
+
+                                </div>
+
+                                <div class="{{isActive('/typeIError') && 'active'}} {{getStateTypeIError()}}"
+                                     ng-show="viewLanguage == 'spanish/'" >
+                                    <a href="#/{{ viewLanguage }}text">
+
+                                        Mis textos de La Leche de Mamá
                                         <sup style="color:darkred;font-size: 1.0em;width: 1.1em;" ng-show="getTotalUnread() > 0">
                                             New!
                                         </sup>
@@ -165,15 +182,36 @@
                         </div>
                         <div id="nav-options" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" >
+                                <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}"
+                                     ng-show="viewLanguage != 'spanish/'">
                                     <a href="#/{{ viewLanguage }}tutorial">Learn More</a>
                                 </div>
-                                <div class="{{isActive('/test') && 'active'}} {{getStateStatisticalTest()}}" >
+
+                                <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}"
+                                     ng-show="viewLanguage == 'spanish/'" >
+                                    <a href="#/{{ viewLanguage }}tutorial">Aprender Más</a>
+                                </div>
+
+                                <div class="{{isActive('/test') && 'active'}} {{getStateStatisticalTest()}}"
+                                     ng-show="viewLanguage != 'spanish/'">
                                     <a href="#/{{ viewLanguage }}aboutUs">About Us</a>
                                 </div>
-                                <div class="{{isActive('/test') && 'active'}} {{getStateStatisticalTest()}}" >
+
+                                <div class="{{isActive('/test') && 'active'}} {{getStateStatisticalTest()}}"
+                                     ng-show="viewLanguage == 'spanish/'">
+                                    <a href="#/{{ viewLanguage }}aboutUs">Todo sobre nosotros</a>
+                                </div>
+
+                                <div class="{{isActive('/test') && 'active'}} {{getStateStatisticalTest()}}"
+                                     ng-show="viewLanguage != 'spanish/'">
                                     <a href="#/{{ viewLanguage }}feedback">Feedback</a>
                                 </div>
+
+                                <div class="{{isActive('/test') && 'active'}} {{getStateStatisticalTest()}}"
+                                     ng-show="viewLanguage == 'spanish/'">
+                                    <a href="#/{{ viewLanguage }}feedback">Comentarios</a>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -204,11 +242,19 @@
                                      ng-show="getLoginStatus() == 'false'">
                                     <a href="#" ng-click="changeLanguage()">Change language to {{availableLanguage}}</a>
                                 </div>
+
                                 <div class="{{isActive('/results/matrices') && 'active'}}"
-                                        >
+                                     ng-show="viewLanguage != 'spanish/'">
                                     <a data-ng-click="reset()"
                                             >Logout</a>
                                 </div>
+
+                                <div class="{{isActive('/results/matrices') && 'active'}}"
+                                     ng-show="viewLanguage == 'spanish/'">
+                                    <a data-ng-click="reset()"
+                                            >Cierre de sesión</a>
+                                </div>
+
                                 <!--
                                 <div class="{{isActive('/results/matrices') && 'active'}}"
                                         ng-show="getLoginStatus() == 'false'">
