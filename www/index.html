@@ -503,7 +503,7 @@
         if (e.sound) {
             var snd = new Media(e.sound);
             snd.play();
-            //alert('You have a new text message');
+            alert('You have a new text message');
         }
 
         if (e.badge) {
@@ -536,7 +536,7 @@
                 if (e.foreground)
                 {
                     $("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
-                    alert('You have a new text message');
+                    //alert('You have a new text message');
                     // if the notification contains a soundname, play it.
                     var my_media = new Media("/android_asset/www/"+e.soundname);
                     my_media.play();
