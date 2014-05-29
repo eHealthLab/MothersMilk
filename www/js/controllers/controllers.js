@@ -254,6 +254,7 @@ cbbApp.controller('stateController',
                     $scope.studyDesign.reset();
                     $scope.$apply(function () {
                         $scope.loginStatus = 'false';
+                        $scope.totalUnread = 0;
                     });
 
                     $scope.powerService.clearCache();
@@ -265,6 +266,7 @@ cbbApp.controller('stateController',
                     $scope.studyDesign.reset();
                     $scope.$apply(function () {
                         $scope.loginStatus = 'false';
+                        $scope.totalUnread = 0;
                     });
 
                     $scope.powerService.clearCache();
@@ -3215,7 +3217,13 @@ cbbApp.controller('stateController',
                                 participantService.setppStatus(1);
                                 $scope.setStatusCode();
                             }
-                            $location.path("/home");
+                            if ($scope.currentLanguage == "English") {
+                                $location.path("/home");
+                            }
+                            else if ($scope.currentLanguage == "Español") {
+                                $location.path("/spanish/home");
+                            }
+
                         }
                         else
                             $scope.loginErrorNotification = "Check the login information and try again."
@@ -3383,11 +3391,12 @@ cbbApp.controller('stateController',
                                         ;
                                     });
                             }
-                            else if ($scope.deviceType == 'ios'){
+                            window.alert('send iOS notification');
+                            /*else if ($scope.deviceType == 'ios'){
                                 $http({method: 'POST',
                                     url: 'http://mothersmilk.ucdenver.edu:3000/sendAPN/'
-                                    //+
-                                    //$scope.regID + '/' +  participantService.numberOfUnread
+                                    +
+                                    $scope.regID + '/' +  participantService.numberOfUnread
                                 }).
                                     success(function(data, status, headers, config) {
 
@@ -3396,7 +3405,7 @@ cbbApp.controller('stateController',
                                     error(function(data, status, headers, config) {
                                         ;
                                     });
-                            }
+                            }*/
                         }
                         $scope.unreadPrevBuffer = participantService.numberOfUnread;
                         $scope.currentTextBufferCount = participantService.numberOfUnread;
@@ -3427,7 +3436,7 @@ cbbApp.controller('stateController',
         $scope.submitMessage = function(messageID){
             $http.post('http://mothersmilk.ucdenver.edu:3000/messages/' + $scope.newMessage1.message + '/' + participantService.getLoginStatus() + '/' + messageID).
                 success(function(data, status, headers, config) {
-                    window.alert("Your response has been sent.");
+                    window.alert("Thank You! Your response has been sent.");
                     $location.path("/home");
                     $scope.messageArray = data;
                 }).
@@ -3480,9 +3489,17 @@ cbbApp.controller('stateController',
                                 participantService.setppStatus(1);
                                 $scope.setStatusCode();
                             }
+
+                            if ($scope.currentLanguage == "English") {
+                                $location.path("/home");
+                            }
+                            else if ($scope.currentLanguage == "Español") {
+                                $location.path("/spanish/home");
+                            }
+
                         }
                         else
-                            $scope.loginErrorNotification = "Compruebe la información de inicio de sesión y vuelva a intentarlo."
+                            $scope.loginErrorNotification = "Verifique la información de login y inténtalo de nuevo. "
                     }).
                     error(function(data, status, headers, config) {
                         window.alert("No se ha podido contactar con el servidor. Por favor, inténtelo de nuevo más tarde.");
@@ -3519,11 +3536,11 @@ cbbApp.controller('stateController',
                     success(function(data, status, headers, config) {
                         $scope.appsData = data;
                         if(data.status == "true"){
-                            window.alert("Has registrado correctamente. Inicia sesión para continuar");
+                            window.alert("Se ha inscrito con éxito. Por favor de hacer login para continuar.");
                             $location.path("/login");
                         }
                         else {
-                            window.alert("Existe ID de correo electrónico. Utilice una ID de correo electrónico diferente.");
+                            window.alert("Este nombre de usuario ya existe, por favor de introducir otro correo electrónico.");
                         }
                     }).
                     error(function(data, status, headers, config) {
@@ -3569,7 +3586,7 @@ cbbApp.controller('stateController',
                     $scope.messageProcessing = false;
                     $scope.messageRetrieved = false;
                 });
-                $location.path("/login");
+                $location.path("/spanish/login");
             }
             else {
 
@@ -3587,9 +3604,7 @@ cbbApp.controller('stateController',
         };
 
         $scope.getMessages = function(){
-            //window.alert("Failure");
-            //window.alert($scope.newParticipant.password);
-            //window.alert('inside getmessages');
+
             $scope.$apply(function() {
                 $scope.messageRetrieved = false;
                 $scope.messageProcessing = true;
@@ -3633,8 +3648,7 @@ cbbApp.controller('stateController',
                                     }).
                                     error(function(data, status, headers, config) {
                                         ; //window.alert("Sorry request to GCM not successful.");
-                                        // called asynchronously if an error occurs
-                                        // or server returns response with an error status.
+
                                     });
                             }
                             else if ($scope.deviceType == 'ios') {
@@ -3649,8 +3663,7 @@ cbbApp.controller('stateController',
                                     }).
                                     error(function(data, status, headers, config) {
                                         ;//window.alert("Sorry request to APN not successful.");
-                                        // called asynchronously if an error occurs
-                                        // or server returns response with an error status.
+
                                     });
                             }
                         }
@@ -3659,14 +3672,9 @@ cbbApp.controller('stateController',
                     }).
                     error(function(data, status, headers, config) {
                         window.alert("No se ha podido contactar con el servidor. Por favor, inténtelo de nuevo más tarde.");
-                        // called asynchronously if an error occurs
-                        // or server returns response with an error status.
+
                     });
-                /*$scope.getParticipants = function() {
-                 $scope.participantSvc.getParticipants().then(function(data) {
-                 $scope.participantsList = angular.fromJson(data);
-                 })
-                 }*/
+
             }
         };
 
@@ -3674,9 +3682,7 @@ cbbApp.controller('stateController',
             $scope.textMessageFlag = textMessage.ID;
             $http.post('http://mothersmilk.ucdenver.edu:3000/messages/' + participantService.getLoginStatus() + '/' + textMessage.ID).
                 success(function(data, status, headers, config) {
-                    //window.alert("hi" + $scope.newMessage1.message);
-                    //window.alert("Message Added");
-                    //$scope.messageArray[textMessage.ID-1].outb = true;
+
 
                     for(var i=0; i<$scope.messageArray.length; i++) {
                         if($scope.messageArray[i].ID == textMessage.ID) {
@@ -3685,29 +3691,23 @@ cbbApp.controller('stateController',
                         }
                         participantService.numberOfUnread =   $scope.unreadMessageCount;
                     }
-                    /*
-                     for(var s in $scope.messageArray) {
-                     if(!s.outb) $scope.unreadMessageCount += 1;
-                     }
-                     */
-                    //participantService.numberOfUnread =   $scope.unreadMessageCount;
-                    //window.alert($scope.messageArray[textMessage.ID].outb + " " + textMessage.ID);
+
                 }).
                 error(function(data, status, headers, config) {
                     ; //window.alert("Failure " + status);
                 });
-            //$scope.messageRead = !$scope.messageRead;
+
         };
 
         $scope.submitMessage = function(messageID){
             $http.post('http://mothersmilk.ucdenver.edu:3000/messages/' + $scope.newMessage1.message + '/' + participantService.getLoginStatus() + '/' + messageID).
                 success(function(data, status, headers, config) {
                     //window.alert("hi" + $scope.newMessage1.message);
-                    window.alert("El mensaje ha sido enviado.");
+                    window.alert("!Gracias! Su respuesta ha sido enviado.");
                     $scope.messageArray = data;
                 }).
                 error(function(data, status, headers, config) {
-                    window.alert("No se ha podido contactar con el servidor. Por favor, inténtelo de nuevo más tarde.");
+                    window.alert("No puede comunicarse con el servidor. Por favor de intentarlo más tarde. ");
                 });
         };
     })
@@ -3722,7 +3722,7 @@ cbbApp.controller('stateController',
         function init() {
             $scope.participantSvc = participantService;
             $scope.feedbackText = undefined;
-            //$scope.participantList = $scope.participantSvc.getAll();
+
         }
 
         /**
@@ -3739,18 +3739,40 @@ cbbApp.controller('stateController',
                     }).
                         success(function(data, status, headers, config) {
                             $scope.appsData = data;
-                            if(data == "Success")
-                                window.alert("Your feedback has been submitted.");
-                            $location.path("/home");
+                            if(data == "Success") {
+                                if ($scope.currentLanguage == "English") {
+                                    window.alert("Thank You! Your feedback has been submitted.");
+                                    $location.path("/home");
+                                }
+                                else if ($scope.currentLanguage == "Español") {
+                                    window.alert("¡Gracias! Sus comentarios fueron entregados.");
+                                    $location.path("/spanish/home");
+                                }
+                            }
+
+
                         }).
                         error(function(data, status, headers, config) {
-                            window.alert("Unable to contact server. Please try again later.");
-                            // called asynchronously if an error occurs
-                            // or server returns response with an error status.
+                            if ($scope.currentLanguage == "English") {
+                                window.alert("Unable to contact server. Please try again later.");
+                            }
+                            else if ($scope.currentLanguage == "Español") {
+                                window.alert("No puede comunicarse con el servidor. Por favor de intentarlo más tarde. ");
+                            }
+
+
                         });
                 } else {
-                    window.alert("Please login first.");
-                    $location.path("/#login");
+                    if ($scope.currentLanguage == "English") {
+                        window.alert("Please login first.");
+                        $location.path("/login");
+                    }
+                    else if ($scope.currentLanguage == "Español") {
+                        window.alert("Por favor de hacer login primero.");
+                        $location.path("/spanish/login");
+                    }
+
+
                 }
             }
         };
