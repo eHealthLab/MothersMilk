@@ -460,10 +460,10 @@ exports.sendAPN = function(req, res){
 	var id = req.params.id;
     var unreadCount = req.params.count;
 	var myDeviceID = id;
-	//var myDevice = new apn.Device(myDeviceID);
+	var myDevice = new apn.Device(myDeviceID);
 
-    var iPod = "87d23d29be406948bf1ed105e8ae8f193881711f2cd1c97b3f046d64f4cd78cb";
-    var myDevice = new apn.Device(iPod);
+    //var iPod = "87d23d29be406948bf1ed105e8ae8f193881711f2cd1c97b3f046d64f4cd78cb";
+    //var myDevice = new apn.Device(iPod);
 
 	// Instantiate a new message
 	// and set message defaults
@@ -475,7 +475,7 @@ exports.sendAPN = function(req, res){
 	note.payload = {'messageFrom': 'Mothers Milk'};
 	note.device = myDevice;
 	
-	console.log('done creating the note');
+	//console.log('done creating the note');
 	
 	var callback = function(errorNum, notification){
     	console.log('Error is: %s', errorNum);
