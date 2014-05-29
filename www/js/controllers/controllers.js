@@ -3378,7 +3378,7 @@ cbbApp.controller('stateController',
                             if($scope.messageArray[i].outb != true) { $scope.totalUnread += 1; }
                         }
                         participantService.numberOfUnread =   $scope.totalUnread;
-                        if (participantService.numberOfUnread > $scope.unreadPrevBuffer) { // $scope.currentTextBufferCount) {
+                        if (participantService.numberOfUnread > 0) { // $scope.unreadPrevBuffer) { // $scope.currentTextBufferCount) {
                             if ($scope.deviceType == 'android') {
                                 $http({method: 'POST',
                                     url: 'http://mothersmilk.ucdenver.edu:3000/sendGCM/' +
@@ -3391,12 +3391,12 @@ cbbApp.controller('stateController',
                                         ;
                                     });
                             }
-                            window.alert('send iOS notification');
-                            /*else if ($scope.deviceType == 'ios'){
+                            //window.alert('send iOS notification');
+                            else if ($scope.deviceType == 'ios'){
                                 $http({method: 'POST',
-                                    url: 'http://mothersmilk.ucdenver.edu:3000/sendAPN/'
-                                    +
-                                    $scope.regID + '/' +  participantService.numberOfUnread
+                                    url: 'http://mothersmilk.ucdenver.edu:3000/sendAPN/' +
+                                        $scope.regID + '/' +  participantService.numberOfUnread
+
                                 }).
                                     success(function(data, status, headers, config) {
 
@@ -3405,7 +3405,7 @@ cbbApp.controller('stateController',
                                     error(function(data, status, headers, config) {
                                         ;
                                     });
-                            }*/
+                            }
                         }
                         $scope.unreadPrevBuffer = participantService.numberOfUnread;
                         $scope.currentTextBufferCount = participantService.numberOfUnread;
@@ -3636,7 +3636,7 @@ cbbApp.controller('stateController',
                             }
                         }
                         participantService.numberOfUnread =   $scope.unreadMessageCount;
-                        if (participantService.numberOfUnread > $scope.unreadPrevBuffer) {
+                        if (participantService.numberOfUnread > 0) {
                             if ($scope.deviceType == 'android') {
                                 $http({method: 'POST',
                                     url: 'http://mothersmilk.ucdenver.edu:3000/sendGCM/' +
