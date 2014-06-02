@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="edu.ucdenver.mothersmilk" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Mothers Milk</name>
+    <name>Mothers' Milk Messaging</name>
     <description>
         A sample web and mobile application for the Mothers' Milk Messaging Program.
     </description>
-    <author email="agileehealth@gmail.com" href="http://phonegap.com">
+    <author email="agileehealth@gmail.com" href="http://mothersmilk.ucdenver.edu">
         Sheana Bull
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
@@ -32,8 +32,11 @@
     <icon gap:platform="blackberry" gap:state="hover" src="res/icon/blackberry/icon-80.png" />
     <icon gap:platform="ios" height="57" src="res/icon/ios/icon_57x57.png" width="57" />
     <icon gap:platform="ios" height="72" src="res/icon/ios/icon_72x72.png" width="72" />
+    <icon gap:platform="ios" height="76" src="res/icon/ios/icon_76x76.png" width="76" />
     <icon gap:platform="ios" height="114" src="res/icon/ios/icon_114x114.png" width="114" />
+    <icon gap:platform="ios" height="120" src="res/icon/ios/icon_120x120.png" width="120" />
     <icon gap:platform="ios" height="144" src="res/icon/ios/icon_144x144.png" width="144" />
+    <icon gap:platform="ios" height="152" src="res/icon/ios/icon_152x152.png" width="152" />
     <icon gap:platform="webos" src="res/icon/webos/icon-64.png" />
     <icon gap:platform="winphone" src="res/icon/windows-phone/icon-48.png" />
     <icon gap:platform="winphone" gap:role="background" src="res/icon/windows-phone/icon-173.png" />
@@ -44,6 +47,7 @@
     <gap:splash gap:platform="blackberry" src="res/screen/blackberry/screen-225.png" />
     <gap:splash gap:platform="ios" height="480" src="res/screen/ios/SpalshScreen320x480.png" width="320" />
     <gap:splash gap:platform="ios" height="960" src="res/screen/ios/SpalshScreen640x960.png" width="640" />
+    <gap:splash gap:platform="ios" height="1136" src="res/screen/ios/SpalshScreen640x1136.png" width="640" />
     <gap:splash gap:platform="ios" height="1024" src="res/screen/ios/SpalshScreen768x1004.png" width="768" />
     <gap:splash gap:platform="ios" height="768" src="res/screen/ios/SpalshScreen1024x783.png" width="1024" />
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
