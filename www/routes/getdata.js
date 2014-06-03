@@ -409,6 +409,29 @@ exports.addFeedback = function(req, res) {
     connection.end();
 };
 
+
+exports.updateClicks = function(req, res) {
+
+    var feedbackClicks = req.params.feedback;
+    var aboutUsClicks = req.params.about;
+    var facebookClicks = req.params.facebook;
+    var textClicks = req.params.text;
+    var tutorialClicks = req.params.tutorial;
+
+    if((connection = openConnection())) {
+
+        var queryString = "select * from clicks";
+        console.log(queryString);
+        connection.query(queryString, function(err, rows, fields) {
+            if (err) throw err;
+            console.log(rows[0]);
+            res.send("Success");
+        });
+    }
+    connection.end();
+
+};
+
 exports.setMessageAsRead = function (req, res) {
     var id = req.params.id;
     var messageID = req.params.messageID;

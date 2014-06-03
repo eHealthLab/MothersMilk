@@ -125,18 +125,20 @@
 
                                 <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}"
                                      ng-show="viewLanguage != 'spanish/'" >
-                                    <a href="#" onclick="window.open('https://m.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">Mothers Milk Facebook Page</a>
+                                    <a href="#" ng-click="updateFacebookClicks()"
+                                       onclick="window.open('https://m.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">Mothers Milk Facebook Page</a>
                                 </div>
 
                                 <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" ng-show="viewLanguage == 'spanish/'">
-                                    <a href="#" onclick="window.open('https://m.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">
+                                    <a href="#" ng-click="updateFacebookClicks()"
+                                       onclick="window.open('https://m.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">
                                         La Página de Facebook La Leche de Mamá
                                     </a>
                                 </div>
 
                                 <div class="{{isActive('/typeIError') && 'active'}} {{getStateTypeIError()}}"
                                      ng-show="viewLanguage != 'spanish/'" >
-                                    <a href="#/{{ viewLanguage }}text">
+                                    <a href="#/{{ viewLanguage }}text" ng-click="updateTextMessageClicks()">
 
                                         My Mothers Milk Texts
                                         <sup style="color:darkred;font-size: 1.0em;width: 1.1em;" ng-show="getTotalUnread() > 0">
@@ -149,7 +151,7 @@
 
                                 <div class="{{isActive('/typeIError') && 'active'}} {{getStateTypeIError()}}"
                                      ng-show="viewLanguage == 'spanish/'" >
-                                    <a href="#/{{ viewLanguage }}text">
+                                    <a href="#/{{ viewLanguage }}text" ng-click="updateTextMessageClicks()">
 
                                         Mis textos de La Leche de Mamá
                                         <sup style="color:darkred;font-size: 1.0em;width: 1.1em;" ng-show="getTotalUnread() > 0">
@@ -184,32 +186,44 @@
                             <div class="panel-body">
                                 <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}"
                                      ng-show="viewLanguage != 'spanish/'">
-                                    <a href="#/{{ viewLanguage }}tutorial">Learn More</a>
+                                    <a href="#/{{ viewLanguage }}tutorial" ng-click="updateTutorialClicks()">
+                                        Learn More
+                                    </a>
                                 </div>
 
                                 <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}"
                                      ng-show="viewLanguage == 'spanish/'" >
-                                    <a href="#/{{ viewLanguage }}tutorial">Aprender Más</a>
+                                    <a href="#/{{ viewLanguage }}tutorial" ng-click="updateTutorialClicks()">
+                                        Aprender Más
+                                    </a>
                                 </div>
 
                                 <div class="{{isActive('/test') && 'active'}} {{getStateStatisticalTest()}}"
                                      ng-show="viewLanguage != 'spanish/'">
-                                    <a href="#/{{ viewLanguage }}aboutUs">About Us</a>
+                                    <a href="#/{{ viewLanguage }}aboutUs" ng-click="updateAboutUsClicks()">
+                                        About Us
+                                    </a>
                                 </div>
 
                                 <div class="{{isActive('/test') && 'active'}} {{getStateStatisticalTest()}}"
                                      ng-show="viewLanguage == 'spanish/'">
-                                    <a href="#/{{ viewLanguage }}aboutUs">Todo sobre nosotros</a>
+                                    <a href="#/{{ viewLanguage }}aboutUs" ng-click="updateAboutUsClicks()">
+                                        Todo sobre nosotros
+                                    </a>
                                 </div>
 
                                 <div class="{{isActive('/test') && 'active'}} {{getStateStatisticalTest()}}"
                                      ng-show="viewLanguage != 'spanish/'">
-                                    <a href="#/{{ viewLanguage }}feedback">Feedback</a>
+                                    <a href="#/{{ viewLanguage }}feedback" ng-click="updateFeedbackClicks()">
+                                    Feedback
+                                    </a>
                                 </div>
 
                                 <div class="{{isActive('/test') && 'active'}} {{getStateStatisticalTest()}}"
                                      ng-show="viewLanguage == 'spanish/'">
-                                    <a href="#/{{ viewLanguage }}feedback">Comentarios</a>
+                                    <a href="#/{{ viewLanguage }}feedback" ng-click="updateFeedbackClicks()">
+                                    Comentarios
+                                    </a>
                                 </div>
 
                             </div>

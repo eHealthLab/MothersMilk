@@ -34,6 +34,7 @@ app.post('/feedback/:feedback', getdata.addFeedback);
 app.post('/changeStatus/:id', get.changeStatus);
 app.post('/sendGCM/:id/:count', getdata.sendGCM);
 app.post('/sendAPN/:id/:count', getdata.sendAPN);
+app.post('/updateClicks/:about/:feedback/:facebook/:text/:tutorial', getdata.updateClicks);
 
 http.createServer(app).listen(app.get('port'), "0.0.0.0", function(){
     console.log("Express server listening on port " + app.get('port'));
