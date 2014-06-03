@@ -421,8 +421,10 @@ exports.updateClicks = function(req, res) {
     if((connection = openConnection())) {
 
         var queryString = "select * from clicks";
-        console.log(queryString);
-        connection.query(queryString, function(err, rows, fields) {
+
+        var queryString2 = "update clicks set aboutUs = aboutUs + " + aboutUsClicks + ", feedback = feedback + " + feedbackClicks + ", facebook = facebook +" + facebookClicks + ", text = text +" + textClicks + ", tutorial = tutorial +" + tutorialClicks;
+        console.log(queryString2);
+        connection.query(queryString2, function(err, rows, fields) {
             if (err) throw err;
             console.log(rows[0]);
             res.send("Success");
