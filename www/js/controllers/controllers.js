@@ -283,10 +283,11 @@ cbbApp.controller('stateController',
             if ($scope.currentLanguage == "English") {
 
                 if (confirm('Are you sure you want to logout?')) {
+                    /*
                     window.alert('clicks are:' + $scope.aboutUsClicks +
                     $scope.feedbackClicks + $scope.facebookClicks + $scope.textMessageClicks +
                     $scope.tutorialClicks);
-
+                    */
                     $http({method: 'POST',
                         url: 'http://localhost:3000/updateClicks/' +
                             $scope.aboutUsClicks + '/' + $scope.feedbackClicks + '/' +
