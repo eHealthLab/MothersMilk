@@ -204,11 +204,11 @@ button:focus {
     font-family: Palatino, Arial, Helvetica, sans-serif;
     /*font-weight: bold;   */
     padding-left: 40px;
-    font-size: 1.5em;
+    font-size: 1.2em;
     line-height: 1.5em;
     background-image: url('../img/MMLogo2.jpg');
     background-repeat: no-repeat;
-    background-size: 40px 40px;
+    background-size: 32px 32px;
     background-position: 0px 4px;
     color: white;
     text-shadow: 1px 1px 2px #111;

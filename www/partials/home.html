@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <!--
 * MothersMilk
 * Copyright (C) 2013 Regents of the University of Colorado.
@@ -17,14 +18,177 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
 
-<h3>Introduction</h3>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+<link rel="alternate stylesheet" type="text/css" href="css/responsive.css" media="all">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
+</head>
+
+<body>
+
+<div ng-show="viewLanguage != 'spanish/'">
+    <h3>Introduction</h3>
+        <p>
+            Welcome to Mothers’ Milk Messaging, MMM, page!
+            Come back here to learn how MMM is helping mothers at increasing
+            exclusive and continuous breastfeeding.
+        </p>
+        <p>
+            Please click on the links to navigate. For more information
+            on how to use the application, please navigate to the <b>"About Us"</b> page under
+            <b>"Contact Us"</b> menu.
+        </p>
+</div>
+
+<div ng-show="viewLanguage == 'spanish/'">
+    <h3>Introducción</h3>
     <p>
-        Welcome to Mothers’ Milk Messaging, MMM, page!
-        Come back here to learn how MMM is helping mothers at increasing
-        exclusive and continuous breastfeeding.
+        Bienvenida a la página de La Leche de Mamá, conocido en inglés
+        con las letras MMM.  Vuelva a la pagina para aprender más como
+        MMM da consejos a las mamás para ayudar con la lactancia
+        exclusiva y prolongada.
     </p>
     <p>
-        Please click on the links above to navigate. For more information
-        on how to use the application, please navigate to the <b>"About Us"</b> page under
-        <b>"Contact Us"</b> menu.
+        Por favor de hacer clic en los enlaces arriba para navegar.
+        Para más información de como usar la aplicación por favor de
+        navegar al tema de <b>"Todo Sobre Nostoros"</b> de bajo de <b>"Contactarnos"</b>
+        en el menú.
     </p>
+</div>
+
+<a class="btn btn-mode" ng-click="resetStatus()"
+   ng-show="status == 'Waiting on baby'
+                                    || status == 'Esperando al bebé'">
+    <img src="img/pregnantmom.JPG" width="60" height="40"
+         border="15"
+         ng-show="status == 'Waiting on baby'
+                                    || status == 'Esperando al bebé'">
+    {{status}}
+</a>
+<a class="btn btn-mode"
+   ng-show="status == 'Yay! Baby is here!'
+                                    || status == '¡Ya llegó el bebé!'">
+    <img src="img/baby.JPG" width="60" height="40"
+         border="15"
+         ng-show="status == 'Yay! Baby is here!'
+                                    || status == '¡Ya llegó el bebé!'">
+    {{status}}
+</a>
+
+
+<section id="content">
+    <!-- home featured image credit: http://dribbble.com/shots/118515-Device-Icons -->
+
+
+    <nav>
+        <ul id="nlists">
+            <li class="head">Mothers' Milk Messaging</li>
+
+            <li ng-show="viewLanguage != 'spanish/'">
+                <a href="#/home"
+                   onclick="window.open('https://m.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">
+                    Mothers' Milk Facebook Page
+                </a>
+            </li>
+
+            <li ng-show="viewLanguage == 'spanish/'">
+                <a href="#/home"
+                   onclick="window.open('https://m.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">
+                    La Página de Facebook La Leche de Mamá
+                </a>
+            </li>
+
+            <li ng-show="viewLanguage != 'spanish/'">
+                <a href="#/{{ viewLanguage }}text" ng-click="updateTextMessageClicks()">
+                    My Mothers' Milk Texts
+                <sup style="color:darkred;font-size: 1.0em;width: 1.1em;" ng-show="getTotalUnread() > 0">
+                    New!
+                </sup>
+                </a>
+            </li>
+
+            <li ng-show="viewLanguage == 'spanish/'">
+                <a href="#/{{ viewLanguage }}text" ng-click="updateTextMessageClicks()">
+                    Mis textos de La Leche de Mamá
+                    <sup style="color:darkred;font-size: 1.0em;width: 1.1em;" ng-show="getTotalUnread() > 0">
+                        New!
+                    </sup>
+                </a>
+            </li>
+
+            <li class="head">Contact Us</li>
+
+            <li ng-show="viewLanguage != 'spanish/'">
+                <a href="#/{{ viewLanguage }}tutorial"
+                   ng-click="updateTutorialClicks()">
+                    Learn More
+                </a>
+            </li>
+
+            <li ng-show="viewLanguage == 'spanish/'">
+                <a href="#/{{ viewLanguage }}tutorial"
+                   ng-click="updateTutorialClicks()">
+                    Aprender Más
+                </a>
+            </li>
+
+
+            <li ng-show="viewLanguage != 'spanish/'">
+                <a href="#/{{ viewLanguage }}aboutUs"
+                   ng-click="updateAboutUsClicks()">
+                    About Us
+                </a>
+            </li>
+
+            <li ng-show="viewLanguage == 'spanish/'">
+                <a href="#/{{ viewLanguage }}aboutUs"
+                   ng-click="updateAboutUsClicks()">
+                    Todo sobre nosotros
+                </a>
+            </li>
+
+            <li ng-show="viewLanguage != 'spanish/'">
+                <a href="#/{{ viewLanguage }}feedback"
+                    ng-click="updateFeedbackClicks()">
+                    Feedback
+                </a>
+            </li>
+
+            <li ng-show="viewLanguage == 'spanish/'">
+                <a href="#/{{ viewLanguage }}feedback"
+                   ng-click="updateFeedbackClicks()">
+                   Comentarios
+                </a>
+            </li>
+
+            <li class="head">More</li>
+
+            <li ng-show="getLoginStatus() == 'false'">
+                <a href="#/home" ng-click="changeLanguage()">
+                    Change Language to {{availableLanguage}}
+                </a>
+            </li>
+
+            <li ng-show="viewLanguage != 'spanish/'">
+                <a data-ng-click="reset()">
+                    Logout
+                </a>
+            </li>
+
+            <li ng-show="viewLanguage == 'spanish/'">
+                <a data-ng-click="reset()">
+                    Cierre de sesión
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+</section>
+
+</body>
+

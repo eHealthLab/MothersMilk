@@ -70,7 +70,7 @@ cbbApp.controller('stateController',
 
             $scope.messageRetrieved = false;
 
-            $scope.loginStatus = 'false';
+            $scope.loginStatus = -1;
 
             $scope.messageProcessing = false;
 
@@ -86,7 +86,14 @@ cbbApp.controller('stateController',
 
         }
 
-        $scope.loginStatus = participantService.globalLoginStatus;
+        if (participantService.globalLoginStatus != 'false') {
+            $scope.loginStatus = 1;
+        }
+        else if (participantService.globalLoginStatus == 'false') {
+            $scope.loginStatus = -1;
+        }
+
+
 
         $scope.totalUnread = participantService.numberOfUnread;
 
@@ -289,7 +296,7 @@ cbbApp.controller('stateController',
                     $scope.tutorialClicks);
                     */
                     $http({method: 'POST',
-                        url: 'http://localhost:3000/updateClicks/' +
+                        url: 'http://mothersmilk.ucdenver.edu:3000/updateClicks/' +
                             $scope.aboutUsClicks + '/' + $scope.feedbackClicks + '/' +
                             $scope.facebookClicks + '/' +
                          $scope.textMessageClicks + '/' + $scope.tutorialClicks
@@ -309,7 +316,7 @@ cbbApp.controller('stateController',
 
                     $scope.studyDesign.reset();
                     $scope.$apply(function () {
-                        $scope.loginStatus = 'false';
+                        $scope.loginStatus = -1;
                         $scope.totalUnread = 0;
                         $scope.aboutUsClicks = 0;
                         $scope.tutorialClicks = 0;
@@ -327,7 +334,7 @@ cbbApp.controller('stateController',
                 if (confirm('Estas segura que quieres cerrar la sesión?')) {
                     $scope.studyDesign.reset();
                     $scope.$apply(function () {
-                        $scope.loginStatus = 'false';
+                        $scope.loginStatus = -1;
                         $scope.totalUnread = 0;
                     });
 
@@ -379,7 +386,7 @@ cbbApp.controller('stateController',
 
         $scope.updatePPStatusDB = function() {
             $http({method: 'POST',
-                url: 'http://localhost:3000/changeStatus/' + participantService.getLoginStatus()
+                url: 'http://mothersmilk.ucdenver.edu:3000/changeStatus/' + participantService.getLoginStatus()
             }).
                 success(function(data, status, headers, config) {
                     //window.alert("Success");
@@ -3259,7 +3266,7 @@ cbbApp.controller('stateController',
             else {
                 var email = $scope.newParticipant.email.toUpperCase();
 
-                $http.get('http://localhost:3000/loginSignup/' + email + '/' + $scope.newParticipant.password).
+                $http.get('http://mothersmilk.ucdenver.edu:3000/loginSignup/' + email + '/' + $scope.newParticipant.password).
                     success(function(data, status, headers, config) {
                         $scope.appsData = data;
                         if($scope.appsData != "false") {
@@ -3267,8 +3274,9 @@ cbbApp.controller('stateController',
                             participantService.setLoginStatus($scope.appsData[0].ID);
                             participantService.registerDate = $scope.appsData[0].registerdate;
                             //window.alert('changed to:' + participantService.globalLoginStatus);
+
                             $scope.loginStatus = participantService.globalLoginStatus;
-                            //window.alert('changed scope to:' + $scope.loginStatus);
+                            window.alert('changed scope to:' + $scope.loginStatus);
 
                             //window.alert('changed to:' + $scope.loginStatus);
                             if ($scope.appsData[0].status == 0) {
@@ -3333,7 +3341,7 @@ cbbApp.controller('stateController',
                  });
                  participantService.setLoginEmail(email);*/
                 $http({method: 'POST',
-                    url: 'http://localhost:3000/loginSignup/' +
+                    url: 'http://mothersmilk.ucdenver.edu:3000/loginSignup/' +
                         $scope.newParticipant.firstName + '/' +
                         $scope.newParticipant.lastName + '/' +
                         email + '/' +
@@ -3394,7 +3402,7 @@ cbbApp.controller('stateController',
 
             if(participantService.getLoginStatus() == "false"){
                 window.alert("Please login to view messages.");
-                $scope.loginStatus =  'false';
+                $scope.loginStatus =  -1;
                 $scope.messageProcessing = false;
                 $scope.messageRetrieved = false;
                 $location.path("/login");
@@ -3427,9 +3435,9 @@ cbbApp.controller('stateController',
                  */
             }
             else {
-                $scope.loginStatus =  'true';
+                $scope.loginStatus =  1;
                 $scope.textMessageFlag = 0;
-                $http.get('http://localhost:3000/messages/' + participantService.getLoginStatus()).
+                $http.get('http://mothersmilk.ucdenver.edu:3000/messages/' + participantService.getLoginStatus()).
                     success(function(data, status, headers, config) {
 
                         $scope.messageArray = data;
@@ -3443,7 +3451,7 @@ cbbApp.controller('stateController',
                         if (participantService.numberOfUnread > 0) { // $scope.unreadPrevBuffer) { // $scope.currentTextBufferCount) {
                             if ($scope.deviceType == 'android') {
                                 $http({method: 'POST',
-                                    url: 'http://localhost:3000/sendGCM/' +
+                                    url: 'http://mothersmilk.ucdenver.edu:3000/sendGCM/' +
                                         $scope.regID + '/' +  participantService.numberOfUnread
                                 }).
                                     success(function(data, status, headers, config) {
@@ -3456,7 +3464,7 @@ cbbApp.controller('stateController',
                             //window.alert('send iOS notification');
                             else if ($scope.deviceType == 'ios'){
                                 $http({method: 'POST',
-                                    url: 'http://localhost:3000/sendAPN/' +
+                                    url: 'http://mothersmilk.ucdenver.edu:3000/sendAPN/' +
                                         $scope.regID + '/' +  participantService.numberOfUnread
 
                                 }).
@@ -3480,7 +3488,7 @@ cbbApp.controller('stateController',
 
         $scope.textMessageSetFlag = function(textMessage){
             $scope.textMessageFlag = textMessage.ID;
-            $http.post('http://localhost:3000/messages/' + participantService.getLoginStatus() + '/' + textMessage.ID).
+            $http.post('http://mothersmilk.ucdenver.edu:3000/messages/' + participantService.getLoginStatus() + '/' + textMessage.ID).
                 success(function(data, status, headers, config) {
                     for(var i=0; i<$scope.messageArray.length; i++) {
                         if($scope.messageArray[i].ID == textMessage.ID) {
@@ -3496,7 +3504,7 @@ cbbApp.controller('stateController',
         };
 
         $scope.submitMessage = function(messageID){
-            $http.post('http://localhost:3000/messages/' + $scope.newMessage1.message + '/' + participantService.getLoginStatus() + '/' + messageID).
+            $http.post('http://mothersmilk.ucdenver.edu:3000/messages/' + $scope.newMessage1.message + '/' + participantService.getLoginStatus() + '/' + messageID).
                 success(function(data, status, headers, config) {
                     window.alert("Thank You! Your response has been sent.");
                     $location.path("/home");
@@ -3534,7 +3542,7 @@ cbbApp.controller('stateController',
             else if(!$scope.newParticipant.password) $scope.loginErrorPassword = "Introduzca su contraseña.";
             else {
                 var email = $scope.newParticipant.email.toUpperCase();
-                $http.get('http://localhost:3000/loginSignup/' + email + '/' + $scope.newParticipant.password).
+                $http.get('http://mothersmilk.ucdenver.edu:3000/loginSignup/' + email + '/' + $scope.newParticipant.password).
                     success(function(data, status, headers, config) {
                         $scope.appsData = data;
                         if($scope.appsData != "false") {
@@ -3589,7 +3597,7 @@ cbbApp.controller('stateController',
                 var email = $scope.newParticipant.email.toUpperCase();
 
                 $http({method: 'POST',
-                    url: 'http://localhost:3000/loginSignup/' +
+                    url: 'http://mothersmilk.ucdenver.edu:3000/loginSignup/' +
                         $scope.newParticipant.firstName + '/' +
                         $scope.newParticipant.lastName + '/' +
                         email + '/' +
@@ -3644,7 +3652,7 @@ cbbApp.controller('stateController',
             if(participantService.getLoginStatus() == "false"){
                 window.alert("Ingrese para ver los mensajes.");
                 $scope.$apply(function() {
-                    $scope.loginStatus =  'false';
+                    $scope.loginStatus =  -1;
                     $scope.messageProcessing = false;
                     $scope.messageRetrieved = false;
                 });
@@ -3681,10 +3689,10 @@ cbbApp.controller('stateController',
                  */
             }
             else {
-                $scope.loginStatus =  'true';
+                $scope.loginStatus =  1;
                 //$scope.messageProcessing = true;
                 $scope.textMessageFlag = 0;
-                $http.get('http://localhost:3000/messages/spanish/' + participantService.getLoginStatus()).
+                $http.get('http://mothersmilk.ucdenver.edu:3000/messages/spanish/' + participantService.getLoginStatus()).
                     success(function(data, status, headers, config) {
                         //window.alert("Success");
                         $scope.messageArray = data;
@@ -3701,7 +3709,7 @@ cbbApp.controller('stateController',
                         if (participantService.numberOfUnread > 0) {
                             if ($scope.deviceType == 'android') {
                                 $http({method: 'POST',
-                                    url: 'http://localhost:3000/sendGCM/' +
+                                    url: 'http://mothersmilk.ucdenver.edu:3000/sendGCM/' +
                                         $scope.regID + '/' + participantService.numberOfUnread
                                 }).
                                     success(function(data, status, headers, config) {
@@ -3716,7 +3724,7 @@ cbbApp.controller('stateController',
                             else if ($scope.deviceType == 'ios') {
                                 //alert('send notification for ios');
                                 $http({method: 'POST',
-                                    url: 'http://localhost:3000/sendAPN/' +
+                                    url: 'http://mothersmilk.ucdenver.edu:3000/sendAPN/' +
                                         $scope.regID + '/' + participantService.numberOfUnread
                                 }).
                                     success(function(data, status, headers, config) {
@@ -3742,7 +3750,7 @@ cbbApp.controller('stateController',
 
         $scope.textMessageSetFlag = function(textMessage){
             $scope.textMessageFlag = textMessage.ID;
-            $http.post('http://localhost:3000/messages/' + participantService.getLoginStatus() + '/' + textMessage.ID).
+            $http.post('http://mothersmilk.ucdenver.edu:3000/messages/' + participantService.getLoginStatus() + '/' + textMessage.ID).
                 success(function(data, status, headers, config) {
 
 
@@ -3762,7 +3770,7 @@ cbbApp.controller('stateController',
         };
 
         $scope.submitMessage = function(messageID){
-            $http.post('http://localhost:3000/messages/' + $scope.newMessage1.message + '/' + participantService.getLoginStatus() + '/' + messageID).
+            $http.post('http://mothersmilk.ucdenver.edu:3000/messages/' + $scope.newMessage1.message + '/' + participantService.getLoginStatus() + '/' + messageID).
                 success(function(data, status, headers, config) {
                     //window.alert("hi" + $scope.newMessage1.message);
                     window.alert("!Gracias! Su respuesta ha sido enviado.");
@@ -3796,7 +3804,7 @@ cbbApp.controller('stateController',
                 if(participantService.getLoginStatus() != "false") {
 
                     $http({method: 'POST',
-                        url: 'http://localhost:3000/feedback/' +
+                        url: 'http://mothersmilk.ucdenver.edu:3000/feedback/' +
                             $scope.feedbackText
                     }).
                         success(function(data, status, headers, config) {
@@ -3808,7 +3816,7 @@ cbbApp.controller('stateController',
                                 }
                                 else if ($scope.currentLanguage == "Español") {
                                     window.alert("¡Gracias! Sus comentarios fueron entregados.");
-                                    $location.path("/spanish/home");
+                                    $location.path("/home");
                                 }
                             }
 
@@ -3863,7 +3871,7 @@ cbbApp.controller('stateController',
             if ($scope.response != undefined) {
 
                 $http({method: 'POST',
-                    url: 'http://localhost:3000/' +
+                    url: 'http://mothersmilk.ucdenver.edu:3000/' +
                         $scope.response
                 }).
                     success(function(data, status, headers, config) {
