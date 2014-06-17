@@ -84,6 +84,16 @@ cbbApp.controller('stateController',
 
             $scope.tutorialClicks = 0;
 
+            $scope.textMessage_ID = 0;
+
+            $scope.message = 'helo';
+
+            $scope.textMessage_inflag = 0;
+
+            $scope.textMessage_inb = 0;
+
+            $scope.currentlyActive = 1;
+
         }
 
         if (participantService.globalLoginStatus != 'false') {
@@ -93,7 +103,21 @@ cbbApp.controller('stateController',
             $scope.loginStatus = -1;
         }
 
+        $scope.getTextMessageID = function() {
+            return participantService.getTextMessageID();
+        };
 
+        $scope.getMessage = function() {
+            return participantService.getMessage();
+        }
+
+        $scope.getTextMessageInFlag = function() {
+            return participantService.getTextMessageInFlag();
+        }
+
+        $scope.getTextMessageInb = function () {
+            return participantService.getTextMessageInb();
+        }
 
         $scope.totalUnread = participantService.numberOfUnread;
 
@@ -121,7 +145,7 @@ cbbApp.controller('stateController',
 
 
         $scope.getLoginStatus = function() {
-            return $scope.loginStatus;
+            return participantService.getLoginStatus();
         };
 
         $scope.getTotalUnread = function () {
@@ -3276,7 +3300,7 @@ cbbApp.controller('stateController',
                             //window.alert('changed to:' + participantService.globalLoginStatus);
 
                             $scope.loginStatus = participantService.globalLoginStatus;
-                            window.alert('changed scope to:' + $scope.loginStatus);
+                            //window.alert('changed scope to:' + $scope.loginStatus);
 
                             //window.alert('changed to:' + $scope.loginStatus);
                             if ($scope.appsData[0].status == 0) {
@@ -3289,9 +3313,11 @@ cbbApp.controller('stateController',
                             }
                             if ($scope.currentLanguage == "English") {
                                 $location.path("/home");
+                                $scope.currentlyActive = 0;
                             }
                             else if ($scope.currentLanguage == "Español") {
                                 $location.path("/spanish/home");
+                                $scope.currentlyActive = 0;
                             }
 
                         }
@@ -3435,17 +3461,18 @@ cbbApp.controller('stateController',
                  */
             }
             else {
+
                 $scope.loginStatus =  1;
                 $scope.textMessageFlag = 0;
                 $http.get('http://mothersmilk.ucdenver.edu:3000/messages/' + participantService.getLoginStatus()).
                     success(function(data, status, headers, config) {
 
-                        $scope.messageArray = data;
+                        $scope.messageArray2 = data;
 
                         $scope.messageProcessing = false;
                         $scope.messageRetrieved = true;
-                        for(var i=0; i<$scope.messageArray.length; i++) {
-                            if($scope.messageArray[i].outb != true) { $scope.totalUnread += 1; }
+                        for(var i=0; i<$scope.messageArray2.length; i++) {
+                            if($scope.messageArray2[i].outb != true) { $scope.totalUnread += 1; }
                         }
                         participantService.numberOfUnread =   $scope.totalUnread;
                         if (participantService.numberOfUnread > 0) { // $scope.unreadPrevBuffer) { // $scope.currentTextBufferCount) {
@@ -3479,6 +3506,7 @@ cbbApp.controller('stateController',
                         }
                         $scope.unreadPrevBuffer = participantService.numberOfUnread;
                         $scope.currentTextBufferCount = participantService.numberOfUnread;
+                        $scope.messageArray = $scope.messageArray2;
                     }).
                     error(function(data, status, headers, config) {
                         window.alert("Unable to contact server. Please try again later.");
@@ -3487,7 +3515,21 @@ cbbApp.controller('stateController',
         };
 
         $scope.textMessageSetFlag = function(textMessage){
+
+            participantService.textMessage_ID = textMessage.ID;
+            participantService.message = textMessage.message;
+            participantService.textMessage_inflag = textMessage.inflag;
+            participantService.textMessage_inb = textMessage.inb;
+
+
             $scope.textMessageFlag = textMessage.ID;
+
+            /* window.alert('values are:' + participantService.getTextMessageID() +
+                participantService.getMessage() +
+                participantService.getTextMessageInFlag() +
+                participantService.getTextMessageInb());
+            */
+
             $http.post('http://mothersmilk.ucdenver.edu:3000/messages/' + participantService.getLoginStatus() + '/' + textMessage.ID).
                 success(function(data, status, headers, config) {
                     for(var i=0; i<$scope.messageArray.length; i++) {
@@ -3749,6 +3791,13 @@ cbbApp.controller('stateController',
         };
 
         $scope.textMessageSetFlag = function(textMessage){
+
+            participantService.textMessage_ID = textMessage.ID;
+            participantService.message = textMessage.message;
+            participantService.textMessage_inflag = textMessage.inflag;
+            participantService.textMessage_inb = textMessage.inb;
+
+
             $scope.textMessageFlag = textMessage.ID;
             $http.post('http://mothersmilk.ucdenver.edu:3000/messages/' + participantService.getLoginStatus() + '/' + textMessage.ID).
                 success(function(data, status, headers, config) {

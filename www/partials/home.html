@@ -31,6 +31,12 @@
 
 <body>
 
+<!--
+<a class="button back" href="#/home" ng-show="getLoginStatus()">
+    Back
+</a>
+-->
+
 <div ng-show="viewLanguage != 'spanish/'">
     <h3>Introduction</h3>
         <p>
@@ -87,7 +93,14 @@
 
     <nav>
         <ul id="nlists">
-            <li class="head">Mothers' Milk Messaging</li>
+            <li class="head" ng-show="viewLanguage != 'spanish/'">
+                Mothers' Milk Messaging
+            </li>
+
+            <li class="head" ng-show="viewLanguage == 'spanish/'">
+                Mensajes de La Leche de Mamá
+            </li>
+
 
             <li ng-show="viewLanguage != 'spanish/'">
                 <a href="#/home"
@@ -99,7 +112,7 @@
             <li ng-show="viewLanguage == 'spanish/'">
                 <a href="#/home"
                    onclick="window.open('https://m.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">
-                    La Página de Facebook La Leche de Mamá
+                    Madres Leche página de Facebook
                 </a>
             </li>
 
@@ -121,7 +134,13 @@
                 </a>
             </li>
 
-            <li class="head">Contact Us</li>
+            <li class="head" ng-show="viewLanguage != 'spanish/'">
+                Contact Us
+            </li>
+
+            <li class="head" ng-show="viewLanguage == 'spanish/'">
+                Contactarnos
+            </li>
 
             <li ng-show="viewLanguage != 'spanish/'">
                 <a href="#/{{ viewLanguage }}tutorial"
@@ -166,13 +185,21 @@
                 </a>
             </li>
 
-            <li class="head">More</li>
+            <li class="head" ng-show="viewLanguage != 'spanish/'">
+                More
+            </li>
 
-            <li ng-show="getLoginStatus() == 'false'">
+            <li class="head" ng-show="viewLanguage == 'spanish/'">
+                Más cosas
+            </li>
+
+            <li>
                 <a href="#/home" ng-click="changeLanguage()">
                     Change Language to {{availableLanguage}}
                 </a>
             </li>
+
+
 
             <li ng-show="viewLanguage != 'spanish/'">
                 <a data-ng-click="reset()">

@@ -21,36 +21,445 @@
 <head>
     <title></title>
 </head>
+
+<style>
+table, td, th
+{
+    border:1px solid green;
+    width: 90%;
+    height: 38px; margin-bottom: 18px;
+
+}
+th
+{
+    background: none repeat scroll 0% 0% rgb(93, 198, 139);
+    color:white;
+    text-align: center;
+}
+a{
+    text-decoration:none;
+
+}
+p.header{
+    margin: 0px 0px 19px 0px;
+    padding: 10px 0px 14px 99px;
+    background-color: rgb(59, 166, 233);
+    border-bottom: 1px none;
+    width: 261px;
+    color:white;
+    font: 12px;
+
+}
+
+
+th
+{
+    background: none repeat scroll 0% 0% rgb(93, 198, 139);
+    color:white;
+    text-align: center;
+}
+a{
+    text-decoration:none;
+}
+
+.messageSubject{
+
+    width: 234px;
+    margin-bottom: 20px;
+    margin-top: 34px;
+    list-style: none outside none;
+    background-color: #BDE5F8;
+}
+
+.messageSubject:hover{
+    width: 234px;
+    margin-bottom: 20px;
+    margin-top: 34px;
+    list-style: none outside none;
+    background-color: #e5f8bd;
+}
+
+
+.content{
+    text-align: center;
+    border-bottom: 1px solid rgb(59, 166, 233);
+}
+.messageBody{
+    width: 263px;
+    height: 286px;
+    border: 1px solid rgb(59, 166, 233);
+}
+
+.listStyle{
+    /* font-weight:bold;*/
+    /* color: #00529B;*/
+    background:#dcddc0 url('img/cell-grey.jpg');
+    /* background: #F5FAFA; /* rgb(255, 255, 255);*/
+    border: 2.2px solid;
+    width:98%;
+    padding: 10px;
+}
+
+.listStyle:hover{
+    background:#e5f8bd;
+    width:98%;
+    padding: 10px;
+
+
+}
+
+
+.textBoxStyle{
+    width: 70%;
+    height: 134px;
+    left: 51px;
+    top: 72px;
+}
+
+.messageRead {
+    font-weight: bold;
+     color: red;
+}
+p{
+    border-radius: .5em;
+    /* color: #00529B; background-color: #BDE5F8;*/
+
+
+}
+
+.white-shadow {
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, .8) 4px, rgba(255, 255, 255, .28) 8px);
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, .8) 4px, rgba(255, 255, 255, .28) 8px);
+    background-image: -ms-linear-gradient(top, rgba(255, 255, 255, .8) 4px, rgba(255, 255, 255, .28) 8px);
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, .8) 4px, rgba(255, 255, 255, .28) 8px);
+    background-image: -linear-gradient(top, rgba(255, 255, 255, .8) 4px, rgba(255, 255, 255, .28) 8px);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, .8)) 4px, to(rgba(255, 255, 255, .28)) 8px);
+    padding: 2px 8px 4px;
+    margin: 0;
+    border-radius: 24px;
+}
+
+.text-left {
+    /* background-color: #d2d2d2;*/
+    background-color: #67c4a7;
+    background-image: -webkit-linear-gradient(top, #9da0a6, #67c4a7 17px, #e5e5e5 92%);
+    border-radius: 15px;
+    box-shadow: 2px 1px 2px rgba(0, 0, 0, 0.6);
+    font: 15px Helvetica, Arial, sans-serif;
+    margin: 1em 51% 1em 0;
+    padding: 0 4px;
+    position: relative;
+    border-width: 1px;
+    border-color: #9DA0A6 #9DA0A6 #9DA0A6 transparent;
+    border-style: solid;
+    width: 90%;
+}
+
+.text-right {
+    background-color: #a9e24c;
+    background-image: -webkit-linear-gradient(top, #309b19, #a9e24c 17px, #9bcc45 92%);
+    border-radius: 15px;
+    box-shadow: -2px 1px 2px rgba(0, 0, 0, 0.6);
+    font: 15px Helvetica, Arial, sans-serif;
+    margin: 1em 0 1em 51%;
+    padding: 0 4px;
+    position: relative;
+    border-width: 1px;
+    border-color: #309b19 transparent #309b19 #309b19;
+    border-style: solid;
+
+}
+
+.text-left:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: -1px;
+    height: 6px;
+    border-right: 14px solid #d5d5d5;
+    background: #dbe2ed;
+    -webkit-border-bottom-right-radius: 36px 18px;
+    -moz-border-radius-bottomright: 36px 18px;
+    border-bottom-right-radius: 36px 18px;
+    box-shadow: 2px 2px 2px #9da0a6;
+    -webkit-transform: translate(0, -2px);
+    -moz-transform: translate(0, -2px);
+    -ms-transform: translate(0, -2px);
+    -o-transform: translate(0, -2px);
+    transform: translate(0, -2px);
+    right: 98%;
+}
+
+.text-left:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: 0px;
+    right: 95.5%;
+    width: 28px;
+    height: 12px;
+    background: #dbe2ed;
+    -webkit-border-bottom-right-radius: 18px 12px;
+    -moz-border-radius-bottomright: 18px 12px;
+    border-bottom-right-radius: 20px 20px;
+    -webkit-transform: translate(-12px, -2px);
+    -moz-transform: translate(-12px, -2px);
+    -ms-transform: translate(-12px, -2px);
+    -o-transform: translate(-12px, -2px);
+    transform: translate(-12px, -2px);
+}
+
+.text-right:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: -1px;
+    height: 6px;
+    border-left: 14px solid #a9e24c;
+    background: #dbe2ed;
+    -webkit-border-bottom-left-radius: 36px 18px;
+    -moz-border-radius-bottomleft: 36px 18px;
+    border-bottom-left-radius: 36px 18px;
+    box-shadow: 2px 2px 2px #9da0a6;
+    -webkit-transform: translate(0, -2px);
+    -moz-transform: translate(0, -2px);
+    -ms-transform: translate(0, -2px);
+    -o-transform: translate(0, -2px);
+    transform: translate(0, -2px);
+    left: 98%;
+}
+
+.text-right:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: 0px;
+    left: 103.5%;
+    width: 28px;
+    height: 12px;
+    background: #dbe2ed;
+    -webkit-border-bottom-left-radius: 20px 12px;
+    -moz-border-radius-bottomleft: 20px 12px;
+    border-bottom-left-radius: 20px 20px;
+    -webkit-transform: translate(-12px, -2px);
+    -moz-transform: translate(-12px, -2px);
+    -ms-transform: translate(-12px, -2px);
+    -o-transform: translate(-12px, -2px);
+    transform: translate(-12px, -2px);
+}
+
+.CSSTableGenerator {
+    margin:0px;padding:0px;
+    width:100%;
+    box-shadow: 10px 10px 5px #888888;
+    border:1px solid #000000;
+
+    -moz-border-radius-bottomleft:0px;
+    -webkit-border-bottom-left-radius:0px;
+    border-bottom-left-radius:0px;
+
+    -moz-border-radius-bottomright:0px;
+    -webkit-border-bottom-right-radius:0px;
+    border-bottom-right-radius:0px;
+
+    -moz-border-radius-topright:0px;
+    -webkit-border-top-right-radius:0px;
+    border-top-right-radius:0px;
+
+    -moz-border-radius-topleft:0px;
+    -webkit-border-top-left-radius:0px;
+    border-top-left-radius:0px;
+}.CSSTableGenerator table{
+     border-collapse: collapse;
+     border-spacing: 0;
+     width:100%;
+     height:100%;
+     margin:0px;padding:0px;
+ }.CSSTableGenerator tr:last-child td:last-child {
+      -moz-border-radius-bottomright:0px;
+      -webkit-border-bottom-right-radius:0px;
+      border-bottom-right-radius:0px;
+  }
+.CSSTableGenerator table tr:first-child td:first-child {
+    -moz-border-radius-topleft:0px;
+    -webkit-border-top-left-radius:0px;
+    border-top-left-radius:0px;
+}
+.CSSTableGenerator table tr:first-child td:last-child {
+    -moz-border-radius-topright:0px;
+    -webkit-border-top-right-radius:0px;
+    border-top-right-radius:0px;
+}.CSSTableGenerator tr:last-child td:first-child{
+     -moz-border-radius-bottomleft:0px;
+     -webkit-border-bottom-left-radius:0px;
+     border-bottom-left-radius:0px;
+ }.CSSTableGenerator tr:hover td{
+      cursor: pointer;
+  }
+.CSSTableGenerator tr:nth-child(odd){ background-color:#e5e5e5; }
+.CSSTableGenerator tr:nth-child(even)    { background-color:#ffffff; }.CSSTableGenerator td{
+                                                                          vertical-align:middle;
+
+
+                                                                          border:1px solid #000000;
+                                                                          border-width:0px 1px 1px 0px;
+                                                                          text-align:left;
+                                                                          padding:7px;
+                                                                          font-size:10px;
+                                                                          font-family:Arial;
+                                                                          font-weight:normal;
+                                                                          color:#000000;
+                                                                      }.CSSTableGenerator tr:last-child td{
+                                                                           border-width:0px 1px 0px 0px;
+                                                                       }.CSSTableGenerator tr td:last-child{
+                                                                            border-width:0px 0px 1px 0px;
+                                                                        }.CSSTableGenerator tr:last-child td:last-child{
+                                                                             border-width:0px 0px 0px 0px;
+                                                                         }
+.CSSTableGenerator tr:first-child td{
+    background:-o-linear-gradient(bottom, #cccccc 5%, #b2b2b2 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #cccccc), color-stop(1, #b2b2b2) );
+    background:-moz-linear-gradient( center top, #cccccc 5%, #b2b2b2 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#cccccc", endColorstr="#b2b2b2");	background: -o-linear-gradient(top,#cccccc,b2b2b2);
+
+    background-color:#cccccc;
+    border:0px solid #000000;
+    text-align:center;
+    border-width:0px 0px 1px 1px;
+    font-size:14px;
+    font-family:Arial;
+    font-weight:bold;
+    color:#000000;
+}
+.CSSTableGenerator tr:first-child:hover td{
+    background:-o-linear-gradient(bottom, #cccccc 5%, #b2b2b2 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #cccccc), color-stop(1, #b2b2b2) );
+    background:-moz-linear-gradient( center top, #cccccc 5%, #b2b2b2 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#cccccc", endColorstr="#b2b2b2");	background: -o-linear-gradient(top,#cccccc,b2b2b2);
+
+    background-color:#cccccc;
+}
+.CSSTableGenerator tr:first-child td:first-child{
+    border-width:0px 0px 1px 0px;
+}
+.CSSTableGenerator tr:first-child td:last-child{
+    border-width:0px 0px 1px 1px;
+}
+
+#slider-text {
+    background: #ddd;
+}
+
+.custom-slider-label, .custom-slider {
+    color: #999;
+    text-shadow: #fff;
+}
+
+.custom-slider-label {
+    text-align: right;
+    display: inline-block;
+    height: 30px;
+    padding-top: 4px;
+    line-height: 2.4;
+}
+
+.custom-slider {
+    border-radius: 0;
+    border-width: 0;
+    background: #ddd;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2) inset;
+    width: 20px !important;
+}
+
+.custom-slider-element {
+    background: #eee;
+}
+
+.custom-slider-button {
+    background: url("http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/low_contrast_linen.png") repeat scroll 0 0 #fff;
+}
+
+
+
+table.imagetable {
+    font-family: verdana,arial,sans-serif;
+    font-size:11px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #999999;
+    border-collapse: collapse;
+}
+table.imagetable th {
+    background:#b5cfd2 url('cell-blue.jpg');
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #999999;
+}
+table.imagetable td {
+    background:#dcddc0 url('img/cell-grey.jpg');
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #999999;
+}
+
+/* @override http://memebro.com/css/global.css */
+
+</style>
+
+<a class="button back" href="#/text"
+   ng-show="getLoginStatus() && viewLanguage != 'spanish/'">
+    Back
+</a>
+
+<a class="button back" href="#/spanish/text"
+   ng-show="getLoginStatus() && viewLanguage == 'spanish/'">
+    Espalda
+</a>
+
 <body>
-<div class="container" ng-controller="stateController">
-<!-- Mode selection screen -->
-<div class="well shaded-box " ng-show="getMode() == undefined">
-    <h3>Welcome to Mothers’ Milk Messaging</h3>
-    <p>
-        Please either login or sign up to continue.
-    </p>
 
-    <div class="row vmargin15 hpadding0 box  rounded-box" style="border: 0;">
-        <div align="center" class="col-md-3 col-sm-3 col-xs-6">
-            <a href="#/login" class="btn btn-mode"
-               data-ng-click="setMode(cbbConstants.modeGuided)" >
-                Login
-            </a>
-        </div>
+<div class="well">
+    <div class="text-left" >
+
+        <p class="white-shadow"><b> MMM:  </b>{{ getMessage() }}</p>
     </div>
 
-    <div class="row vmargin15 hpadding0 box  rounded-box" style="border: 0;">
 
-        <div align="center" class="col-md-3 col-sm-3 col-xs-6">
-            <a href="#/signUp" class="btn btn-mode"
-               data-ng-click="setMode(cbbConstants.modeMatrix)" >
-                Sign Up
-            </a>
-        </div>
+
+    <div class="text-right" ng-show="getTextMessageInFlag() && getTextMessageInb()">
+        <p class="white-shadow" ng-show="getTextMessageInFlag() && getTextMessageInb()">
+            <b>You:</b>
+            {{ getTextMessageInb() }}
+        </p>
     </div>
 
-</div>
-</div>
+    <div ng-show="getTextMessageInFlag() && !getTextMessageInb()">
+        <div class="replyButton"
+             ng-show="getTextMessageInFlag() && !getTextMessageInb()">
+            <p></p>
+            <input type="text"  placeholder=" Limit is 250 character."
+                   ng-show="viewLanguage != 'spanish/'"
+                   maxlength="250"
+                   class="textBoxStyle" wrap="true"
+                   ng-model="newMessage1.message" ng-show="getTextMessageInFlag() && !getTextMessageInb()"
+                   value="Thank you for using MMM.  Please type your message below and hit the 'Submit' button.">
+            <button class="calculate-button"
+                    ng-click="submitMessage(getTextMessageID())" ng-hide="">Send</button>
 
+            <input type="text"  placeholder=" Limit is 250 character."
+                   ng-show="viewLanguage == 'spanish/'"
+                   maxlength="250"
+                   class="textBoxStyle" wrap="true"
+                   ng-model="newMessage1.message" ng-show="getTextMessageInFlag() && !getTextMessageInb()"
+                   value="Gracias por usar MMM. Por favor de introducir su mensaje debajo y hacer clic en el botoncito que dice “submit” para mandarlo.">
+            <button class="calculate-button"
+                    ng-click="submitMessage(getTextMessageID())" ng-hide="">Enviar</button>
+
+
+        </div>
+    </div>
+    <br ng-show="getTextMessageID() == textMessageFlag" />
+
+</div>
 </body>
 </html>

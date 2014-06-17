@@ -18,6 +18,12 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
 
+<script src="lib/bootstrap.min.js"></script>
+
+<a class="button back" href="#/home" ng-show="getLoginStatus()">
+    Back
+</a>
+
 <div class=well>
     <h3>Feedback</h3>
         <p>
@@ -28,7 +34,7 @@
 
 
     <div class=well align="center">
-        <textarea rows="6" cols="40" align="center"
+        <textarea class="form-control" rows="6" cols="40" align="center"
                 ng-model="feedbackText">
 
         </textarea>
@@ -36,6 +42,8 @@
         <a class="calculate-button"
            ng-click="sendFeedback()">Submit</a>
     </div>
+
+
 
     <!--
     <input class="form-control"

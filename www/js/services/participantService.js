@@ -37,6 +37,30 @@ cbbApp.factory('participantService', function($http, $q, cbbConstants) {
 
     participantServiceInstance.registerDate = "";
 
+    participantServiceInstance.textMessage_ID = 0;
+
+    participantServiceInstance.message = "";
+
+    participantServiceInstance.textMessage_inflag = 0;
+
+    participantServiceInstance.textMessage_inb = 0;
+
+    participantServiceInstance.getTextMessageID = function() {
+        return participantServiceInstance.textMessage_ID;
+    }
+
+    participantServiceInstance.getMessage = function() {
+        return participantServiceInstance.message;
+    }
+
+    participantServiceInstance.getTextMessageInFlag = function() {
+        return participantServiceInstance.textMessage_inflag;
+    }
+
+    participantServiceInstance.getTextMessageInb = function() {
+        return participantServiceInstance.textMessage_inb;
+    }
+
     participantServiceInstance.getRegisterDate = function() {
         return participantServiceInstance.registerDate;
     }
