@@ -17,15 +17,30 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
 
+
+<!--
+<a class="btn btn-primary" href="#/index">
+    Back
+</a>
+
 <div class=well>
 
-    <!--
-    <h3>Login</h3>
-    -->
-
     <p>
-        If you have already signed up, please enter the following information to login.
+        If you have already signed up, please click continue.
+        Otherswise, go back and sign up first.
+
     </p>
+
+    <a class="btn btn-primary"
+       data-toggle="modal" data-target="#loginModal"
+       >
+        Continue
+
+
+    </a>
+-->
+
+<div class=well>
 
     <div align="center">
         <table >
@@ -34,21 +49,7 @@
                     color: red;
                 }
             </style>
-            <!--
-            <tr>
-                <td>
-                </td>
-                <td>
-                    <a>
-                        <img src="img/54-lock.png" width="20" height="20"
-                             border="15">
-                    </a>
-                </td>
 
-
-
-            </tr>
-            -->
             <tr>
 
                 <td>
@@ -57,9 +58,11 @@
                            ng-model="newParticipant.email">
                     </input>
                 </td>
+                <!--
                 <td class="errorClassSignUp">
                     {{ loginErrorEmail }}
                 </td>
+                -->
             </tr>
             <tr>
 
@@ -69,16 +72,19 @@
                            ng-model="newParticipant.password">
                     </input>
                 </td>
+                <!--
                 <td class="errorClassSignUp">
                     {{ loginErrorPassword }}
                 </td>
+                -->
             </tr>
         </table>
-        <h6><p style="color: red">{{ loginErrorNotification }}</p></h6>
+
+
 
         <div align="center" class="col-md-12">
 
-            <a class="calculate-button"
+            <a class="btn btn-primary"
                ng-click="loginTry()">Login</a>
         </div>
 
@@ -94,16 +100,10 @@
 
     <div align="center" class="col-md-12">
 
-        <a href="#/signUp" class="calculate-button"
+        <a href="#/signUp" class="btn btn-primary"
            data-ng-click="setMode(cbbConstants.modeMatrix)">
-            Sign Up
+            Signup
         </a>
     </div>
-
-
-
-
-
-
 
 </div>

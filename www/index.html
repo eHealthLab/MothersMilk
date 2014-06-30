@@ -64,7 +64,7 @@
 <!-- header bar -->
 <nav class="navbar navbar-default" role="navigation">
 
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand">
         <label class="logo">&#160Mothers' Milk Messaging</label>
     </a>
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -301,23 +301,24 @@
         Please either login or sign up to continue.
     </p>
 
-
-    <div class="row vmargin15 hpadding0 box gray-box rounded-box" style="border: 0;">
-        <div align="center" class="col-md-3 col-sm-3 col-xs-12">
-            <a href="#/{{ viewLanguage }}login" class="btn btn-mode"
-               data-ng-click="setMode(cbbConstants.modeGuided)" >
-                Login
-            </a>
+    <div class = "well">
+        <div class="row vmargin15 hpadding0 box gray-box rounded-box" style="border: 0;">
+            <div align="center" class="col-md-3 col-sm-3 col-xs-12">
+                <a href="#/{{ viewLanguage }}login" class="btn btn-primary"
+                   data-ng-click="setMode(cbbConstants.modeGuided)" >
+                    Login
+                </a>
+            </div>
         </div>
-    </div>
 
-    <div class="row vmargin15 hpadding0 box gray-box rounded-box" style="border: 0;">
+        <div class="row vmargin15 hpadding0 box gray-box rounded-box" style="border: 0;">
 
-        <div align="center" class="col-md-3 col-sm-3 col-xs-12">
-            <a href="#/{{ viewLanguage }}signUp" class="btn btn-mode"
-               data-ng-click="setMode(cbbConstants.modeMatrix)" >
-                Sign Up
-            </a>
+            <div align="center" class="col-md-3 col-sm-3 col-xs-12">
+                <a href="#/{{ viewLanguage }}signUp" class="btn btn-primary"
+                   data-ng-click="setMode(cbbConstants.modeMatrix)" >
+                    Sign Up
+                </a>
+            </div>
         </div>
     </div>
 
@@ -369,8 +370,6 @@
         </div>
     </div>
 
-
-
     <!-- The processing dialog -->
     <div class="modal fade" id="processingDialog" tabindex="-1"
          role="dialog" aria-labelledby="processingDialogLabel" aria-hidden="{{showProcessing && false}}">
@@ -394,7 +393,6 @@
                          ng-show="messageRetrieved == false">
                         <label>Processing</label>
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">OK</button>
@@ -405,10 +403,49 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="textModal" tabindex="-1"
+     role="dialog" aria-labelledby="textModal" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body">
+            <div class="well">
+                <div class="text-left">
+                    <p class="white-shadow">
+                        <b>
+                            MMM:
+                        </b>
+                        {{ participantService.message }}
+                    </p>
+                </div>
+
+                <div class="text-right" ng-show="getTextMessageInFlag() && getTextMessageInb()
+                && getTextMessageInb() != null">
+                    <p class="white-shadow"
+                       ng-show="getTextMessageInFlag() && getTextMessageInb()
+               && getTextMessageInb() != null">
+                        <b>
+                            You:
+                        </b>
+                        {{ participantService.textMessage_inb }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-dismiss="modal"
+                    aria-hidden="true">Close</button>
+        </div>
+
+        </div>
+      </div>
+</div>
+
 
 
 <!-- footer -->
-<div>
+<div class="row">
     <div class="col-md-12 text-center vmargin15">
         <div>Copyright 2013 University of Colorado Denver. Mothers' Milk Messaging is
             released under the

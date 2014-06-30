@@ -35,6 +35,8 @@ cbbApp.controller('stateController',
             // the power service
             $scope.powerService = powerService;
 
+            $scope.participantService = participantService;
+
             // constants
             $scope.cbbConstants = cbbConstants;
 
@@ -86,7 +88,7 @@ cbbApp.controller('stateController',
 
             $scope.textMessage_ID = 0;
 
-            $scope.message = 'helo';
+            $scope.message = null;
 
             $scope.textMessage_inflag = 0;
 
@@ -94,7 +96,11 @@ cbbApp.controller('stateController',
 
             $scope.currentlyActive = 1;
 
+
+
         }
+
+
 
         if (participantService.globalLoginStatus != 'false') {
             $scope.loginStatus = 1;
@@ -108,7 +114,14 @@ cbbApp.controller('stateController',
         };
 
         $scope.getMessage = function() {
-            return participantService.getMessage();
+            if (participantService.getMessage() != null) {
+                return participantService.getMessage();
+            }
+            else {
+                return null;
+            }
+
+
         }
 
         $scope.getTextMessageInFlag = function() {
@@ -116,7 +129,20 @@ cbbApp.controller('stateController',
         }
 
         $scope.getTextMessageInb = function () {
-            return participantService.getTextMessageInb();
+            if (participantService.getTextMessageInb() != null) {
+                return participantService.getTextMessageInb();
+            }
+            else {
+                return null;
+            }
+        }
+
+        $scope.getMessageArray = function() {
+            return participantService.getMessageArray();
+        }
+
+        $scope.getSpanishMessageArray = function() {
+            return participantService.getSpanishMessageArray();
         }
 
         $scope.totalUnread = participantService.numberOfUnread;
@@ -3279,14 +3305,25 @@ cbbApp.controller('stateController',
 
         }
 
+
+        $scope.activateLoginModal = function() {
+            window.alert('activated');
+        };
+
         $scope.loginTry = function(){
 
             $scope.loginErrorEmail = undefined;
             $scope.loginErrorPassword = undefined;
             $scope.loginErrorNotification = undefined;
 
-            if(!$scope.newParticipant.email) $scope.loginErrorEmail = "Enter your Email.";
-            else if(!$scope.newParticipant.password) $scope.loginErrorPassword = "Enter your password.";
+            if(!$scope.newParticipant.email) {
+                $scope.loginErrorEmail = "Enter your Email.";
+                window.alert('Enter your email first');
+            }
+            else if(!$scope.newParticipant.password) {
+                $scope.loginErrorPassword = "Enter your password.";
+                window.alert('Enter your password');
+            }
             else {
                 var email = $scope.newParticipant.email.toUpperCase();
 
@@ -3321,8 +3358,11 @@ cbbApp.controller('stateController',
                             }
 
                         }
-                        else
+                        else {
                             $scope.loginErrorNotification = "Check the login information and try again."
+                            window.alert('Check the login information and try again.');
+                        }
+
                     }).
                     error(function(data, status, headers, config) {
                         window.alert("Unable to contact server. Please try again later.");
@@ -3343,12 +3383,30 @@ cbbApp.controller('stateController',
             $scope.signUpErrorNotification = undefined;
             $scope.signUpErrorPhoneNumber = undefined;
 
-            if(!$scope.newParticipant.firstName) $scope.signUpErrorFirstName = "Enter your first name.";
-            else if(!$scope.newParticipant.lastName) $scope.signUpErrorLastName = "Enter your last name.";
-            else if(!$scope.newParticipant.email) $scope.signUpErrorEmail = "Enter a valid Email.";
-            else if(!$scope.newParticipant.password) $scope.signUpErrorPassword = "Enter a password.";
-            else if($scope.newParticipant.password != $scope.newParticipant.passwordConfirm) $scope.signUpErrorNotification = "Passwords do not match. Correct them and try again.";
-            else if(!$scope.newParticipant.phoneNumber) $scope.newParticipant.phoneNumber = "Enter a valid 10 digit phone number."
+            if(!$scope.newParticipant.firstName) {
+                $scope.signUpErrorFirstName = "Enter your first name.";
+                window.alert('Enter your first name.');
+            }
+            else if(!$scope.newParticipant.lastName) {
+                $scope.signUpErrorLastName = "Enter your last name.";
+                window.alert('Enter your last name.');
+            }
+            else if(!$scope.newParticipant.email) {
+                $scope.signUpErrorEmail = "Enter a valid Email.";
+                window.alert('Enter a valid Email.');
+            }
+            else if(!$scope.newParticipant.password) {
+                $scope.signUpErrorPassword = "Enter a password.";
+                window.alert('Enter a password.');
+            }
+            else if($scope.newParticipant.password != $scope.newParticipant.passwordConfirm) {
+                $scope.signUpErrorNotification = "Passwords do not match. Correct them and try again.";
+                window.alert('Passwords do not match. Correct them and try again.');
+            }
+            else if(!$scope.newParticipant.phoneNumber) {
+                $scope.newParticipant.phoneNumber = "Enter a valid 10 digit phone number."
+                window.alert('Enter a valid 10 digit phone number.');
+            }
             else {
                 //window.alert("Entered");
                 var email = $scope.newParticipant.email.toUpperCase();
@@ -3405,9 +3463,11 @@ cbbApp.controller('stateController',
         init();
 
         function init() {
+            $scope.participantService = participantService;
             $scope.newMessage1 = {
                 message: undefined
             };
+            $scope.variableMessage;
             $scope.messageRead = true;
             $scope.unreadMessageCount = 0;
             $scope.loginTextStatus = participantService.getLoginStatus();
@@ -3461,18 +3521,20 @@ cbbApp.controller('stateController',
                  */
             }
             else {
-
                 $scope.loginStatus =  1;
                 $scope.textMessageFlag = 0;
                 $http.get('http://mothersmilk.ucdenver.edu:3000/messages/' + participantService.getLoginStatus()).
                     success(function(data, status, headers, config) {
 
-                        $scope.messageArray2 = data;
+
+                        $scope.messageArray = data;
+                        participantService.messageArray = data;
+
 
                         $scope.messageProcessing = false;
                         $scope.messageRetrieved = true;
-                        for(var i=0; i<$scope.messageArray2.length; i++) {
-                            if($scope.messageArray2[i].outb != true) { $scope.totalUnread += 1; }
+                        for(var i=0; i<$scope.messageArray.length; i++) {
+                            if($scope.messageArray[i].outb != true) { $scope.totalUnread += 1; }
                         }
                         participantService.numberOfUnread =   $scope.totalUnread;
                         if (participantService.numberOfUnread > 0) { // $scope.unreadPrevBuffer) { // $scope.currentTextBufferCount) {
@@ -3506,7 +3568,9 @@ cbbApp.controller('stateController',
                         }
                         $scope.unreadPrevBuffer = participantService.numberOfUnread;
                         $scope.currentTextBufferCount = participantService.numberOfUnread;
-                        $scope.messageArray = $scope.messageArray2;
+
+                        //$scope.messageArray = $scope.messageArray2;
+                        //window.alert($scope.messageArray2);
                     }).
                     error(function(data, status, headers, config) {
                         window.alert("Unable to contact server. Please try again later.");
@@ -3516,10 +3580,15 @@ cbbApp.controller('stateController',
 
         $scope.textMessageSetFlag = function(textMessage){
 
-            participantService.textMessage_ID = textMessage.ID;
-            participantService.message = textMessage.message;
-            participantService.textMessage_inflag = textMessage.inflag;
-            participantService.textMessage_inb = textMessage.inb;
+            //window.alert('in');
+                $scope.message = textMessage.message;
+                $scope.participantService.textMessage_ID = textMessage.ID;
+                $scope.participantService.message = textMessage.message;
+                $scope.participantService.textMessage_inflag = textMessage.inflag;
+                $scope.participantService.textMessage_inb = textMessage.inb;
+
+
+            //window.alert($scope.variableMessage);
 
 
             $scope.textMessageFlag = textMessage.ID;
@@ -3737,7 +3806,10 @@ cbbApp.controller('stateController',
                 $http.get('http://mothersmilk.ucdenver.edu:3000/messages/spanish/' + participantService.getLoginStatus()).
                     success(function(data, status, headers, config) {
                         //window.alert("Success");
+
                         $scope.messageArray = data;
+                        participantService.spanishMessageArray = data;
+
                         $scope.$apply(function() {
                             $scope.messageRetrieved = true;
                             $scope.messageProcessing = false;
@@ -3792,11 +3864,18 @@ cbbApp.controller('stateController',
 
         $scope.textMessageSetFlag = function(textMessage){
 
-            participantService.textMessage_ID = textMessage.ID;
-            participantService.message = textMessage.message;
-            participantService.textMessage_inflag = textMessage.inflag;
-            participantService.textMessage_inb = textMessage.inb;
+            $scope.message = textMessage.message;
+            $scope.participantService.textMessage_ID = textMessage.ID;
+            $scope.participantService.message = textMessage.message;
+            $scope.participantService.textMessage_inflag = textMessage.inflag;
+            $scope.participantService.textMessage_inb = textMessage.inb;
 
+            $scope.$apply(function() {
+                $scope.textMessage_ID =  textMessage.ID;
+                $scope.message = textMessage.message;
+                $scope.textMessage_inflag = textMessage.inflag;
+                $scope.textMessage_inb = textMessage.inb;
+            });
 
             $scope.textMessageFlag = textMessage.ID;
             $http.post('http://mothersmilk.ucdenver.edu:3000/messages/' + participantService.getLoginStatus() + '/' + textMessage.ID).

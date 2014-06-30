@@ -17,11 +17,37 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
 
-<h3>Youtube Screen</h3>
-<p>
-    CBB youtube channel
-</p>
 
+<!-- Mode selection screen -->
+<div class="well shaded-box ">
+    <h4>Welcome to Mothers’ Milk Messaging</h4>
+    <p>
+        Please either login or sign up to continue.
+    </p>
+
+    <div class = "well">
+        <div class="row vmargin15 hpadding0 box gray-box rounded-box" style="border: 0;">
+            <div align="center" class="col-md-3 col-sm-3 col-xs-12">
+                <a class="btn btn-primary"
+                   data-toggle="modal" data-target="#loginModal"
+                   data-ng-click="setMode(cbbConstants.modeGuided)" >
+                    Login
+                </a>
+            </div>
+        </div>
+
+        <div class="row vmargin15 hpadding0 box gray-box rounded-box" style="border: 0;">
+
+            <div align="center" class="col-md-3 col-sm-3 col-xs-12">
+                <a href="#/{{ viewLanguage }}signUp" class="btn btn-primary"
+                   data-ng-click="setMode(cbbConstants.modeMatrix)" >
+                    Sign Up
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
 
 
 

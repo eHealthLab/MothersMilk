@@ -22,6 +22,9 @@
 
 <!--<div ng-show="glimmpseConstants.debug == true">{{studyDesign.alphaList}}</div>-->
 
+
+<html lang="en">
+
 <head>
 
     <meta charset="utf-8">
@@ -32,15 +35,6 @@
     <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 
 </head>
-
-<a class="button back" href="#/home" ng-show="getLoginStatus()">
-    Espalda
-</a>
-
-<html lang="es">
-<div class="well">
-
-    <div ng-init="updateMessages()">
 
     <style>
         table, td, th
@@ -161,18 +155,18 @@
 
         .text-left {
             /* background-color: #d2d2d2;*/
-            background-color: #67c4a7;
-            background-image: -webkit-linear-gradient(top, #9da0a6, #67c4a7 17px, #e5e5e5 92%);
+            background-color: #ffffff;
+            background-image: -webkit-linear-gradient(top, #9da0a6, #ffffff 17px, #e5e5e5 92%);
             border-radius: 15px;
             box-shadow: 2px 1px 2px rgba(0, 0, 0, 0.6);
-            font: 15px Helvetica, Arial, sans-serif;
+            font: 8px Helvetica, Arial, sans-serif;
             margin: 1em 51% 1em 0;
             padding: 0 4px;
             position: relative;
             border-width: 1px;
             border-color: #9DA0A6 #9DA0A6 #9DA0A6 transparent;
             border-style: solid;
-            width: 90%;
+            width: 98%;
         }
 
         .text-right {
@@ -180,7 +174,7 @@
             background-image: -webkit-linear-gradient(top, #309b19, #a9e24c 17px, #9bcc45 92%);
             border-radius: 15px;
             box-shadow: -2px 1px 2px rgba(0, 0, 0, 0.6);
-            font: 15px Helvetica, Arial, sans-serif;
+            font: 8px Helvetica, Arial, sans-serif;
             margin: 1em 0 1em 51%;
             padding: 0 4px;
             position: relative;
@@ -428,39 +422,52 @@
 
 <body>
 
-    <section id="content">
-    <!-- home featured image credit: http://dribbble.com/shots/118515-Device-Icons -->
+    <a class="btn btn-primary" href="#/home" ng-show="getLoginStatus()">
+        Espalda
+    </a>
 
-        <p>
-            Favor de hacer clic en el tema del
-            mensaje para mostrar el texto correspondiente.
-        </p>
+    <html lang="es">
+    <div class="well">
 
-        <nav>
-            <ul id="nlists">
-                <li class="head">Mensajes de texto</li>
+        <div ng-init="updateMessages()">
 
-                <li ng-repeat="textMessage in messageArray"
-                    ng-click="textMessageSetFlag(textMessage)"
-                    ng-show="textMessage.directmessage">
+            <section id="content">
+            <!-- home featured image credit: http://dribbble.com/shots/118515-Device-Icons -->
 
-                    <a href="#/loginSignUp" ng-show = "textMessage.outb">
-                        Subject: {{ textMessage.subject }}
-                    </a>
+                <p>
+                    Favor de hacer clic en el tema del
+                    mensaje para mostrar el texto correspondiente.
+                </p>
 
-                    <a href="#/loginSignUp" style="color:#FF0080"
-                       ng-show= "!textMessage.outb">
-                        tema: {{ textMessage.subject }}
-                        <sup style="color:#FF0080;font-size: 1.0em;"
-                             ng-show= "!textMessage.outb">
-                            Nuevo!
-                        </sup>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </section>
+                <nav>
+                    <ul id="nlists">
+                        <li class="head">Mensajes de texto</li>
+
+                        <li ng-repeat="textMessage in getSpanishMessageArray()"
+                            ng-click="textMessageSetFlag(textMessage)"
+                            ng-show="textMessage.directmessage">
+                            <a href="#/spanish/text"
+                               data-toggle="modal" data-target="#textModal"
+                               ng-click="textMessageSetFlag(textMessage)">
+
+                                {{ textMessage.subject }}
+                                <sup style="color:#FF0080;font-size: 1.0em;"
+                                     ng-show= "!textMessage.outb">
+                                    Nuevo!
+                                </sup>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+        </div>
+
+    </div>
+
+
+
 </body>
+</html>
 
 
 

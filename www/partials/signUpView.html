@@ -38,9 +38,11 @@
                            ng-model="newParticipant.firstName">
                     </input>
                 </td>
+                <!--
                 <td class="errorClassSignUp">
                     {{ signUpErrorFirstName }}
                 </td>
+                -->
             </tr>
 
             <tr>
@@ -50,9 +52,11 @@
                            ng-model="newParticipant.lastName">
                     </input>
                 </td>
+                <!--
                 <td class="errorClassSignUp">
                     {{ signUpErrorLastName }}
                 </td>
+                -->
             </tr>
 
             <tr>
@@ -62,9 +66,11 @@
                            ng-model="newParticipant.email">
                     </input>
                 </td>
+                <!--
                 <td class="errorClassSignUp">
                     {{ signUpErrorEmail }}
                 </td>
+                -->
             </tr>
 
             <tr>
@@ -74,9 +80,11 @@
                            ng-model="newParticipant.password">
                     </input>
                 </td>
+                <!--
                 <td class="errorClassSignUp">
                     {{ signUpErrorPassword }}
                 </td>
+                -->
             </tr>
 
             <tr>
@@ -95,17 +103,19 @@
                            ng-model="newParticipant.phoneNumber">
                     </input>
                 </td>
+                <!--
                 <td class="errorClassSignUp">
                     {{ signUpErrorPhoneNumber }}
                 </td>
+                -->
             </tr>
         </table>
 
-        <h6><p  class="errorClassSignUp">{{ signUpErrorNotification }}</p></h6>
+
 
         <div align="center" class="col-md-12">
-            <a class="calculate-button" href=""
-               ng-click="signupTry()">Sign Up</a>
+            <a class="btn btn-primary" href=""
+               ng-click="signupTry()">Signup</a>
         </div>
 
     </div>
@@ -120,7 +130,7 @@
 
     <div align="center" class="col-md-12">
 
-        <a href="#/login" class="calculate-button"
+        <a href="#/login" class="btn btn-primary"
            data-ng-click="setMode(cbbConstants.modeMatrix)">
             Login
         </a>

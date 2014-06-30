@@ -119,7 +119,11 @@ var cbbApp = angular.module('cbb', ['ui.bootstrap','ngGrid', 'highcharts-ng'])
 
 
             .when('/loginSignUp',
-            {templateUrl: 'partials/loginSignupView.html'}
+            {templateUrl: 'partials/loginSignupView.html', controller: 'contactInfoController'}
+        )
+
+            .when('/index',
+            {templateUrl: 'index.html', controller: 'participantsController' }
         )
             .when('/home',
             {templateUrl: 'partials/home.html'}
@@ -137,7 +141,7 @@ var cbbApp = angular.module('cbb', ['ui.bootstrap','ngGrid', 'highcharts-ng'])
             {templateUrl: 'partials/facebookView.html', controller: 'solutionTypeController' }
         )
             .when('/youtube',
-            {templateUrl: 'partials/youtubeView.html', controller: 'nominalPowerController' }
+            {templateUrl: 'partials/youtubeView.html', controller: 'participantsController' }
         )
             .when('/text',
             {templateUrl: 'partials/textView.html', controller: 'contactInfoController' }

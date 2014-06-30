@@ -141,8 +141,8 @@ p{
 
 .text-left {
     /* background-color: #d2d2d2;*/
-    background-color: #67c4a7;
-    background-image: -webkit-linear-gradient(top, #9da0a6, #67c4a7 17px, #e5e5e5 92%);
+    background-color: #ffffff;
+    background-image: -webkit-linear-gradient(top, #9da0a6, #ffffff 17px, #e5e5e5 92%);
     border-radius: 15px;
     box-shadow: 2px 1px 2px rgba(0, 0, 0, 0.6);
     font: 15px Helvetica, Arial, sans-serif;
@@ -406,12 +406,12 @@ table.imagetable td {
 
 </style>
 
-<a class="button back" href="#/text"
+<a class="btn btn-primary" href="#/text"
    ng-show="getLoginStatus() && viewLanguage != 'spanish/'">
     Back
 </a>
 
-<a class="button back" href="#/spanish/text"
+<a class="btn btn-primary" href="#/spanish/text"
    ng-show="getLoginStatus() && viewLanguage == 'spanish/'">
     Espalda
 </a>
@@ -419,17 +419,27 @@ table.imagetable td {
 <body>
 
 <div class="well">
-    <div class="text-left" >
+    <div class="text-left">
 
-        <p class="white-shadow"><b> MMM:  </b>{{ getMessage() }}</p>
+        <p class="white-shadow">
+            <b>
+                MMM:
+            </b>
+             {{ message }}
+        </p>
     </div>
 
 
 
-    <div class="text-right" ng-show="getTextMessageInFlag() && getTextMessageInb()">
-        <p class="white-shadow" ng-show="getTextMessageInFlag() && getTextMessageInb()">
-            <b>You:</b>
-            {{ getTextMessageInb() }}
+    <div class="text-right" ng-show="getTextMessageInFlag() && getTextMessageInb()
+    && getTextMessageInb() != null">
+        <p class="white-shadow"
+           ng-show="getTextMessageInFlag() && getTextMessageInb() &&
+           && getTextMessageInb() != null">
+            <b>
+                You:
+            </b>
+            {{ participantService.textMessage_inb }}
         </p>
     </div>
 
@@ -443,7 +453,8 @@ table.imagetable td {
                    class="textBoxStyle" wrap="true"
                    ng-model="newMessage1.message" ng-show="getTextMessageInFlag() && !getTextMessageInb()"
                    value="Thank you for using MMM.  Please type your message below and hit the 'Submit' button.">
-            <button class="calculate-button"
+            <button class="btn btn-primary"
+                    ng-show="viewLanguage != 'spanish/'"
                     ng-click="submitMessage(getTextMessageID())" ng-hide="">Send</button>
 
             <input type="text"  placeholder=" Limit is 250 character."
@@ -452,7 +463,8 @@ table.imagetable td {
                    class="textBoxStyle" wrap="true"
                    ng-model="newMessage1.message" ng-show="getTextMessageInFlag() && !getTextMessageInb()"
                    value="Gracias por usar MMM. Por favor de introducir su mensaje debajo y hacer clic en el botoncito que dice “submit” para mandarlo.">
-            <button class="calculate-button"
+            <button class="btn btn-primary"
+                    ng-show="viewLanguage == 'spanish/'"
                     ng-click="submitMessage(getTextMessageID())" ng-hide="">Enviar</button>
 
 

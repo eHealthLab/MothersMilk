@@ -17,6 +17,9 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
+
+<html lang="en">
+
 <head>
 
     <meta charset="utf-8">
@@ -28,13 +31,7 @@
 
 </head>
 
-<a class="button back" href="#/home" ng-show="getLoginStatus()">
-    Back
-</a>
 
-<html lang="es">
-<div class="well">
-<div ng-init="updateMessages()">
 
     <style>
         table, td, th
@@ -155,18 +152,18 @@
 
         .text-left {
             /* background-color: #d2d2d2;*/
-            background-color: #67c4a7;
-            background-image: -webkit-linear-gradient(top, #9da0a6, #67c4a7 17px, #e5e5e5 92%);
+            background-color: #ffffff;
+            background-image: -webkit-linear-gradient(top, #9da0a6, #ffffff 17px, #e5e5e5 92%);
             border-radius: 15px;
             box-shadow: 2px 1px 2px rgba(0, 0, 0, 0.6);
-            font: 15px Helvetica, Arial, sans-serif;
+            font: 8px Helvetica, Arial, sans-serif;
             margin: 1em 51% 1em 0;
             padding: 0 4px;
             position: relative;
             border-width: 1px;
             border-color: #9DA0A6 #9DA0A6 #9DA0A6 transparent;
             border-style: solid;
-            width: 90%;
+            width: 98%;
         }
 
         .text-right {
@@ -174,7 +171,7 @@
             background-image: -webkit-linear-gradient(top, #309b19, #a9e24c 17px, #9bcc45 92%);
             border-radius: 15px;
             box-shadow: -2px 1px 2px rgba(0, 0, 0, 0.6);
-            font: 15px Helvetica, Arial, sans-serif;
+            font: 8px Helvetica, Arial, sans-serif;
             margin: 1em 0 1em 51%;
             padding: 0 4px;
             position: relative;
@@ -261,6 +258,7 @@
             -o-transform: translate(-12px, -2px);
             transform: translate(-12px, -2px);
         }
+
 
         .CSSTableGenerator {
             margin:0px;padding:0px;
@@ -422,37 +420,49 @@
 
 <body>
 
-    <section id="content">
-        <!-- home featured image credit: http://dribbble.com/shots/118515-Device-Icons -->
+    <a class="btn btn-primary" href="#/home" ng-show="getLoginStatus()">
+        Back
+    </a>
 
-        <p>
-            Please click on a subject line to display the corresponding
-            Mothers' Milk message.
-        </p>
-        <nav>
-            <ul id="nlists">
-                <li class="head">Text Messages</li>
-                <li ng-repeat="textMessage in messageArray"
-                    ng-click="textMessageSetFlag(textMessage)"
-                    ng-show="textMessage.directmessage">
 
-                    <a href="#/loginSignUp" ng-show = "textMessage.outb">
-                        Subject: {{ textMessage.subject }}
-                    </a>
+    <div class="well">
+        <div ng-init="updateMessages()">
 
-                    <a href="#/loginSignUp" style="font-weight:bold"
-                       ng-show= "!textMessage.outb">
-                        Subject: {{ textMessage.subject }}
-                        <sup style="color:#FF0080;font-size: 1.0em;"
-                             ng-show= "!textMessage.outb">
-                        New!
-                    </sup>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </section>
+            <section id="content">
+                <p>
+                    Please click on a subject line to display the corresponding
+                    Mothers' Milk message.
+                </p>
+                    <nav>
+                        <ul id="nlists">
+                            <li class="head"><b>Text Messages</b></li>
+                            <li ng-repeat="textMessage in getMessageArray()"
+                                ng-click="textMessageSetFlag(textMessage)"
+                                ng-show="textMessage.directmessage">
+
+                                <a href="#/text"
+                                   data-toggle="modal" data-target="#textModal"
+                                   ng-click="textMessageSetFlag(textMessage)">
+                                    {{ textMessage.subject }}
+                                    <sup style="color:#FF0080;font-size: 1.0em;"
+                                         ng-show= "!textMessage.outb">
+                                            New!
+                                    </sup>
+
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+            </section>
+        </div>
+
+    </div>
+
+
+
 </body>
+</html>
+
 
     <!--
 
@@ -519,6 +529,3 @@
 </div>
 -->
 
-</div>
-
-</div>
