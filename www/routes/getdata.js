@@ -398,6 +398,9 @@ exports.addMessage = function(req, res) {
 exports.addFeedback = function(req, res) {
 	
     var feedback = req.params.feedback;
+    var lsRegExp = /'/g;
+
+    feedback = String(feedback).replace(lsRegExp, "''");
     if((connection = openConnection())) {
 		
         var queryString = "insert into feedback (feedback) values('" + feedback + "')";
@@ -434,6 +437,9 @@ exports.updateClicks = function(req, res) {
 
 exports.setMessageAsRead = function (req, res) {
     var id = req.params.id;
+    var lsRegExp = /'/g;
+
+    id = String(id).replace(lsRegExp, "''");
     var messageID = req.params.messageID;
     if((connection = openConnection())) {
         var queryString = "update user" + id + " set outb = true where ID = " + messageID;
@@ -517,17 +523,9 @@ exports.sendAPN = function(req, res){
     cacheLength: 100                  
 };
 	
-	//console.log('right before creating apnsconnection');
-	
 	var apnsConnection = new apn.Connection(options);
-	
-	//console.log('done creating apnsconnection');
-	
-	// Send the message
-	//apnsConnection.sendNotification(note);
+
     apnsConnection.pushNotification(note, myDevice);
-	
-	//console.log('after the send notification');
 	    
 };
 

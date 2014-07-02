@@ -21,6 +21,10 @@ exports.all = function(req, res){
 exports.one = function(req, res){
     var id = req.params.id;
     var pwd = req.params.pwd;
+    var lsRegExp = /'/g;
+
+    //id = String(id).replace(lsRegExp, "''");
+    //pwd = String(pwd).replace(lsRegExp, "''");
     if ((connection = openConnection())) {
         console.log("Connection Open");
         var queryString = "select * from participants where email = ?";
@@ -58,6 +62,9 @@ exports.one = function(req, res){
 
 exports.oneEmail = function(req, res) {
     var id = req.params.id;
+    var lsRegExp = /'/g;
+
+    id = String(id).replace(lsRegExp, "''");
     if((connection = openConnection())) {
         var queryString ="select * from participants where email = ?";
         connection.query(queryString, [id], function(err, rows, fields) {
@@ -92,6 +99,14 @@ exports.addUser = function(req, res){
     var email = req.params.email;
     var password = req.params.password;
     var phoneNumber = req.params.phoneNumber;
+    var lsRegExp = /'/g;
+
+    firstname = String(firstname).replace(lsRegExp, "''");
+    lastname = String(lastname).replace(lsRegExp, "''");
+    email = String(email).replace(lsRegExp, "''");
+    password =  String(password).replace(lsRegExp, "''");
+    phoneNumber = String(phoneNumber).replace(lsRegExp, "''");
+
     if((connection = openConnection())) {
 		console.log("Connection Open");
         var queryStringGet = "select * from participants where email = ?";
@@ -170,6 +185,9 @@ exports.addUser = function(req, res){
 
 exports.addFeedback = function(req, res){
     var feedback = req.params.feedback;
+    var lsRegExp = /'/g;
+
+    feedback = String(feedback).replace(lsRegExp, "''");
     if((connection = openConnection())) {
         var queryString = "insert into feedback values('" + feedback + "')";
         connection.query(queryString, function(err, rows, fields) {
