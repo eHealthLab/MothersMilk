@@ -430,6 +430,20 @@
                         {{ participantService.textMessage_inb }}
                     </p>
                 </div>
+
+                    <input type="text"  placeholder=" Limit is 250 character."
+                           ng-show="getTextMessageInFlag() && !getTextMessageInb()"
+                           maxlength="250"
+                           class="textBoxStyle" wrap="true"
+                           ng-model="newMessage1.message"
+                           value="Thank you for using MMMM.
+                            Please type your message below and hit the 'Submit' button.">
+                    <button class="btn btn-primary" ng-click="submitMessage()"
+                            ng-hide="" ng-show="getTextMessageInFlag() && !getTextMessageInb()">
+                           Send
+                    </button>
+
+
             </div>
         </div>
 
