@@ -3365,6 +3365,7 @@ cbbApp.controller('stateController',
 
                     }).
                     error(function(data, status, headers, config) {
+                        window.alert("sorry, error");
                         window.alert("Unable to contact server. Please try again later.");
 
                     });
