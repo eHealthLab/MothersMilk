@@ -22,11 +22,12 @@
 
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
-<link rel="alternate stylesheet" type="text/css" href="css/responsive.css" media="all">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all">
+<link rel="alternate stylesheet" type="text/css" href="../css/responsive.css" media="all">
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 
+    <link type="text/css" rel="stylesheet" href="../css/mothersmilk.css">
 </head>
 
 <body>
@@ -37,19 +38,8 @@
 </a>
 -->
 
-<div ng-show="viewLanguage != 'spanish/'">
-    <h3>Introduction</h3>
-        <p>
-            Welcome to Mothers’ Milk Messaging, MMM, page!
-            Come back here to learn how MMM is helping mothers at increasing
-            exclusive and continuous breastfeeding.
-        </p>
-        <p>
-            Please click on the links to navigate. For more information
-            on how to use the application, please navigate to the <b>"About Us"</b> page under
-            <b>"Contact Us"</b> menu.
-        </p>
-</div>
+
+
 
 <div ng-show="viewLanguage == 'spanish/'">
     <h3>Introducción</h3>
@@ -67,30 +57,209 @@
     </p>
 </div>
 
-<a class="btn btn-mode" ng-click="resetStatus()"
-   ng-show="status == 'Waiting on baby'
-                                    || status == 'Esperando al bebé'">
-    <img src="img/pregnantmom.JPG" width="60" height="40"
-         border="15"
-         ng-show="status == 'Waiting on baby'
-                                    || status == 'Esperando al bebé'">
-    {{status}}
-</a>
-<a class="btn btn-mode"
-   ng-show="status == 'Yay! Baby is here!'
-                                    || status == '¡Ya llegó el bebé!'">
-    <img src="img/baby.JPG" width="60" height="40"
-         border="15"
-         ng-show="status == 'Yay! Baby is here!'
-                                    || status == '¡Ya llegó el bebé!'">
-    {{status}}
-</a>
 
+<!--<div align="center" ng-show="getLoginStatus()">-->
 
-<section id="content">
-    <!-- home featured image credit: http://dribbble.com/shots/118515-Device-Icons -->
+        <table align="center" ng-show="getLoginStatus()">
+            <tr>
+                <td align="center">
+                    <a href="#/goals">
+                            <span class="btn btn-lima btn-circle btn-xl">
+                                <i style="margin-top: 5px" class="glyphicon glyphicon-hand-right"></i>
+                            </span>
+                    </a>
+                </td>
+                <td width="70px">
+                </td>
+                <td>
+                </td>
+                <td align="center">
+                    <a href="#/dashboard" ng-click="updateFacebookClicks()"
+                       onclick="window.open('https://m.facebook.com/coloradoBrightBeginnings',
+                           '_blank', 'location=yes')">
 
+                            <span class="btn btn-mike
+                            btn-circle btn-xl">
+                                <i style="margin-top: 10px" class="fa fa-facebook"></i>
+                            </span>
+                    </a>
+                </td>
+            </tr>
 
+            <tr>
+                <td align="center">
+                    <strong>Set Goals</strong>
+                </td>
+                <td  width="70px">
+
+                </td>
+                <td>
+
+                </td>
+                <td align="center">
+                    <strong>Facebook</strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <a href="#/badges">
+                            <span class="btn btn-juliet btn-circle btn-xl">
+                                <img src="images/glyphish-icons/85-trophy.png" style="margin-top: 10px"></i>
+                            </span>
+                    </a>
+                </td>
+                <td width="70px">
+                </td>
+                <td>
+                </td>
+                <td align="center">
+                    <a href="#/network">
+                            <span class="btn btn-lima btn-circle btn-xl">
+                                <i class="glyphicon glyphicon-stats" style="margin-top: 5px; margin-left: -0.05px"></i>
+                            </span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <strong>Badges</strong>
+                </td>
+                <td width="70px">
+
+                </td>
+                <td>
+
+                </td>
+                <td align="center">
+                    <strong>Network</strong>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td align="center">
+                    <a href="#/minutes">
+                            <span class="btn btn-pink btn-circle btn-xl">
+                                <i style="margin-top: 8px"  class="glyphicon glyphicon-pencil" style="margin-top: 10px"></i>
+                            </span>
+                    </a>
+                </td>
+                <td width="70px">
+                </td>
+                <td>
+                </td>
+                <td align="center">
+                    <a href="#/settings">
+                            <span class="btn btn-juliet btn-circle btn-xl">
+
+                                <img src="images/settings.png" style="margin-top: 8px"  >
+                            </span>
+                    </a>
+                </td>
+
+            </tr>
+            <tr>
+                <td align="center">
+                    <strong>Log in minutes</strong>
+                </td>
+                <td width="70px">
+
+                </td>
+                <td>
+
+                </td>
+                <td align="center">
+                    <strong>Settings</strong>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+
+                </td>
+
+                <td>
+                    <a ng-click="logout()">
+                            <span class="btn btn-darkRed
+                            btn-circle btn-xl">
+                                <i style="margin-top: 8px" class="glyphicon glyphicon-log-out"></i>
+                            </span>
+                    </a>
+                </td>
+
+                <td>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+
+                </td>
+
+                <td align="center">
+                    <strong>Logout</strong>
+                </td>
+
+                <td>
+
+                </td>
+            </tr>
+
+        </table>
+    <!--</div>-->
+
+    <!--
     <nav>
         <ul id="nlists">
             <li class="head" ng-show="viewLanguage != 'spanish/'">
@@ -103,7 +272,7 @@
 
 
             <li ng-show="viewLanguage != 'spanish/'">
-                <a href="#/home"
+                <a href="#/dashboard"
                    onclick="window.open('https://m.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">
                     Mothers' Milk Facebook
                 </a>
@@ -117,11 +286,8 @@
             </li>
 
             <li ng-show="viewLanguage != 'spanish/'">
-                <a href="#/{{ viewLanguage }}text" ng-click="updateTextMessageClicks()">
-                    My Mothers' Milk Texts
-                <sup style="color:darkred;font-size: 1.0em;width: 1.1em;" ng-show="getTotalUnread() > 0">
-                    New!
-                </sup>
+                <a href="#/goals">
+                    Goals
                 </a>
             </li>
 
@@ -215,7 +381,54 @@
 
         </ul>
     </nav>
-</section>
+-->
+<!--
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#/dashboard"><span class="glyphicon glyphicon-home"></span>  Home</a></li>
+        <li><a href="#/library"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+        <li><a href="#/favorites"><span class="glyphicon glyphicon-envelope"></span> Messages</a></li>
+    </ul>
+-->
+
+
+
+
+    <div class="navbar navbar-fixed-bottom">
+        <div class="container">
+            <div class="navbar-header">
+                <div class="bs-component">
+                    <div class="btn-group btn-group-justified">
+                        <a href="#/dashboard" class="btn btn-primary btn-lg">
+                <span class="glyphicon glyphicon-th"
+                      aria-hidden="true"></span>
+
+                        </a>
+                        <a href="#/library" class="btn btn-primary" >
+                <span class="glyphicon glyphicon-envelope"
+                      aria-hidden="true"></span><sup>
+                            <span class="badge">2</span></sup>
+                        </a>
+                        <a href="#/favorites" class="btn btn-primary">
+                <span class="glyphicon glyphicon-star"
+                      aria-hidden="true"></span>
+                        </a>
+                        <a href="#/tutorial" class="btn btn-primary">
+                <span class="glyphicon glyphicon-info-sign"
+                      aria-hidden="true"></span>
+                        </a>
+                        <a href="#/about" class="btn btn-primary">
+                <span class="glyphicon glyphicon-user"
+                      aria-hidden="true"></span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--</div>-->
+
 
 </body>
 

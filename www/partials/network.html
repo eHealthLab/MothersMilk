@@ -1,0 +1,82 @@
+<!--
+* Bright by Three
+* Copyright (C) 2015 Regents of the University of Colorado.
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public License
+* as published by the Free Software Foundation; either version 2
+* of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+
+
+<div class="row hpadding5 hmargin5">
+    <div class="pull-left visible-sm visible-xs">
+        <a href="#/dashboard" class="btn btn-juliet btn-sm">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            Back
+        </a>
+    </div>
+</div>
+
+
+
+<div class="row">
+        <div class="panel panel-info">
+            <div align="center" class="panel-heading"><b>Network</b>
+            </div>
+
+            <div class="panel-body">
+
+        <!--
+        <div ng-show="totalWeeklyMinutes != undefined">
+
+            <p>
+
+                Display an image with histograms
+
+            </p>
+
+        </div>
+
+        <div ng-show="totalMonthlyMinutes != undefined">
+
+            <p>
+                Display an image with histograms
+            </p>
+
+        </div>
+        -->
+
+        <div ng-show="totalWeeklyMinutes == undefined && totalMonthlyMinutes == undefined">
+            <p>
+                Thank you for participating in the Bright by Three program. You haven't enrolled in the trial long enough to track your weekly and monthly
+                minutes against other users in the network. Information on this will be
+                displayed when you have made sufficient progress.
+            </p>
+        </div>
+
+        <!--
+        <div ng-show="totalMonthlyMinutes == undefined && totalWeeklyMinutes != undefined">
+            <p>
+                Thank you for participating in the Bright by Three program.
+                Here are the statistics on how you compare against other users in the
+                network.
+            </p>
+        </div>
+        -->
+
+    </div>
+    </div>
+
+</div>
+
+

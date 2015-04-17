@@ -1,0 +1,184 @@
+<!--
+* Bright by Three
+* Copyright (C) 2015 Regents of the University of Colorado.
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public License
+* as published by the Free Software Foundation; either version 2
+* of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+
+<div class="row hpadding5 hmargin5">
+    <div class="pull-left visible-sm visible-xs">
+        <a href="#/dashboard" class="btn btn-juliet btn-sm btn-danger">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            Back
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="panel panel-info">
+        <div align="center" class="panel-heading"><b>About Us</b>
+        </div>
+
+        <div class="panel-body">
+
+        <div id="accordion" class="panel-group">
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#/about/#collapseOne">BB3 Mission</a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>
+                            The mission of <a onclick="window.open('http://brightbythree.org/', '_blank', 'location=yes');">
+                            Bright by Three</a>
+                            (formerly Bright Beginnings) is to provide a bright beginning for all Colorado
+                            children by helping families support their children’s physical, emotional, and
+                            intellectual development during the critical first three years of life.
+                            You can find more information about Bright by Three and our other sponsors under
+                            “about” tab at the top of your screen.
+                            The Bright by Three app is designed to bring information about how you can
+                            help {{babyName}} learn and develop directly to your phone several times per week.
+                            You will receive this information via messages that contain useful information and
+                            activities that you can engage in with {{babyName}}.  You can set your own goals and
+                            earn badges and prizes for reading with your child and completing recommended activities.
+
+                        </p>
+                        <p>
+                            The Bright by Three app is designed to bring information about how you can help {{babyName}}
+                            learn and develop directly to your phone several times per week.
+                            You will receive this information via messages that contain useful information and activities
+                            that you can engage in with {{babyName}}.  You can set your own <a href="$.mobile.silentScroll($('#goals').offset().top)">goals</a>
+                            and earn <a href="#badgesAndPrizes">badges and prizes</a>
+                            for reading with your child and completing recommended activities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#/about/#collapseThree">Set your goals</a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>
+                            Set your reading goals! Looking at books together is a great way to teach
+                            {{babyName}} new words and converse with <him//her>.
+                            Reading aloud at least 6 days per week helps to prepare children for school.
+                            Set your reading goals by <a href="">selecting the number of days</a>
+                            that you plan to read for at
+                            least 10 minutes with {{babyName}}. Challenge yourself to increase your goal every
+                            2 weeks until you reading with {{babyName}} at least 6 times per week.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#/about/#collapseFour">Sample text 3</a>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>
+                            You earn points when you log your reading minutes and by
+                            completing challenges.
+                        </p>
+
+                        <p>
+                            <a href="">Log the number of minutes</a> that you read with {{babyName}} each day.
+                            For every minute of shared reading, you will earn <1> point.
+                        </p>
+
+                        <p>
+                            Challenges will display in your message library once a week.
+                            These tasks are designated with a special icon
+                            <img src="../images/challenge.png" width="15" height="15">.
+
+                            Once you have completed the challenge, you can tap the
+                            <a href="">“We did it!”</a> button at the bottom of the screen and
+                            <10> bonus points will be added to your total.
+                            <a href="">You may also be invited to post a photo of you and
+                                {{babyName}}
+                                doing the activity for the opportunity to earn extra points.</a>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<!--
+</div>
+-->
+
+
+<!-- bottom Navbar -->
+<div class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="navbar-header">
+            <div class="bs-component">
+                <div class="btn-group btn-group-justified">
+                    <a href="#/dashboard" class="btn btn-primary btn-lg">
+                <span class="glyphicon glyphicon-th"
+                      aria-hidden="true"></span>
+                    </a>
+                    <a href="#/library" class="btn btn-primary" >
+                <span class="glyphicon glyphicon-envelope"
+                      aria-hidden="true"></span>
+                        <sup>
+                            <span class="badge">2</span></sup>
+                    </a>
+                    <a href="#/favorites" class="btn btn-primary">
+                <span class="glyphicon glyphicon-star"
+                      aria-hidden="true"></span>
+                    </a>
+                    <a href="#/tutorial" class="btn btn-primary">
+                <span class="glyphicon glyphicon-info-sign"
+                      aria-hidden="true"></span>
+                    </a>
+                    <a href="#/about" class="btn btn-primary">
+                <span class="glyphicon glyphicon-user"
+                      aria-hidden="true"></span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- end bottom Navbar -->
+
+</body>
+
+
+
+</html>
+
+

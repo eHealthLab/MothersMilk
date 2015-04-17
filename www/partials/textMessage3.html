@@ -1,0 +1,260 @@
+<!--
+* Bright by Three
+* Copyright (C) 2015 Regents of the University of Colorado.
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public License
+* as published by the Free Software Foundation; either version 2
+* of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+
+<head>
+    <link type="text/css" rel="stylesheet" href="../css/star-rating.min.css">
+</head>
+
+<div class="row hpadding5 hmargin5">
+    <div class="pull-left visible-sm visible-xs">
+        <a href="#/library" class="btn btn-juliet btn-sm btn-danger">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            Library
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="panel panel-info">
+        <div align="center" class="panel-heading"><b>Text Messages</b>
+        </div>
+        <div class="panel-body">
+            <div class="well">
+                {{sampleTextContent3}}
+            </div>
+
+            <div class="well">
+                <table>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td align="center">
+                            <p>
+                                <img src={{sampleTextImage}}
+                                     width="200" height="100">
+                            </p>
+
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                        </td>
+
+                        <td>
+
+                        </td>
+
+                        <td>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                        </td>
+
+                        <td>
+
+                        </td>
+
+                        <td>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                        </td>
+
+                        <td>
+
+                        </td>
+
+                        <td>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+
+                            <td >
+                                <!--
+                                <iframe
+                                        src={{sampleTextVideo3}}
+                                        frameborder="3" allowfullscreen
+                                        width="250px">
+                                </iframe>
+                                -->
+                            </td>
+                        <td>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="brainyBackgroundModal" tabindex="-1"
+         role="dialog" aria-labelledby="brainyBackgroundModal" aria-hidden="true">
+        <form id="brainyBackgroundModalForm" enctype="multipart/form-data"
+              name="brainyBackgroundModalForm" method="post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Brainy Background</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="well">
+                            <p>
+                                TYPE TEXT HERE.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" data-dismiss="modal"
+                                aria-hidden="true">Close</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- endModal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="moreOptionsModal" tabindex="-1"
+         role="dialog" aria-labelledby="brainyBackgroundModal" aria-hidden="true">
+        <form id="moreOptionsModalForm" enctype="multipart/form-data"
+              name="brainyBackgroundModalForm" method="post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>More Options</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="well">
+                            <p>
+                                Please click these stars to
+                                rate the BB3 message.
+                            </p>
+
+                            <input id="input-1" class="rating" data-min="0"
+                                   data-size="xs"
+                                   data-max="5" data-step="1">
+
+                        </div>
+                        <div class="well">
+                            <tr>
+                                <td>
+                                    <button class="btn btn-twitter">
+                                        <i class="fa fa-twitter">
+                                        </i></button>
+                                </td>
+                                <td>
+                                    <button class="btn btn-facebook">
+                                        <i class="fa fa-facebook">
+                                        </i>
+                                    </button>
+                                </td>
+
+                            </tr>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" data-dismiss="modal"
+                                aria-hidden="true">Close</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- endModal -->
+
+    <!-- bottom Navbar -->
+    <!--<div class="navbar navbar-default navbar-fixed-bottom">-->
+        <div class="container" ng-controller="textMessageController">
+            <div class="navbar-header">
+                <div class="bs-component" align="right">
+                    <!--<div class="btn-group btn-group-justified">-->
+
+                    <table>
+                        <tr>
+                            <td>
+                                <button class="btn btn-danger"
+                                        ng-click="addToFavoritesPressed()">
+                        <span class="glyphicon glyphicon-star"
+                              aria-hidden="true"></span>
+                                </button>
+                            </td>
+
+                            <td>
+                                <span ng-click="startCameraPressed()"
+                                      class="btn btn-warning">
+                                <i class="glyphicon glyphicon-camera"
+                                   style="margin-right: 4px">
+                                </i>
+                        </span>
+                            </td>
+                            <td>
+                                <button class="btn btn-primary"
+                                        data-toggle="modal"
+                                        data-target="#brainyBackgroundModal">
+                                    <i class="glyphicon glyphicon-cloud">
+
+                                    </i>
+                                </button>
+                            </td>
+                            <td>
+                                <button class="btn btn-success btn-primary"
+                                        data-toggle="modal"
+                                        data-target="#moreOptionsModal">
+                                    <i class="glyphicon glyphicon-share"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+
+
+
+                        </tr>
+                    </table>
+                    <!--<button type="button" class="btn btn-default"
+                            data-container="body" data-toggle="popover"
+                            data-placement="top"
+                            data-content="TEST">
+                        Share
+                    </button>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+   <!-- </div>--><!-- end bottom Navbar -->
+
+

@@ -1,0 +1,141 @@
+<!--
+* Bright by Three
+* Copyright (C) 2015 Regents of the University of Colorado.
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public License
+* as published by the Free Software Foundation; either version 2
+* of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+
+
+
+<div class="row hpadding5 hmargin5">
+    <div class="pull-left visible-sm visible-xs">
+        <a href="#/dashboard" class="btn btn-juliet btn-sm btn-danger">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            Back
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="panel panel-info">
+        <div align="center" class="panel-heading"><b>Settings</b>
+        </div>
+
+        <div class="panel-body">
+
+        <div id="accordion" class="panel-group">
+
+            <!--
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#/settings/#collapseOne">Forgot your email id?</a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>
+                            If you have forgotten your email id and are unable
+                            to access your account, please click the button
+                            below to contact us.
+                            <div class="well" align="center">
+
+                                <a  class="btn btn-primary"
+                                    href="mailto:agileehealth@gmail.com?subject=Forgot my BB3 login ID&body=I forgot my email ID to login. Please send me one. My name is: TYPE YOUR FULL NAME HERE."
+                                    target="_blank">
+                                    Forgot my email ID
+                                </a>
+                            </div>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+               -->
+            <!--
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#/settings/#collapseTwo">Forgot your password?</a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>
+                            If you have forgotten your password, please click
+                            the button
+                            below to contact us.
+                        <div class="well" align="center">
+                        <a  class="btn btn-primary"
+                            href="mailto:agileehealth@gmail.com?subject=Forgot my BB3 login password&body=I forgot my password to login to BB3 app. Please send me one. My name is: TYPE YOUR FULL NAME HERE."
+                            target="_blank">Forgot my password
+                        </a>
+                        </div>
+                        </p>
+
+
+                    </div>
+                </div>
+            </div>
+            -->
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#/settings/#collapseFour">Submit Feedback</a>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>
+                            Thank you for participating in the Bright by Three
+                            program. We would love to hear back from you. Please
+                            type your suggestions and comments in the area below
+                            and press the Submit button once done.
+                        <div class="well" align="center">
+
+                            <textarea class="form-control" rows="6"
+                                      cols="40"
+                                      align="center"
+                                      ng-model="feedbackText">
+                            </textarea>
+
+                            <br>
+
+                            <a  class="btn btn-primary"
+                                ng-click="sendFeedback()"
+                                ng-disabled = "feedbackStatus">
+                                Submit
+                            </a>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+   </div>
+</div>
+
+
+

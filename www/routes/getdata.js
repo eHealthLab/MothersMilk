@@ -5,8 +5,8 @@ var qs = require('querystring');
 
 
 var openConnection = function() {
-    return mysql.createConnection({ host: 'localhost', user: 'munjala',
-        password: 'artika12', database: 'mothersmilk'});
+    return mysql.createConnection({ host: 'localhost', user: 'root',
+        database: 'bb3db', multipleStatements: true });
 };
 
 exports.onemessage = function(req, res){

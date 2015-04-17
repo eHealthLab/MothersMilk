@@ -31,7 +31,7 @@ cbbApp.factory('participantService', function($http, $q, cbbConstants) {
 
     participantServiceInstance.numberOfUnread = 0;
 
-    participantServiceInstance.globalLoginStatus = 'false';
+    participantServiceInstance.globalLoginStatus = false;
 
     participantServiceInstance.ppStatus = "false";
 
@@ -48,6 +48,122 @@ cbbApp.factory('participantService', function($http, $q, cbbConstants) {
     participantServiceInstance.messageArray = '';
 
     participantServiceInstance.spanishMessageArray = '';
+
+
+    participantServiceInstance.userID = undefined;
+
+    participantServiceInstance.totalPoints = 0;
+
+    participantServiceInstance.nextBadgeToEarn = 1;
+
+    participantServiceInstance.pointsToEarnNextBadge = 0;
+
+    participantServiceInstance.textMessagesIDsArray = [];
+
+    participantServiceInstance.favoriteTextMessagesIDsArray = [];
+
+    participantServiceInstance.weeklyMinutes = undefined;
+
+    participantServiceInstance.monthlyMinutes = undefined;
+
+    participantServiceInstance.daysEnrolled = undefined;
+
+    participantServiceInstance.goalsDaysPerWeek = 2;
+
+    participantServiceInstance.goalsMinutesPerDay = 10;
+
+    participantServiceInstance.logMinutes = undefined;
+
+    participantServiceInstance.earnedNewBadge = false;
+
+    participantServiceInstance.babyName = "Nate";
+
+    participantServiceInstance.statusBadge = [
+        [150, false],
+        [400, false],
+        [700, false],
+        [1000, false],
+        [1500, false],
+        [2000, false],
+        [2500, false],
+        [3000, false],
+        [3500, false],
+        [4000, false],
+        [4500, false],
+        [5000, false]
+    ];
+
+    participantServiceInstance.setBabyName = function(name) {
+        participantServiceInstance.babyName = name;
+    }
+
+    participantServiceInstance.getBabyName = function() {
+        return participantServiceInstance.babyName;
+    }
+
+    participantServiceInstance.getUserID = function () {
+        return participantServiceInstance.userID;
+    }
+
+    participantServiceInstance.setUserID = function (id) {
+        participantServiceInstance.userID = id;
+    }
+
+    participantServiceInstance.getEarnedNewBadge = function () {
+        return participantServiceInstance.earnedNewBadge;
+    }
+
+    participantServiceInstance.setEarnedNewBadge = function (status) {
+        participantServiceInstance.earnedNewBadge = status;
+    }
+
+    participantServiceInstance.getLogMinutes = function () {
+        return participantServiceInstance.logMinutes;
+    }
+
+    participantServiceInstance.setLogMinutes = function (minutes) {
+        participantServiceInstance.logMinutes = minutes;
+    }
+
+    participantServiceInstance.getGoalsDays = function () {
+        return participantServiceInstance.goalsDaysPerWeek;
+    }
+
+    participantServiceInstance.getGoalsMinutes = function () {
+        return participantServiceInstance.goalsMinutesPerDay;
+    }
+
+    participantServiceInstance.setGoalsDays = function (days) {
+        participantServiceInstance.goalsDaysPerWeek = days;
+    }
+
+    participantServiceInstance.setGoalsMinutes = function (minutes) {
+        participantServiceInstance.goalsMinutesPerDay = minutes;
+    }
+
+    participantServiceInstance.getPointsToEarnNextBadge = function () {
+        return participantServiceInstance.pointsToEarnNextBadge;
+    }
+
+    participantServiceInstance.setPointsToEarnNextBadge = function (points) {
+        participantServiceInstance.pointsToEarnNextBadge = points;
+    }
+
+    participantServiceInstance.getNextBadgeToEarn = function () {
+        return participantServiceInstance.nextBadgeToEarn;
+    }
+
+    participantServiceInstance.setNextBadgeToEarn = function (number) {
+        participantServiceInstance.nextBadgeToEarn = number;
+    }
+
+    participantServiceInstance.getTotalPointsEarned = function () {
+        return participantServiceInstance.totalPoints;
+    }
+
+    participantServiceInstance.setTotalPointsEarned = function (points) {
+        participantServiceInstance.totalPoints = points;
+    }
 
     participantServiceInstance.getTextMessageID = function() {
         return participantServiceInstance.textMessage_ID;

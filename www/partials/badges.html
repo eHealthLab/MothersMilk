@@ -1,0 +1,193 @@
+<!--
+* Bright by Three
+* Copyright (C) 2015 Regents of the University of Colorado.
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public License
+* as published by the Free Software Foundation; either version 2
+* of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+<head>
+
+
+
+</head>
+
+
+<div class="row hpadding5 hmargin5">
+    <div class="pull-left visible-sm visible-xs">
+        <a href="#/dashboard" class="btn btn-juliet btn-sm btn-danger">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            Back
+        </a>
+    </div>
+</div>
+
+
+<div class="row" ng-init="initialize()">
+        <div class="panel panel-info">
+            <div align="center" class="panel-heading"><b>Badges</b>
+                </div>
+            <div class="panel-body">
+                <div  ng-show="{{!newUser}}">
+
+                <b>Congratulations!</b> Here are the badges you have
+                earned so far
+
+                    <br>
+                    <br>
+                    <br>
+
+
+                    <table align="center">
+                        <tr bgcolor="#faebd7">
+                            <td  ng-show="statusBadge[0][1]">
+                                <img src="../images/Badge150.png"
+                                     align="center" width="100" height="150"
+                                     class="img-thumbnail">
+                            </td>
+
+                            <td  ng-show="statusBadge[1][1]">
+                                <img src="../images/Badge400.png"
+                                     align="center" width="100" height="150"
+                                     class="img-thumbnail">
+                            </td>
+
+                        </tr>
+
+                        <tr bgcolor="#ff7f50" ng-show="statusBadge[1][1]">
+                            <td ng-show="statusBadge[2][1]">
+                                <img src="../images/Badge700.png"
+                                     align="center" width="100" height="150"
+                                     class="img-thumbnail">
+                            </td>
+
+                            <td ng-show="statusBadge[3][1]">
+                                <img src="../images/Badge1000.png"
+                                     align="center" width="100" height="150"
+                                     class="img-thumbnail">
+                            </td>
+
+                        </tr>
+
+                        <tr bgcolor="#87cefa">
+                            <td ng-show="statusBadge[4][1]">
+                                <img src="../images/Badge1500.png"
+                                     align="center" width="100" height="150"
+                                     class="img-thumbnail"
+                                        >
+                            </td>
+
+                            <td ng-show="statusBadge[5][1]">
+                                <img src="../images/Badge2000.png"
+                                     align="center" width="100" height="150"
+                                     class="img-thumbnail"
+                                        >
+                            </td>
+
+                        <tr bgcolor="#ff7f50">
+                            <td ng-show="statusBadge[6][1]">
+                                <img src="../images/Badge2500.png"
+                                     align="center" width="100" height="150"
+                                     class="img-thumbnail"
+                                        >
+                            </td>
+
+                            <td ng-show="statusBadge[7][1]">
+                                <img src="../images/Badge3000.png"
+                                     align="center" width="100" height="150"
+                                     class="img-thumbnail"
+                                        >
+                            </td>
+
+                        </tr>
+
+
+                        <tr bgcolor="#deb887" ng-show="statusBadge[8][1]">
+                            <td>
+                                <img src="../images/Badge3500.png"
+                                     align="center" width="100" height="150"
+                                     class="img-thumbnail">
+                            </td>
+
+                            <td ng-show="statusBadge[9][1]">
+                                <img src="../images/Badge4000.png"
+                                     align="center" width="100" height="150"
+                                     class="img-thumbnail">
+                            </td>
+
+                        </tr>
+
+                        <tr bgcolor="#90ee90">
+                            <td ng-show="statusBadge[10][1]">
+                                <img src="../images/Badge4500.png"
+                                     align="center" width="100" height="150"
+                                     class="img-thumbnail"
+                                        >
+                            </td>
+
+                            <td ng-show="statusBadge[11][1]">
+                                <img src="../images/Badge5000.png"
+                                     align="center" width="100" height="150"
+                                     class="img-thumbnail"
+                                        >
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div align="center" ng-show="{{!newUser}}">
+                    <a href="#/badges" class="btn btn-juliet" data-toggle="popover"
+                       tabindex="1" data-trigger="focus"
+                       title="You are short by {{pointsToEarnNextBadge}} points to earn
+       your next badge."
+                       data-content="Go back to dashboard and earn more points by logging
+       minutes.">
+                        <!--data-ng-click="updateBadgeInformation()">-->
+                        Earn your next badge
+                    </a>
+                </div>
+
+                </div>
+
+                <div align="center"  class="panel-body" ng-show="{{newUser}}">
+                    <p>
+                        Welcome to Bright by Three! Please click the button below to start
+                        collecting points to earn your first badge.
+                    </p>
+                    <a
+                            href="#/badges" class="btn btn-lima" data-toggle="popover"
+                       tabindex="1" data-trigger="focus"
+                       title="You are short by {{pointsToEarnNextBadge}} points to earn your first           badge."
+                       data-content="Go back to dashboard and earn more points by logging
+           minutes.">
+                        Earn your first badge
+                    </a>
+
+
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

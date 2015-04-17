@@ -1,0 +1,423 @@
+<!--
+* Bright by Three
+* Copyright (C) 2015 Regents of the University of Colorado.
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public License
+* as published by the Free Software Foundation; either version 2
+* of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+
+<!DOCTYPE html>
+<html lang="en" ng-app="bb3">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <meta name="language" content="en" />
+    <meta name="keywords" content="IOS, tab bar, nav bar, navigation bar, menu, CSS, retina, Jquery Mobile, bartender, plugin, HTML, JQM, cross-browser" />
+    <meta name="description" content="the bartender-plugin is a CSS-only iOS-style tab bar for mobile and desktop browsers (based on the Jquery Mobile element structure)." />
+    <meta name="robots" content="index,follow">
+    <meta name="revisit-after" content="14 days">
+
+    <title>Dashboard</title>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-21939703-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    <!-- replaced by gruntfile when building for mobile -->
+    <!-- PHONEGAPJS -->
+
+
+
+    <!-- build:js js/libraries.js -->
+    <script src="../lib/jquery.min.js"></script>
+    <script src="../lib/jquery-ui.min.js"></script>
+    <script src="../lib/jquery.form.min.js"></script>
+    <script src="../lib/highcharts.js"></script>
+    <script src="../lib/exporting.js"></script>
+
+    <!-- order matters here, so be careful if you edit -->
+    <!-- Angular.js scripts -->
+    <script src="../lib/angular.min.js"></script>
+    <script src="../lib/angular-touch.js"></script>
+
+    <!-- bootstrap plugins - load after jquery -->
+    <script src="../lib/bootstrap.min.js"></script>
+    <script src="../lib/ui-bootstrap-tpls-0.6.0.min.js"></script>
+
+    <!-- endbuild -->
+
+    <!-- app specific scripts -->
+    <!-- build:js js/glimmpse.js -->
+    <script src="../js/app.js"></script>
+    <script src="../js/controllers/controllers.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:css css/glimmpse.css -->
+
+    <link href="data:text/css;charset=utf-8,"
+          data-href="css/bootstrap-theme.min.css"
+          rel="stylesheet" id="bs-theme-stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="../css/bootstrap-social.css">
+
+
+    <link type="text/css" rel="stylesheet" href="../css/ng-grid.css">
+    <link type="text/css" rel="stylesheet" href="../css/bb3.css">
+    <!-- endbuild -->
+
+    <style>
+
+        .navbar-brand-centered {
+            display: block;
+            max-width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .navbar-default {
+            background-color: #DCDCDC;/*#F5F5F5 #357EC7 #3090C7 */
+            border-color: #3090C7;
+        }
+        /* title */
+        .navbar-default .navbar-brand {
+            color: #3090C7;
+            text-align: center;
+        }
+        .navbar-default .navbar-brand:hover,
+        .navbar-default .navbar-brand:focus {
+            color: #5E5E5E;
+        }
+        /* link */
+        .navbar-default .navbar-nav > li > a {
+            color: #777;
+        }
+        .navbar-default .navbar-nav > li > a:hover,
+        .navbar-default .navbar-nav > li > a:focus {
+            color: #333;
+        }
+        .navbar-default .navbar-nav > .active > a,
+        .navbar-default .navbar-nav > .active > a:hover,
+        .navbar-default .navbar-nav > .active > a:focus {
+            color: #555;
+            background-color: #E7E7E7;
+        }
+        .navbar-default .navbar-nav > .open > a,
+        .navbar-default .navbar-nav > .open > a:hover,
+        .navbar-default .navbar-nav > .open > a:focus {
+            color: #555;
+            background-color: #D5D5D5;
+        }
+        /* caret */
+        .navbar-default .navbar-nav > .dropdown > a .caret {
+            border-top-color: #777;
+            border-bottom-color: #777;
+        }
+        .navbar-default .navbar-nav > .dropdown > a:hover .caret,
+        .navbar-default .navbar-nav > .dropdown > a:focus .caret {
+            border-top-color: #333;
+            border-bottom-color: #333;
+        }
+        .navbar-default .navbar-nav > .open > a .caret,
+        .navbar-default .navbar-nav > .open > a:hover .caret,
+        .navbar-default .navbar-nav > .open > a:focus .caret {
+            border-top-color: #555;
+            border-bottom-color: #555;
+        }
+        /* mobile version */
+        .navbar-default .navbar-toggle {
+            border-color: #DDD;
+        }
+        .navbar-default .navbar-toggle:hover,
+        .navbar-default .navbar-toggle:focus {
+            background-color: #DDD;
+        }
+        .navbar-default .navbar-toggle .icon-bar {
+            background-color: #CCC;
+        }
+        @media (max-width: 767px) {
+            .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+                color: #777;
+            }
+            .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+            .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+                color: #333;
+            }
+        }
+
+        .brand { margin-left: auto; margin-right: auto; }
+
+        .btn-circle {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            padding: 6px 0;
+            font-size: 12px;
+            line-height: 1.428571429;
+            border-radius: 15px;
+        }
+        .btn-circle.btn-lg {
+            width: 50px;
+            height: 50px;
+            padding: 10px 16px;
+            font-size: 18px;
+            line-height: 1.33;
+            border-radius: 25px;
+        }
+        .btn-circle.btn-xl {
+            width: 70px;
+            height: 70px;
+            padding: 10px 16px;
+            font-size: 24px;
+            line-height: 1.33;
+            border-radius: 35px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container" ng-controller="stateController">
+    <nav class="navbar navbar-default navbar-fixed-top
+                ">
+        <div class="container">
+            <div class="navbar-header">
+                <a style="margin-right: 10px" class="navbar-right pull-right"
+                   onclick="window.open('http://brightbythree.org',
+                        '_blank', 'location=yes');">
+                    <img src="../images/BB3_logo-icon_WEB_rgb.png"
+                         width="40" height="56">
+                </a>
+
+                <a style="margin-top: 10px; margin-left: 10px" class="navbar-left pull-left
+                            btn btn-primary btn-circle btn-sm"
+                   href="favorites.html">
+                                <span class="glyphicon glyphicon glyphicon-chevron-left"
+                                      aria-hidden="true">
+                                </span>
+
+                </a>
+
+                <a class="navbar-brand" style="margin-left: 40px
+                ; margin-top: 10px"
+                   >
+                    <strong>Language Power</strong>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+
+        <div class="well">
+
+            <p>
+                Daily bedtime reading promotes positive
+                talking and helps your baby’s brain grow during sleep!
+            </p>
+        </div>
+
+        <div class="well">
+            <table>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td align="center">
+                        <p>
+                            <img src="../images/BB3_logo_horiz-tag_rgb.png"
+                                 width="200" height="100">
+                        </p>
+
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+
+                    </td>
+
+                    <td>
+
+                    </td>
+
+                    <td>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+
+                    </td>
+
+                    <td>
+
+                    </td>
+
+                    <td>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+
+                    </td>
+
+                    <td>
+
+                    </td>
+
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+
+                        <td align="center">
+                            <iframe
+                                    src="https://www.youtube.com/embed/mN5rIVbUG7M"
+
+                                    frameborder="3" allowfullscreen>
+
+                            </iframe>
+                        </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1"
+         role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+        <form id="loginForm" enctype="multipart/form-data"
+              name="emailDesignForm" method="post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Login</h3>
+                        <label>Please enter your email id and password
+                            used to register with BB3.</label>
+                    </div>
+                    <div class="modal-body">
+                        <div class="processing rounded-box" ng-show="designEmailProcessing">
+                            <label>Processing</label>
+                        </div>
+                        <div class="alert alert-success" ng-show="!designEmailProcessing && designEmailSuccess !== undefined && designEmailSuccess">
+                            Your email has been sent.
+                        </div>
+                        <div class="alert alert-danger" ng-show="!designEmailProcessing && designEmailSuccess !== undefined && !designEmailSuccess">
+                            We're sorry, but we were unable to submit your request at this time.  Please try again.
+                        </div>
+                        <div class="well">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input class="form-control" type="email"
+                                       placeholder="Enter your email id" name="email"
+                                       ng-model="emailID" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input class="form-control" type="password"
+                                       placeholder="Enter your password"
+                                       name="password" ng-model="password" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" ng-click="submitLoginInfo()"
+                                class="btn btn-primary" aria-hidden="true"
+                                ng-disabled="!emailDesignForm.$valid">
+                            Login
+                        </button>
+                        <button class="btn btn-danger" data-dismiss="modal"
+                                ng-click="designEmailSuccess = undefined"
+                                aria-hidden="true">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- endModal -->
+
+    <!-- bottom Navbar -->
+    <!--<div class="navbar navbar-default navbar-fixed-bottom">-->
+        <div class="container" ng-controller="textMessageController">
+            <div class="navbar-header">
+                <div class="bs-component" align="right">
+                    <!--<div class="btn-group btn-group-justified">-->
+
+                    <table>
+                        <tr>
+                            <td>
+                                <button class="btn btn-danger" ng-click="addToFavorites()">
+                        <span class="glyphicon glyphicon-remove"
+                              aria-hidden="true"></span>
+                                </button>
+                            </td>
+
+                            <td>
+                                <span ng-click="addToFavorites()"
+                                      class="btn btn-warning">
+                                <i class="glyphicon glyphicon-camera"
+                                   style="margin-right: 4px">
+                                </i>
+                        </span>
+                            </td>
+                            <td>
+                                <button class="btn btn-primary"
+                                        data-toggle="modal"
+                                        data-target="#brainyBackgroundModal">
+                                    <i class="glyphicon glyphicon-cloud">
+
+                                    </i>
+                                </button>
+                            </td>
+                            <td>
+                                <button class="btn btn-success btn-primary"
+                                        data-toggle="modal"
+                                        data-target="#moreOptionsModal">
+                                    <i class="glyphicon glyphicon-share"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                        </tr>
+                    </table>
+                </div>
+        </div>
+   <!-- </div>--><!-- end bottom Navbar -->
+
+</div>
+</body>
+</html>
+
+

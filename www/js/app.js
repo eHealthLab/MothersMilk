@@ -122,21 +122,7 @@ var cbbApp = angular.module('cbb', ['ui.bootstrap','ngGrid', 'highcharts-ng'])
             {templateUrl: 'partials/loginSignupView.html', controller: 'contactInfoController'}
         )
 
-            .when('/index',
-            {templateUrl: 'index.html', controller: 'participantsController' }
-        )
-            .when('/home',
-            {templateUrl: 'partials/home.html'}
-        )
-            .when('/login',
-            {templateUrl: 'partials/loginView.html', controller: 'participantsController' }
-        )
-            .when('/signUp',
-            {templateUrl: 'partials/signUpView.html', controller: 'participantsController' }
-        )
-            .when('/home',
-            {templateUrl: 'partials/home.html'}
-        )
+
             .when('/facebook',
             {templateUrl: 'partials/facebookView.html', controller: 'solutionTypeController' }
         )
@@ -164,8 +150,72 @@ var cbbApp = angular.module('cbb', ['ui.bootstrap','ngGrid', 'highcharts-ng'])
 
         )
 
+            .when('/goals',
+            {templateUrl: 'partials/goals.html', controller: 'goalsController'}
+        )
+
+            .when('/badges',
+            {templateUrl: 'partials/badges.html', controller: 'badgesController'}
+        )
+
+            .when('/network',
+            {templateUrl: 'partials/network.html', controller: 'badgesController'}
+        )
+
+            .when('/minutes',
+            {templateUrl: 'partials/minutes.html', controller: 'logMinutesController'}
+        )
+
+            .when('/settings',
+            {templateUrl: 'partials/settings.html', controller: 'emailController'}
+        )
+
+            .when('/index',
+            {templateUrl: 'index.html'}
+        )
+            .when('/home',
+            {templateUrl: 'partials/home.html'}
+        )
+
+            .when('/dashboard',
+            {templateUrl: 'partials/home.html', controller:'stateController'}
+        )
 
 
+            .when('/about',
+            {templateUrl: 'partials/aboutUs.html', controller:'stateController'}
+        )
+
+            .when('/favorites',
+            {templateUrl: 'partials/favorites.html', controller:'textMessageController'}
+        )
+
+            .when('/library',
+            {templateUrl: 'partials/library.html', controller:'textMessageController'}
+        )
+
+            .when('/textMessage',
+            {templateUrl: 'partials/textMessage.html', controller:'textMessageController'}
+        )
+
+            .when('/textMessage2',
+            {templateUrl: 'partials/textMessage2.html', controller:'textMessageController'}
+        )
+
+            .when('/textMessage3',
+            {templateUrl: 'partials/textMessage3.html', controller:'textMessageController'}
+        )
+
+            .when('/tutorial',
+            {templateUrl: 'partials/tutorial.html'}
+        )
+
+            .when('/login',
+            {templateUrl: 'partials/loginView_new.html', controller: 'personalInfoController' }
+        )
+            .when('/signUp',
+            {templateUrl: 'partials/signUpView.html', controller: 'participantsController' }
+        )
 
             .when('/spanish/login',
             {templateUrl: 'partials/spanish/loginView.html', controller: 'participantsSpanishController' }
@@ -201,9 +251,9 @@ var cbbApp = angular.module('cbb', ['ui.bootstrap','ngGrid', 'highcharts-ng'])
             .when('/spanish/contactInfo',
             {templateUrl: 'partials/spanish/contactInfoView.html', controller: 'contactInfoController' }
 
-        )
+        );
 
-            .otherwise({ redirectTo: '/' });
+            //.otherwise({ redirectTo: '/' });
     }]);
 
 

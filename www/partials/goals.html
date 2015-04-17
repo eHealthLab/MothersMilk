@@ -1,0 +1,129 @@
+<!--
+* Bright by Three
+* Copyright (C) 2015 Regents of the University of Colorado.
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public License
+* as published by the Free Software Foundation; either version 2
+* of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+
+<style>
+    .well-special {
+        margin-left: 1px;
+        margin-right: 1px;
+        background: rgb(22, 105, 173);
+    }
+</style>
+
+
+<div class="row hpadding5 hmargin5">
+    <div class="pull-left visible-sm visible-xs">
+        <a href="#/dashboard" class="btn btn-juliet btn-sm btn-danger">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            Back
+        </a>
+    </div>
+</div>
+
+<!--<a style="margin-top: 1px; margin-left: 10px"
+   class="navbar-left pull-left btn btn-danger btn-sm"
+   href="#/home"> <span class="glyphicon glyphicon-th"
+                        aria-hidden="true">
+    Dashboard
+</span>
+</a>
+-->
+
+<div class="row" ng-init="getGoalsInfo()">
+    <div>
+        <div class="panel panel-info">
+            <div align="center" class="panel-heading"><b>Set Goals</b>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="well">
+                    Select the number of days per week.
+                    <div align="center">
+                        <select class="selectpicker" data-style="btn-primary"
+                                ng-model="goals.daysPerWeek">
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="well">
+                    Select the number of minutes per day.
+                    <div align="center">
+                        <select class="selectpicker" data-style="btn-primary"
+                                ng-model="goals.minutesPerDay">
+                            <option>10</option>
+                            <option>15</option>
+                            <option>20</option>
+                            <option>25</option>
+                            <option>30</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div align="center">
+                    <table>
+                        <tr>
+                            <td>
+                                <button class="btn btn-darkRed"
+                                        data-ng-click="resetGoals()"
+                                        ng-disabled="!reset">
+                                    Reset
+                                </button>
+                            </td>
+                            <td>
+                                <button class="btn btn-mike"
+                                        data-ng-click="setGoals()"
+                                        ng-disabled = "getStatus()">
+                                    Save
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <!--
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-danger progress-bar-striped"
+                             role="progressbar"
+                             aria-valuenow="{{progressBarValue}}" aria-valuemin="0"
+                             aria-valuemax="100"
+                             style="width: {{progressBarValue | number:0}}%">
+                            <span class="sr-only">{{progressBarValue | number:0}}%
+                                Complete (danger)</span>
+                            {{progressBarValue | number:0}}%
+                        </div>
+                    </div>
+                    -->
+                </div>
+
+           </div>
+       </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+
+

@@ -23,7 +23,7 @@
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" charset="utf-8"/>
     <LINK REL="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-    <title>Mothers’ Milk</title>
+    <title>Bright by Three</title>
 
     <script src="lib/jquery.min.js"></script>
     <script src="lib/jquery-ui.min.js"></script>
@@ -33,455 +33,596 @@
 
     <!-- order matters here, so be careful if you edit -->
     <!-- bootstrap plugins - load after jquery -->
+
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-touch.js"></script>
+
     <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.6.0.min.js"></script>
     <!-- Angular.js scripts -->
 
-
-    <!-- <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet" />  -->
-
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="css/ng-grid.css">
-    <link type="text/css" rel="stylesheet" href="css/mothersmilk.css">
-
-    <script>
-        $(function() {
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-touch.js"></script>
+    <script src="lib/ng-grid-2.0.7.min.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.6.0.min.js"></script>
+    <script src="lib/highcharts-ng.js"></script>
 
 
+    <script src="js/app.js"></script>
+    <script src="js/services/matrixUtilities.js"></script>
+    <script src="js/services/studyDesignService.js"></script>
+    <script src="js/services/powerService.js"></script>
+    <script src="js/services/participantService.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="js/controllers/controllers.js"></script>
 
-//
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover({
+                placement : 'bottom'
+            });
         });
-
     </script>
 
+
+    <link href="data:text/css;charset=utf-8,"
+          data-href="css/bootstrap-theme.min.css"
+          rel="stylesheet" id="bs-theme-stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link type="text/css" rel="stylesheet" href="css/ng-grid.css">
+    <!-- endbuild -->
+
+
+    <link type="text/css" rel="stylesheet" href="css/mothersmilk.css">
+
+    <link type="text/css" rel="stylesheet" href="css/social-buttons.css">
+    <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css">
+
+    <link href="css/bootstrap-social.css" rel="stylesheet" >
 
 </head>
 
 <body>
 
-
-
 <div class="container" ng-controller="stateController">
-<!-- header bar -->
-<nav class="navbar navbar-default" role="navigation">
+    <!-- header bar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
 
-    <a class="navbar-brand">
-        <label class="logo">&#160Mothers' Milk Messaging</label>
-    </a>
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <!--
-    <div class="navbar-header ">
-
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapsed-header">
-            Menu
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-
-        <a class="navbar-brand" href="#">
-            <label class="logo">&#160Mothers' Milk Messaging</label>
-        </a>
-
-
-    </div>
-
-
-    <div class="collapse navbar-collapse" id="collapsed-header">
-
-
-        <ul class="nav navbar-nav navbar-right">
-
-            <li class="vmargin15" >
-
-                <a class="btn btn-mode" ng-click="resetStatus()">
-                    <img src="img/pregnantmom.JPG" width="60" height="40"
-                         border="15"
-                         ng-show="status == 'Waiting on baby'
-                                    || status == 'Esperando al bebé'">
-
-                    <img src="img/baby.JPG" width="60" height="40"
-                         border="15"
-                         ng-show="status == 'Yay! Baby is here!'
-                                    || status == '¡Ya llegó el bebé!'">
-                    {{status}}
-                </a>
-
-
-                <div class="panel-group" id="nav-accordion" >
-                    <div class="panel panel-default">
-                    </div>
-                </div>
-
-            </li>
-
-            <li class="vmargin15" >
-                <div class="panel-group" id="nav-accordion2" >
-                    <div class="panel panel-default">
-
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#nav-accordion" href="#nav-start">
-                                    Mothers Milk Messaging
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="nav-start" class="panel-collapse collapse">
-                            <div class="panel-body">
-
-                                <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}"
-                                     ng-show="viewLanguage != 'spanish/'" >
-                                    <a href="#" ng-click="updateFacebookClicks()"
-                                       onclick="window.open('https://m.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">Mothers Milk Facebook Page</a>
-                                </div>
-
-                                <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}" ng-show="viewLanguage == 'spanish/'">
-                                    <a href="#" ng-click="updateFacebookClicks()"
-                                       onclick="window.open('https://m.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">
-                                        La Página de Facebook La Leche de Mamá
-                                    </a>
-                                </div>
-
-                                <div class="{{isActive('/typeIError') && 'active'}} {{getStateTypeIError()}}"
-                                     ng-show="viewLanguage != 'spanish/'" >
-                                    <a href="#/{{ viewLanguage }}text" ng-click="updateTextMessageClicks()">
-
-                                        My Mothers Milk Texts
-                                        <sup style="color:darkred;font-size: 1.0em;width: 1.1em;" ng-show="getTotalUnread() > 0">
-                                            New!
-                                        </sup>
-
-                                    </a>
-
-                                </div>
-
-                                <div class="{{isActive('/typeIError') && 'active'}} {{getStateTypeIError()}}"
-                                     ng-show="viewLanguage == 'spanish/'" >
-                                    <a href="#/{{ viewLanguage }}text" ng-click="updateTextMessageClicks()">
-
-                                        Mis textos de La Leche de Mamá
-                                        <sup style="color:darkred;font-size: 1.0em;width: 1.1em;" ng-show="getTotalUnread() > 0">
-                                            New!
-                                        </sup>
-
-                                    </a>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-
-
-
-            <li class="vmargin15" >
-                <div class="panel-group" id="nav-accordion3" >
-                    <div class="panel panel-default">
-
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#nav-accordion" href="#nav-options">
-                                    Contact Us
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="nav-options" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}"
-                                     ng-show="viewLanguage != 'spanish/'">
-                                    <a href="#/{{ viewLanguage }}tutorial" ng-click="updateTutorialClicks()">
-                                        Learn More
-                                    </a>
-                                </div>
-
-                                <div class="{{isActive('/solvingFor') && 'active'}} {{getStateSolvingFor()}}"
-                                     ng-show="viewLanguage == 'spanish/'" >
-                                    <a href="#/{{ viewLanguage }}tutorial" ng-click="updateTutorialClicks()">
-                                        Aprender Más
-                                    </a>
-                                </div>
-
-                                <div class="{{isActive('/test') && 'active'}} {{getStateStatisticalTest()}}"
-                                     ng-show="viewLanguage != 'spanish/'">
-                                    <a href="#/{{ viewLanguage }}aboutUs" ng-click="updateAboutUsClicks()">
-                                        About Us
-                                    </a>
-                                </div>
-
-                                <div class="{{isActive('/test') && 'active'}} {{getStateStatisticalTest()}}"
-                                     ng-show="viewLanguage == 'spanish/'">
-                                    <a href="#/{{ viewLanguage }}aboutUs" ng-click="updateAboutUsClicks()">
-                                        Todo sobre nosotros
-                                    </a>
-                                </div>
-
-                                <div class="{{isActive('/test') && 'active'}} {{getStateStatisticalTest()}}"
-                                     ng-show="viewLanguage != 'spanish/'">
-                                    <a href="#/{{ viewLanguage }}feedback" ng-click="updateFeedbackClicks()">
-                                    Feedback
-                                    </a>
-                                </div>
-
-                                <div class="{{isActive('/test') && 'active'}} {{getStateStatisticalTest()}}"
-                                     ng-show="viewLanguage == 'spanish/'">
-                                    <a href="#/{{ viewLanguage }}feedback" ng-click="updateFeedbackClicks()">
-                                    Comentarios
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-
-            <li class="vmargin15" >
-                <div class="panel-group" id="nav-accordion" >
-                    <div class="panel panel-default">
-
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-
-                                <a data-toggle="collapse" data-parent="#nav-accordion" href="#nav-results">
-                                    More
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="nav-results" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <!--
-                                <div class="{{isActive('/results/matrices') && 'active'}}"
-                                        ng-show="getLoginStatus() > 0">
-                                    <a href="#" ng-click="changeLanguage()">Change language to {{availableLanguage}}</a>
-                                </div>
-
-                                <div class="{{isActive('/results/matrices') && 'active'}}"
-                                     ng-show="getLoginStatus() == 'false'">
-                                    <a href="#" ng-click="changeLanguage()">Change language to {{availableLanguage}}</a>
-                                </div>
-
-                                <div class="{{isActive('/results/matrices') && 'active'}}"
-                                     ng-show="viewLanguage != 'spanish/'">
-                                    <a data-ng-click="reset()"
-                                            >Logout</a>
-                                </div>
-
-                                <div class="{{isActive('/results/matrices') && 'active'}}"
-                                     ng-show="viewLanguage == 'spanish/'">
-                                    <a data-ng-click="reset()"
-                                            >Cierre de sesión</a>
-                                </div>
-
-                                <!--
-                                <div class="{{isActive('/results/matrices') && 'active'}}"
-                                        ng-show="getLoginStatus() == 'false'">
-                                    <a href="#/{{ viewLanguage }}login"
-                                            href="#/login">Login:{{getLoginStatus()}}</a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-    -->
-</nav>
-
-
-
-<!-- Mode selection screen -->
-<div class="well shaded-box " ng-show="getMode() == undefined">
-    <h4>Welcome to Mothers’ Milk Messaging</h4>
-    <p>
-        Please either login or sign up to continue.
-    </p>
-
-    <div class = "well">
-        <div class="row vmargin15 hpadding0 box gray-box rounded-box" style="border: 0;">
-            <div align="center" class="col-md-3 col-sm-3 col-xs-12">
-                <a href="#/{{ viewLanguage }}login" class="btn btn-primary"
-                   data-ng-click="setMode(cbbConstants.modeGuided)" >
-                    Login
-                </a>
-            </div>
-        </div>
-
-        <div class="row vmargin15 hpadding0 box gray-box rounded-box" style="border: 0;">
-
-            <div align="center" class="col-md-3 col-sm-3 col-xs-12">
-                <a href="#/{{ viewLanguage }}signUp" class="btn btn-primary"
-                   data-ng-click="setMode(cbbConstants.modeMatrix)" >
-                    Sign Up
-                </a>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-
-<!-- main Web application panel -->
-<div class="well white-box shaded-box rounded-box" ng-show="getMode() != undefined">
-
-    <!-- toolbox menu -->
-
-    <!--
-    <div class="row hpadding30 hmargin15">
-        <div class="pull-left visible-sm visible-xs">
-            <a href="#/home" class="btn btn-sm btn-warning" ng-show="!isActive('/')">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                Back {{getLoginStatus()}}
+            <a class="navbar-brand" style="margin-left: 60px
+                        ; margin-top: 10px">
+                <strong>Bright by Three</strong>
             </a>
         </div>
-    </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    <!--<li class="active"><a href="#/index">Home</a></li>-->
+
+                    <li>
+                        <a style="margin-right: 10px" class="navbar-right pull-right"
+                           onclick="window.open('http://brightbythree.org',
+                            '_blank', 'location=yes');">
+                            <img src="images/BB3_logo-icon_WEB_rgb.png" width="40" height="56">
+                        </a>
+                    </li>
+
+                </ul>
 
 
-    <a class="button back" href="#/home" ng-show="getLoginStatus()">
-        Back
-    </a>
-    -->
-
-    <!-- ng-show="loginStatus != 'false'" -->
-
-    <div class="row hpadding30 hmargin15">
-        <div class="pull-right">
-
-        </div>
-    </div>
-
-    <!-- main application page for mobile (small and extra small screens) -->
-    <div class="visible-sm visible-xs">
-        <div ng-view ng-class="slide" class="padding10"></div>
-    </div>
-
-    <!-- main application content-->
-    <div class="row hmargin5 padding0 visible-md visible-lg">
-
-        <!-- main content area with toolbar -->
-        <div class="col-md-9 visible-md visible-lg">
-            <div class="box rounded-box">
-                <div class="padding10" ng-view=""></div>
             </div>
         </div>
+    </nav>
+
+    <!-- Mode selection screen -->
+    <div class="well shaded-box" ng-show="!getLoginStatus()">
+
+        <!--<h4>Welcome to Bright by Three program</h4>-->
+        <table align="center">
+            <tr>
+                <td>
+
+                </td>
+                <td align="center">
+                    Please either login or signup to
+                    access your Bright by Three account.
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+            </tr>
+        </table>
+
+        <div>
+            <div class="row vmargin15 hpadding0 box  gray-box rounded-box" style="border: 0;">
+                <div align="center" >
+                    <table align="center">
+                        <tr align="center">
+                            <td align="center">
+
+                            </td>
+
+                            <td align="center">
+                                <a class="btn btn-lima btn-circle btn-xl"
+                                   data-toggle="modal"
+                                   data-target="#loginModal"
+                                        data-ng-click="setMode(cbbConstants.modeGuided)">
+                                    <i style="margin-top: 8px" class="glyphicon glyphicon-link">
+                                    </i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+
+                            </td>
+                            <td align="center">
+                                <b>Login</b>
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="row vmargin15 hpadding0 box gray-box rounded-box"
+                 style="border: 0;">
+                <div align="center">
+                    <table align="center">
+                        <tr>
+                            <td align="center">
+
+                            </td>
+
+                            <td align="center">
+                                <a class="btn btn-juliet btn-circle btn-xl"
+                                   data-toggle="modal"
+                                   data-target="#signUpModal"
+                                   data-ng-click="setMode(cbbConstants.modeGuided)">
+                                    <i style="margin-top: 8px" class="glyphicon glyphicon-edit">
+                                    </i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+
+                            </td>
+                            <td align="center">
+                                <b>Signup</b>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+
+
+        </div>
+
     </div>
 
-    <!-- The processing dialog -->
-    <div class="modal fade" id="processingDialog" tabindex="-1"
-         role="dialog" aria-labelledby="processingDialogLabel" aria-hidden="{{showProcessing && false}}">
-        <div class="modal-dialog rounded-box white-box">
-            <div class="modal-body">
-                <div class="processing">Processing</div>
+
+    <!-- main Web application panel -->
+    <div class="well white-box shaded-box rounded-box" ng-show="getLoginStatus()">
+
+        <!-- toolbox menu -->
+
+        <!--
+        <div class="row hpadding30 hmargin15">
+            <div class="pull-left visible-sm visible-xs">
+                <a href="#/home" class="btn btn-sm btn-warning" ng-show="!isActive('/')">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    Back {{getLoginStatus()}}
+                </a>
+            </div>
+        </div>
+
+
+        <a class="button back" href="#/home" ng-show="getLoginStatus()">
+            Back
+        </a>
+        -->
+
+        <!-- ng-show="loginStatus != 'false'" -->
+
+        <div class="row hpadding30 hmargin15">
+            <div class="pull-right">
+
+            </div>
+        </div>
+
+        <!-- main application page for mobile (small and extra small screens) -->
+        <div class="visible-sm visible-xs">
+            <div ng-view ng-class="slide" class="padding10"></div>
+        </div>
+
+        <!-- main application content-->
+        <div class="row hmargin5 padding0 visible-md visible-lg">
+
+            <!-- main content area with toolbar -->
+            <div class="col-md-9 visible-md visible-lg">
+                <div class="box rounded-box">
+                    <div class="padding10" ng-view=""></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The processing dialog -->
+        <div class="modal fade" id="processingDialog" tabindex="-1"
+             role="dialog" aria-labelledby="processingDialogLabel" aria-hidden="{{showProcessing && false}}">
+            <div class="modal-dialog rounded-box white-box">
+                <div class="modal-body">
+                    <div class="processing">Processing</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="incompleteDialog" tabindex="-1"
+             role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog rounded-box white-box">
+                <div class="model-content">
+                    <div class="modal-header">
+                        <h3>Please Wait</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="processing rounded-box"
+                             ng-show="messageRetrieved == false">
+                            <label>Processing</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">OK</button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="incompleteDialog" tabindex="-1"
-         role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog rounded-box white-box">
-            <div class="model-content">
-                <div class="modal-header">
-                    <h3>Please Wait</h3>
-                </div>
+    <div class="modal fade" id="textModal" tabindex="-1"
+         role="dialog" aria-labelledby="textModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
                 <div class="modal-body">
-                    <div class="processing rounded-box"
-                         ng-show="messageRetrieved == false">
-                        <label>Processing</label>
+                    <div class="well">
+                        <div class="text-left">
+                            <p class="white-shadow">
+                                <b>
+                                    MMM:
+                                </b>
+                                {{ participantService.message }}
+                            </p>
+                        </div>
+
+                        <div class="text-right" ng-show="getTextMessageInFlag() && getTextMessageInb()
+                && getTextMessageInb() != null">
+                            <p class="white-shadow"
+                               ng-show="getTextMessageInFlag() && getTextMessageInb()
+               && getTextMessageInb() != null">
+                                <b>
+                                    You:
+                                </b>
+                                {{ participantService.textMessage_inb }}
+                            </p>
+                        </div>
+
+                        <input type="text"  placeholder=" Limit is 250 character."
+                               ng-show="getTextMessageInFlag() && !getTextMessageInb()"
+                               maxlength="250"
+                               class="textBoxStyle" wrap="true"
+                               ng-model="newMessage1.message"
+                               value="Thank you for using MMMM.
+                            Please type your message below and hit the 'Submit' button.">
+                        <button class="btn btn-primary" ng-click="submitMessage()"
+                                ng-hide="" ng-show="getTextMessageInFlag() && !getTextMessageInb()">
+                            Send
+                        </button>
+
+
                     </div>
                 </div>
+
                 <div class="modal-footer">
-                    <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">OK</button>
+                    <button class="btn btn-primary" data-dismiss="modal"
+                            aria-hidden="true">Close</button>
                 </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="textModal" tabindex="-1"
-     role="dialog" aria-labelledby="textModal" aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-body">
-            <div class="well">
-                <div class="text-left">
-                    <p class="white-shadow">
-                        <b>
-                            MMM:
-                        </b>
-                        {{ participantService.message }}
-                    </p>
-                </div>
-
-                <div class="text-right" ng-show="getTextMessageInFlag() && getTextMessageInb()
-                && getTextMessageInb() != null">
-                    <p class="white-shadow"
-                       ng-show="getTextMessageInFlag() && getTextMessageInb()
-               && getTextMessageInb() != null">
-                        <b>
-                            You:
-                        </b>
-                        {{ participantService.textMessage_inb }}
-                    </p>
-                </div>
-
-                    <input type="text"  placeholder=" Limit is 250 character."
-                           ng-show="getTextMessageInFlag() && !getTextMessageInb()"
-                           maxlength="250"
-                           class="textBoxStyle" wrap="true"
-                           ng-model="newMessage1.message"
-                           value="Thank you for using MMMM.
-                            Please type your message below and hit the 'Submit' button.">
-                    <button class="btn btn-primary" ng-click="submitMessage()"
-                            ng-hide="" ng-show="getTextMessageInFlag() && !getTextMessageInb()">
-                           Send
-                    </button>
-
 
             </div>
         </div>
+    </div>
 
-        <div class="modal-footer">
-            <button class="btn btn-primary" data-dismiss="modal"
-                    aria-hidden="true">Close</button>
-        </div>
+    <div modal-show
+         class="modal fade" id="loginModal"
+         modal-visible="!getLoginStatus()"
+         tabindex="-1"
+         role="dialog" aria-labelledby="loginModal" aria-hidden="true"
+         ng-controller="personalInfoController">
+        <form id="loginForm" enctype="multipart/form-data"
+              name="emailDesignForm" method="post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 align="center">BB3 Login</h3>
+                        <!--
+                        <label>Please enter your email id and password
+                            used to register with BB3.</label>
+                        -->
+                    </div>
+                    <div class="modal-body">
 
-        </div>
-      </div>
-</div>
+                        <div class="alert alert-danger" ng-show="wrongLogin && !getLoginStatus()">
+                            Please check login information and try again.
+                        </div>
+                        <div class="alert alert-success" ng-show="getLoginStatus()">
+                            You are successfully logged in. Please close this window to access dashboard.
+                        </div>
+                        <div class="well">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input class="form-control" type="email"
+                                       placeholder="Enter your email id" name="email"
+                                       ng-model="emailID" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input class="form-control" type="password"
+                                       placeholder="Enter your password"
+                                       name="password" ng-model="password1" required />
+                            </div>
+
+                            <div class="checkbox">
+                                <label><input type="checkbox" value=""
+                                        ng-click="rememberMe()">Remember Me</label>
+                            </div>
+
+                        </div>
+
+                        <div align="right">
+                            <a
+                                href="mailto:agileehealth@gmail.com?subject=Forgot my BB3 login password&body=I forgot my login details for the BB3 app. Please send me my id and password. My name is: TYPE YOUR FULL NAME HERE."
+                                target="_blank">
+                                Forgot your login?
+                            </a>
+                        </div>
 
 
 
-<!-- footer -->
-<div class="row">
-    <div class="col-md-12 text-center vmargin15">
-        <div>Copyright 2013 University of Colorado Denver. Mothers' Milk Messaging is
-            released under the
-            <a href="#" onclick="window.open('http://www.gnu.org/licenses/gpl-2.0.html', '_blank', 'location=yes')">
-                GNU Public License version 2.0</a>.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" ng-click="submitLoginInfo()"
+                                class="btn btn-mike" aria-hidden="true"
+                                ng-disabled="!emailDesignForm.$valid || getLoginStatus()">
+                            Login
+                        </button>
+                        <a class="btn btn-darkRed" href="#/index" data-dismiss="modal"
+                                ng-click="resetLoginInfo()"
+                                aria-hidden="true" ng-show="!getLoginStatus()"
+                                >Cancel</a>
+                        <button class="btn btn-darkRed" data-dismiss="modal"
+                                aria-hidden="true"
+                                ng-show="getLoginStatus()"
+                                >Close</button>
 
-            Mothers Milk Messaging version 1.0 is funded by the Agency for
-            Healthcare Research and Quality (AHRQ) Department of Health
-            and Human Services Research Program Project for grant 5P01HS021138-03.
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- endModal -->
+
+    <!-- Modal -->
+    <div modal-show
+         class="modal fade" id="signUpModal"
+         modal-visible="!getLoginStatus()"
+         tabindex="-1"
+         role="dialog" aria-labelledby="loginModal" aria-hidden="true"
+         ng-controller="personalInfoController">
+        <form id="signupForm" enctype="multipart/form-data"
+              name="signupForm" method="post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" align="center">
+                        <h3>BB3 Sign up</h3>
+
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="alert alert-success" ng-show="getLoginStatus()">
+                            You are successfully signed up. Please close this window to access dashboard.
+                        </div>
+                        <div class="well">
+                            <div class="form-group">
+                                <label for="inputFirstName"
+                                       class="col-lg-2 control-label">First Name</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputFirstName"
+                                           placeholder="enter your first name"
+                                           ng-model="newParticipant.firstName" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputLastName" class="col-lg-2 control-label">Last Name</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputLastName"
+                                           placeholder="enter your last name"
+                                           ng-model="newParticipant.lastName" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                                <div class="col-lg-10">
+                                    <input type="email" class="form-control" id="inputEmail"
+                                           placeholder="enter your email" ng-model="newParticipant.emailID">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
+                                <div class="col-lg-10">
+                                    <input type="password" class="form-control" id="inputPassword1"
+                                           placeholder="enter password"
+                                           ng-model="newParticipant.password1" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputPassword2" class="col-lg-2 control-label">Confirm Password</label>
+                                <div class="col-lg-10">
+                                    <input type="password" class="form-control" id="inputPassword2"
+                                           placeholder="reenter password"
+                                           ng-model="newParticipant.password2" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputPhoneNumber" class="col-lg-2 control-label">Phone Number</label>
+                                <div class="col-lg-10">
+                                    <input type="number" class="form-control" id="inputPhoneNumber"
+                                           placeholder="phone number"
+                                           ng-model="newParticipant.phoneNumber" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputBabyName" class="col-lg-2 control-label">Baby's Name</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputBabyName"
+                                           placeholder="enter your baby's name"
+                                           ng-model="newParticipant.babyName" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputBabyDOB" class="col-lg-2 control-label">Baby's date of birth</label>
+                                <div class="col-lg-10">
+                                    <input type="datetime-local" class="form-control" id="inputBabyDOB"
+                                           placeholder="enter your baby's date of birth"
+                                           ng-model="newParticipant.babyDOB" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputBabyGender" class="col-lg-2 control-label">
+                                    Baby's Gender</label>
+                                <div class="col-lg-10">
+                                    <select class="selectpicker" data-style="btn-primary"
+                                            id="inputBabyGender" ng-model="newParticipant.babyGender">
+                                        <option>Female</option>
+                                        <option>Male</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputzipcode" class="col-lg-2 control-label">Zipcode</label>
+                                <div class="col-lg-10">
+                                    <input type="number" class="form-control" id="inputzipcode"
+                                           placeholder="enter your zipcode"
+                                           ng-model="newParticipant.zipcode" required />
+                                </div>
+                            </div>
+
+                            <!--
+                            <div class="form-group">
+                                <label for="inputClinic" class="col-lg-2 control-label">
+                                    Clinic</label>
+                                <div class="col-lg-10">
+                                    <select class="selectpicker" data-style="btn-primary"
+                                            id="inputClinic" ng-model="newParticipant.clinic">
+                                        <option>ClinicA</option>
+                                        <option>ClinicB</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            -->
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" ng-click="submitSignupInfo()"
+                                class="btn btn-mike" aria-hidden="true"
+                                ng-disabled="!signupForm.$valid">
+                            Submit
+                        </button>
+
+                        <button class="btn btn-darkRed" data-dismiss="modal"
+                                ng-click="designEmailSuccess = undefined"
+                                aria-hidden="true" ng-show="!getLoginStatus()"
+                                >Cancel</button>
+
+                        <button class="btn btn-darkRed" data-dismiss="modal"
+                                ng-click="designEmailSuccess = undefined"
+                                aria-hidden="true"
+                                ng-show="getLoginStatus()"
+
+                                >Close</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- endModal -->
+
+
+    <!-- footer -->
+    <!--
+    <div class="row">
+        <div class="col-md-12 text-center vmargin15">
+            <div>Copyright 2013 University of Colorado Denver. Mothers' Milk Messaging is
+                released under the
+                <a href="#" onclick="window.open('http://www.gnu.org/licenses/gpl-2.0.html', '_blank', 'location=yes')">
+                    GNU Public License version 2.0</a>.
+
+                Mothers Milk Messaging version 1.0 is funded by the Agency for
+                Healthcare Research and Quality (AHRQ) Department of Health
+                and Human Services Research Program Project for grant 5P01HS021138-03.
+            </div>
         </div>
     </div>
-</div>
+    -->
 
 </div>
-
+<!--
 <script src="lib/angular.min.js"></script>
 <script src="lib/angular-touch.js"></script>
 <script src="lib/ng-grid-2.0.7.min.js"></script>
 <script src="lib/ui-bootstrap-tpls-0.6.0.min.js"></script>
 <script src="lib/highcharts-ng.js"></script>
 
-<!-- app specific scripts -->
+
 <script src="js/app.js"></script>
 <script src="js/services/matrixUtilities.js"></script>
 <script src="js/services/studyDesignService.js"></script>
@@ -490,7 +631,7 @@
 <script src="js/directives.js"></script>
 <script src="js/controllers/controllers.js"></script>
 
-
+-->
 
 <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 <!--<script type="text/javascript" charset="utf-8" src="jquery_1.5.2.min.js"></script>  -->
@@ -532,10 +673,13 @@
                 //alert('done registering');
 
                 // required!
-            } else {
+            } else if (device.platform.toLowerCase() == 'ios' || device.platform == 'iOS'){
                 //alert('its an ios device');
                 $("#app-status-ul").append('<li>registering iOS</li>');
                 pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});        // required!
+            }
+            else {
+                ;
             }
         }
         catch(err)

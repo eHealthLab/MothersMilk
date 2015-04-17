@@ -1,13 +1,49 @@
-<?xml version='1.0' encoding='utf-8'?>
-<widget id="edu.ucdenver.mothersmilk" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Mothers' Milk Messaging</name>
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+    xmlns:gap = "http://phonegap.com/ns/1.0"
+    id        = "edu.ucdenver.brightbythree"
+    version   = "1.0.2">
+
+    <name>Bright by Three</name>
+
     <description>
-        A sample web and mobile application for the Mothers' Milk Messaging Program.
+        Bright by Three leads the design, delivery, and evaluation of innovative programs to promote the
+        healthy development of all children in the first three years of life.
     </description>
-    <author email="agileehealth@gmail.com" href="http://mothersmilk.ucdenver.edu">
+
+    <author href="http://mhealthimpact.ucdenver.edu/" email="sheana.bull@ucdenver.edu">
         Sheana Bull
     </author>
+
+    <gap:platforms>
+        <gap:platform name="android" minVersion="2.1" />
+        <gap:platform name="blackberry" project="widgets"/>
+    </gap:platforms>
+
     <feature name="http://api.phonegap.com/1.0/device" />
+
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="ios-package" value="CDVInAppBrowser" />
+    </feature>
+
+    <gap:plugin name="de.appplant.cordova.plugin.email-composer"
+                version="0.8.1" />
+
+    <feature name="http://api.phonegap.com/1.0/camera"/>
+    <feature name="http://api.phonegap.com/1.0/device" />
+
+    <feature name="Camera">
+        <param name="android-package"
+               value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+
+    <feature name="Camera">
+        <param name="ios-package" value="CDVCamera" />
+    </feature>
+
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
@@ -15,15 +51,8 @@
     <preference name="webviewbounce" value="true" />
     <preference name="prerendered-icon" value="true" />
     <preference name="stay-in-webview" value="false" />
-    <preference name="ios-statusbarstyle" value="black-opaque" />
-    <preference name="detect-data-types" value="true" />
-    <preference name="exit-on-suspend" value="false" />
-    <preference name="show-splash-screen-spinner" value="true" />
-    <preference name="auto-hide-splash-screen" value="true" />
-    <preference name="disable-cursor" value="false" />
-    <preference name="android-minSdkVersion" value="7" />
-    <preference name="android-installLocation" value="auto" />
-    <icon src="img/MMLogo2.png" />
+
+    <icon src="images/BB3_icon_200x200.png" />
     <icon gap:density="ldpi" gap:platform="android" src="res/icon/android/icon_36x36.png" />
     <icon gap:density="mdpi" gap:platform="android" src="res/icon/android/icon_48x48.png" />
     <icon gap:density="hdpi" gap:platform="android" src="res/icon/android/icon_72x72.png" />
@@ -40,10 +69,10 @@
     <icon gap:platform="webos" src="res/icon/webos/icon-64.png" />
     <icon gap:platform="winphone" src="res/icon/windows-phone/icon-48.png" />
     <icon gap:platform="winphone" gap:role="background" src="res/icon/windows-phone/icon-173.png" />
-    <gap:splash gap:density="ldpi" gap:platform="android" src="res/screen/android/SpalshScreen200x320.png" />
-    <gap:splash gap:density="mdpi" gap:platform="android" src="res/screen/android/SpalshScreen320x480.png" />
-    <gap:splash gap:density="hdpi" gap:platform="android" src="res/screen/android/SpalshScreen480x800.png" />
-    <gap:splash gap:density="xhdpi" gap:platform="android" src="res/screen/android/SpalshScreen720x1280.png" />
+    <gap:splash gap:density="ldpi" gap:platform="android" src="res/screen/android/SpalshScreen200x320_.png" />
+    <gap:splash gap:density="mdpi" gap:platform="android" src="res/screen/android/SpalshScreen320x480_.png" />
+    <gap:splash gap:density="hdpi" gap:platform="android" src="res/screen/android/SpalshScreen480x800_.png" />
+    <gap:splash gap:density="xhdpi" gap:platform="android" src="res/screen/android/SpalshScreen720x1280_.png" />
     <gap:splash gap:platform="blackberry" src="res/screen/blackberry/screen-225.png" />
     <gap:splash gap:platform="ios" height="480" src="res/screen/ios/SpalshScreen320x480.png" width="320" />
     <gap:splash gap:platform="ios" height="960" src="res/screen/ios/SpalshScreen640x960.png" width="640" />
@@ -55,4 +84,8 @@
     <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.1.1" />
     <gap:plugin name="org.apache.cordova.device" />
     <access origin="*" />
+
+    <icon src="icon.png" gap:role="default" />
+    <icon src="icon_hover.png" gap:role="default" hover="true" />
+
 </widget>

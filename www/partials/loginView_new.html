@@ -1,0 +1,109 @@
+<!--
+* MothersMilk
+* Copyright (C) 2013 Regents of the University of Colorado.
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public License
+* as published by the Free Software Foundation; either version 2
+* of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+
+
+<!--
+<a class="btn btn-primary" href="#/index">
+    Back
+</a>
+
+<div class=well>
+
+    <p>
+        If you have already signed up, please click continue.
+        Otherswise, go back and sign up first.
+
+    </p>
+
+    <a class="btn btn-primary"
+       data-toggle="modal" data-target="#loginModal"
+       >
+        Continue
+
+
+    </a>
+-->
+
+<div class=well>
+
+    <div align="center">
+        <table >
+            <style type="text/css">
+                .errorClassSignUp{
+                    color: red;
+                }
+            </style>
+
+            <tr>
+
+                <td>
+                    <input type="email"
+                           placeholder="Enter email"
+                           ng-model="emailID">
+                    </input>
+                </td>
+                <!--
+                <td class="errorClassSignUp">
+                    {{ loginErrorEmail }}
+                </td>
+                -->
+            </tr>
+            <tr>
+
+                <td>
+                    <input type="password"
+                           placeholder="Enter password"
+                           ng-model="password1">
+                    </input>
+                </td>
+                <!--
+                <td class="errorClassSignUp">
+                    {{ loginErrorPassword }}
+                </td>
+                -->
+            </tr>
+        </table>
+
+
+
+        <div align="center" class="col-md-12">
+
+            <a class="btn btn-primary"
+               ng-click="submitLoginInfo()">Login</a>
+        </div>
+
+    </div>
+
+    <p align="center">
+        <b>OR</b>
+    </p>
+
+    <p>
+        If you have not signed up, please sign up first.
+    </p>
+
+    <div align="center" class="col-md-12">
+
+        <a href="#/signUp" class="btn btn-primary"
+           data-ng-click="setMode(cbbConstants.modeMatrix)">
+            Signup
+        </a>
+    </div>
+
+</div>

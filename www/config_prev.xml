@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="edu.ucdenver.brightbythree" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Bright by Three</name>
+    <description>
+        A sample web and mobile application for the Mothers' Milk Messaging Program.
+    </description>
+    <author email="agileehealth@gmail.com" href="http://mothersmilk.ucdenver.edu">
+        Sheana Bull
+    </author>
+    <feature name="http://api.phonegap.com/1.0/device" />
+    <preference name="permissions" value="none" />
+    <preference name="orientation" value="default" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="true" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="show-splash-screen-spinner" value="true" />
+    <preference name="auto-hide-splash-screen" value="true" />
+    <preference name="disable-cursor" value="false" />
+    <preference name="android-minSdkVersion" value="7" />
+    <preference name="android-installLocation" value="auto" />
+    <icon src="img/MMLogo2.png" />
+    <icon gap:density="ldpi" gap:platform="android" src="res/icon/android/icon_36x36.png" />
+    <icon gap:density="mdpi" gap:platform="android" src="res/icon/android/icon_48x48.png" />
+    <icon gap:density="hdpi" gap:platform="android" src="res/icon/android/icon_72x72.png" />
+    <icon gap:density="xhdpi" gap:platform="android" src="res/icon/android/icon_96x96.png" />
+    <icon gap:platform="blackberry" src="res/icon/blackberry/icon-80.png" />
+    <icon gap:platform="blackberry" gap:state="hover" src="res/icon/blackberry/icon-80.png" />
+    <icon gap:platform="ios" height="57" src="res/icon/ios/icon_57x57.png" width="57" />
+    <icon gap:platform="ios" height="72" src="res/icon/ios/icon_72x72.png" width="72" />
+    <icon gap:platform="ios" height="76" src="res/icon/ios/icon_76x76.png" width="76" />
+    <icon gap:platform="ios" height="114" src="res/icon/ios/icon_114x114.png" width="114" />
+    <icon gap:platform="ios" height="120" src="res/icon/ios/icon_120x120.png" width="120" />
+    <icon gap:platform="ios" height="144" src="res/icon/ios/icon_144x144.png" width="144" />
+    <icon gap:platform="ios" height="152" src="res/icon/ios/icon_152x152.png" width="152" />
+    <icon gap:platform="webos" src="res/icon/webos/icon-64.png" />
+    <icon gap:platform="winphone" src="res/icon/windows-phone/icon-48.png" />
+    <icon gap:platform="winphone" gap:role="background" src="res/icon/windows-phone/icon-173.png" />
+    <gap:splash gap:density="ldpi" gap:platform="android" src="res/screen/android/SpalshScreen200x320.png" />
+    <gap:splash gap:density="mdpi" gap:platform="android" src="res/screen/android/SpalshScreen320x480.png" />
+    <gap:splash gap:density="hdpi" gap:platform="android" src="res/screen/android/SpalshScreen480x800.png" />
+    <gap:splash gap:density="xhdpi" gap:platform="android" src="res/screen/android/SpalshScreen720x1280.png" />
+    <gap:splash gap:platform="blackberry" src="res/screen/blackberry/screen-225.png" />
+    <gap:splash gap:platform="ios" height="480" src="res/screen/ios/SpalshScreen320x480.png" width="320" />
+    <gap:splash gap:platform="ios" height="960" src="res/screen/ios/SpalshScreen640x960.png" width="640" />
+    <gap:splash gap:platform="ios" height="1136" src="res/screen/ios/SpalshScreen640x1136.png" width="640" />
+    <gap:splash gap:platform="ios" height="1024" src="res/screen/ios/SpalshScreen768x1004.png" width="768" />
+    <gap:splash gap:platform="ios" height="768" src="res/screen/ios/SpalshScreen1024x783.png" width="1024" />
+    <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
+    <gap:plugin name="org.apache.cordova.inappbrowser" />
+    <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.1.1" />
+    <gap:plugin name="org.apache.cordova.device" />
+    <access origin="*" />
+</widget>
