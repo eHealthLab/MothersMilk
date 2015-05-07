@@ -167,7 +167,7 @@ var cbbApp = angular.module('cbb', ['ui.bootstrap','ngGrid', 'highcharts-ng'])
         )
 
             .when('/settings',
-            {templateUrl: 'partials/settings.html', controller: 'emailController'}
+            {templateUrl: 'partials/settings.html'}
         )
 
             .when('/index',
@@ -183,7 +183,7 @@ var cbbApp = angular.module('cbb', ['ui.bootstrap','ngGrid', 'highcharts-ng'])
 
 
             .when('/about',
-            {templateUrl: 'partials/aboutUs.html', controller:'stateController'}
+            {templateUrl: 'partials/aboutUs.html'}
         )
 
             .when('/favorites',

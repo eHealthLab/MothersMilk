@@ -1155,7 +1155,7 @@ cbbApp.controller('stateController',
             $scope.loginSuccessful = true;
             $scope.wrongLogin = false;
             $scope.babyName = undefined;
-
+            $scope.image = "../images/setGoals.png";
         }
 
 
@@ -1213,9 +1213,10 @@ cbbApp.controller('stateController',
                         //window.alert($scope.appsData);
                         if($scope.appsData != undefined) {
                             $scope.login = true;
-                            window.alert("You have successfully signed up.");
+                            //window.alert("You have successfully signed up.");
                             //window.alert("id is + " + $scope.appsData.userId);
                             participantService.setUserID($scope.appsData.userId);
+                            window.alert('baby name:' + $scope.appsData.babyName);
 
                             participantService.globalLoginStatus = true;
 
@@ -1301,6 +1302,8 @@ cbbApp.controller('stateController',
                         participantService.globalLoginStatus = true;
                         $scope.loginStatus = participantService.globalLoginStatus;
                         participantService.setUserID(data[0].ID);
+                        participantService.setBabyName(data[0].babyName);
+
                         $scope.wrongLogin = false;
 
                         $scope.emailID = "";
@@ -1533,16 +1536,9 @@ cbbApp.controller('stateController',
             }
             else {
                 $scope.newUser = false;
-
+                //window.alert('next badge is: ' + $scope.nextBadgeToEarn);
                 for (var i=0; i < $scope.nextBadgeToEarn; i++) {
-                    //if ($scope.totalPoints >= $scope.statusBadge[i][0]) {
                     $scope.statusBadge[i][1] = true;
-
-                    //if ($scope.totalPoints < $scope.statusBadge[i + 1][0]) {
-                    //  $scope.statusBadge[i + 1][1] = true;
-                    //break;
-                    // }
-                    // }
                 }
             }
 
@@ -1611,7 +1607,7 @@ cbbApp.controller('stateController',
             $scope.sampleTextSubject1 = "Welcome";
             $scope.sampleTextContent1 = "Welcome to CBB! Over the coming months you will be " +
             "receiving messages with ideas to promote your baby’s development.";
-            $scope.sampleTextImage = "../images/BB3_logo_vert_rgb.png";
+            $scope.sampleTextImage = "images/BB3_logo_vert_rgb.png";
             $scope.sampleTextVideo1 = "https://www.youtube.com/embed/mN5rIVbUG7M";
             $scope.inbound1 = false;
 
@@ -1619,7 +1615,7 @@ cbbApp.controller('stateController',
             $scope.sampleTextSubject2 = "Best Teacher";
             $scope.sampleTextContent2 = "True or False? 80% of a baby's brain development will " +
             "occur in the first 3 years of life";
-            $scope.sampleTextImage2 = "../images/BB3_logo_vert_rgb.png";
+            $scope.sampleTextImage2 = "images/BB3_logo_vert_rgb.png";
             //$scope.sampleTextVideo2 = "https://www.youtube.com/embed/mN5rIVbUG7M";
             $scope.inbound2 = true;
 
@@ -1627,7 +1623,7 @@ cbbApp.controller('stateController',
             $scope.sampleTextContent3 = "Correct! Most of baby's brain development will" +
             "occur during the early years of life. This is why it is so important to engage " +
             "in talking, reading, playing, and encouragement right now!";
-            $scope.sampleTextImage = "../images/BB3_logo_vert_rgb.png";
+            $scope.sampleTextImage = "images/BB3_logo_vert_rgb.png";
             //$scope.sampleTextVideo3 = "https://www.youtube.com/embed/mN5rIVbUG7M";
             $scope.inbound3 = false;
         }
@@ -1654,7 +1650,7 @@ cbbApp.controller('stateController',
 
         function init() {
             $scope.participantService = participantService;
-            $scope.logNumberOfMinutes = participantService.getLogMinutes();
+            $scope.logNumberOfMinutes = "";// participantService.getLogMinutes();
             $scope.totalPointsEarnedSoFar = participantService.getTotalPointsEarned();
             $scope.minutesUpdated = false;
             $scope.nextBadgeToEarn = participantService.getNextBadgeToEarn();
@@ -1691,6 +1687,7 @@ cbbApp.controller('stateController',
                             + minutes;
 
                         participantService.setTotalPointsEarned(points);
+                        $scope.totalPointsEarnedSoFar = participantService.getTotalPointsEarned();
 
                         $scope.nextBadgeToEarn = participantService.getNextBadgeToEarn();
                         $scope.statusBadge = participantService.statusBadge;
@@ -1717,6 +1714,7 @@ cbbApp.controller('stateController',
                                 success(function (data, status, headers, config) {
                                     $scope.appsData = data;
                                     if (data == "Success") {
+                                        window.alert('badge update done: ' + participantService.nextBadgeToEarn);
                                     }
                                     else {
                                         ;
@@ -1817,6 +1815,13 @@ cbbApp.controller('stateController',
             $scope.feedbackStatus = false;
         }
 
+        $scope.getFeedbackStatus = function() {
+
+            return $scope.feedbackStatus;
+
+        };
+
+
         $scope.sendFeedback = function() {
             var userID = 2; // participantService.getUserID();
             if ($scope.feedbackText != undefined) {
@@ -1834,19 +1839,21 @@ cbbApp.controller('stateController',
                             $scope.feedbackText = "";
                             $scope.appsData = data;
                             if (data == "Success") {
-                                window.alert("Thank You! Your feedback has been submitted.");
+                                //window.alert("Thank You! Your feedback has been submitted.");
+                                $scope.feedbackStatus = true;
                                 //$location.path("/dashboard");
                                 if ($scope.currentLanguage == "English") {
-                                    window.alert("Thank You! Your feedback has been submitted.");
+                                    ;//window.alert("Thank You! Your feedback has been submitted.");
                                     //$location.path("../pages/settings.html");
                                 }
                                 else if ($scope.currentLanguage == "Español") {
-                                    window.alert("¡Gracias! Sus comentarios fueron entregados.");
+                                    ;//window.alert("¡Gracias! Sus comentarios fueron entregados.");
                                     //$location.path("/dashboard");
                                 }
                             }
                         }).
                         error(function (data, status, headers, config) {
+                            $scope.feedbackStatus = false;
                             if ($scope.currentLanguage == "English") {
                                 window.alert("Unable to contact server. Please try again later.");
                             }

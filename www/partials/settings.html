@@ -28,7 +28,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" ng-controller="emailController">
     <div class="panel panel-info">
         <div align="center" class="panel-heading"><b>Settings</b>
         </div>
@@ -37,95 +37,78 @@
 
         <div id="accordion" class="panel-group">
 
-            <!--
             <div class="panel panel-danger">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion"
-                           href="#/settings/#collapseOne">Forgot your email id?</a>
+                        <a data-toggle="modal" data-target="#oneModal"
+                           >Submit Feedback</a>
                     </h4>
                 </div>
-                <div id="collapseOne" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <p>
-                            If you have forgotten your email id and are unable
-                            to access your account, please click the button
-                            below to contact us.
-                            <div class="well" align="center">
 
-                                <a  class="btn btn-primary"
-                                    href="mailto:agileehealth@gmail.com?subject=Forgot my BB3 login ID&body=I forgot my email ID to login. Please send me one. My name is: TYPE YOUR FULL NAME HERE."
-                                    target="_blank">
-                                    Forgot my email ID
-                                </a>
+                <!-- Modal -->
+                <div modal-show
+                     class="modal fade" id="oneModal"
+
+                     tabindex="-1"
+                     role="dialog" aria-labelledby="oneModal" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header" align="center">
+                                <h3>Submit Feedback</h3>
+
                             </div>
-                        </p>
+                            <div class="well modal-body">
 
-                    </div>
-                </div>
-            </div>
+                                <div class="alert alert-success" ng-show="getFeedbackStatus()">
+                                    Thank You! Your feedback has been successfully submitted.
+                                    Please close this window to access the Settings page.
+                                </div>
 
-               -->
-            <!--
+                                <div ng-show="!getFeedbackStatus()">
 
-            <div class="panel panel-danger">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion"
-                           href="#/settings/#collapseTwo">Forgot your password?</a>
-                    </h4>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <p>
-                            If you have forgotten your password, please click
-                            the button
-                            below to contact us.
-                        <div class="well" align="center">
-                        <a  class="btn btn-primary"
-                            href="mailto:agileehealth@gmail.com?subject=Forgot my BB3 login password&body=I forgot my password to login to BB3 app. Please send me one. My name is: TYPE YOUR FULL NAME HERE."
-                            target="_blank">Forgot my password
-                        </a>
+                                    <p>
+                                        Thank you for participating in the Bright by Three
+                                        program. We would love to hear back from you. Please
+                                        type your suggestions and comments in the area below
+                                        and press the Submit button once done.
+                                    </p>
+                                </div>
+
+                                <div class="well" align="center" ng-show="!getFeedbackStatus()">
+
+                                    <textarea class="form-control" rows="6"
+                                              cols="40"
+                                              align="center"
+                                              ng-model="feedbackText">
+                                    </textarea>
+
+                                    <br>
+
+                                    <a  class="btn btn-primary"
+                                        ng-click="sendFeedback()"
+                                        ng-disabled = "feedbackStatus">
+                                        Submit
+                                    </a>
+
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+
+                                <button class="btn btn-darkRed pull-right" data-dismiss="modal"
+                                        aria-hidden="true"
+                                        >Close</button>
+                            </div>
                         </div>
-                        </p>
-
-
                     </div>
                 </div>
-            </div>
-            -->
 
-            <div class="panel panel-danger">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion"
-                           href="#/settings/#collapseFour">Submit Feedback</a>
-                    </h4>
-                </div>
+            </div>
+            <!-- endModal -->
+
                 <div id="collapseFour" class="panel-collapse collapse">
                     <div class="panel-body">
-                        <p>
-                            Thank you for participating in the Bright by Three
-                            program. We would love to hear back from you. Please
-                            type your suggestions and comments in the area below
-                            and press the Submit button once done.
-                        <div class="well" align="center">
 
-                            <textarea class="form-control" rows="6"
-                                      cols="40"
-                                      align="center"
-                                      ng-model="feedbackText">
-                            </textarea>
-
-                            <br>
-
-                            <a  class="btn btn-primary"
-                                ng-click="sendFeedback()"
-                                ng-disabled = "feedbackStatus">
-                                Submit
-                            </a>
-
-                        </div>
 
                     </div>
                 </div>

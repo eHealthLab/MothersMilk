@@ -76,7 +76,7 @@ cbbApp.factory('participantService', function($http, $q, cbbConstants) {
 
     participantServiceInstance.earnedNewBadge = false;
 
-    participantServiceInstance.babyName = "Nate";
+    participantServiceInstance.babyName = undefined;
 
     participantServiceInstance.statusBadge = [
         [150, false],
